@@ -1,0 +1,46 @@
+.button {
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.button i {
+    margin-left: 10px;
+    font-size: 22px;
+}
+
+.orange {
+    background-color: var(--orange);
+    padding: 26px;
+}
+
+.orange:hover {
+    background-color: var(--orange-hovered);
+}
+
+.transparent {
+    background-color: transparent;
+    border: 1px solid var(--white);
+    display: flex;
+}
+
+.transparent span {
+    margin-left: 15px;
+}
+
+.transparent i {
+    background-color: var(--orange);
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.transparent i:hover {
+    background-color: var(--orange-hovered);
+}
