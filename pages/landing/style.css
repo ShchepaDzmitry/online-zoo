@@ -4,7 +4,7 @@
     border: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    transition-duration: .5s;
+    transition-duration: .7s;
     max-width: 1920px;
 }
 
@@ -61,6 +61,11 @@ main {
 
 .container {
     padding: 0 250px;
+}
+
+.dark {
+    color: var(--white);
+    background-color: var(--navy);
 }
 
 .introduction {
@@ -126,4 +131,131 @@ main {
 
 .small {
     flex-grow: 1;
+}
+
+.friends {
+    margin: 150px 0;
+    text-align: center;
+    padding-left: 250px;
+    overflow: hidden;
+}
+
+.friends .subheader {
+    max-width: 920px;
+    align-self: center;
+}
+
+.friends .panel {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.friends .outline-dark {
+    margin: 0 auto;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-bottom: 50px;
+}
+
+.action-buttons i {
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.carousel-container {
+    width: calc(3.5 * (440px + 40px) + 250px);
+    margin-bottom: 70px;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.carousel-item {
+    max-width: 440px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.name {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--white);
+    background-color: var(--navy);
+    border-bottom-right-radius: 5px;
+    padding: 15px 25px;
+}
+
+.top-part img {
+    display: block;
+    width: 100%;
+}
+
+.bottom-part {
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bottom-part button {
+    align-self: center;
+    margin-top: 40px;
+}
+
+.pay-and-feed {
+    margin: 150px 0;
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.pay-and-feed__header {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 60px;
+}
+
+.pay-and-feed__header--line {
+    flex: 1;
+    border-top: 1px solid var(--white);
+}
+
+.pay-and-feed__content {
+    display: flex;
+    gap: 90px;
+    width: 85%;
+    margin-bottom: 90px;
+}
+
+.pay-and-feed__icon {
+    margin-bottom: 30px;
+}
+
+.pay-and-feed .subheader {
+    margin-bottom: 60px;
+}
+
+.pay-and-feed__image {
+    align-self: flex-start;
+}
+
+.pay-and-feed .button {
+    margin-left: 650px;
 }
