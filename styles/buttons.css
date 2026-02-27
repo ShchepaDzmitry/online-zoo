@@ -50,6 +50,9 @@
 .outline-light {
     background: transparent;
     color: var(--white);
+    border: 1px solid var(--white);
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
 .outline-light:hover {
