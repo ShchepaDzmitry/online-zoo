@@ -39,6 +39,9 @@ li {
 
 a {
     text-decoration: none;
+}
+
+header a {
     color: var(--black);
 }
 
@@ -51,7 +54,7 @@ a {
     font-weight: 600;
 }
 
-.list>li>a:hover {
+header .list>li>a:hover {
     color: var(--turquoise);
 }
 
@@ -314,4 +317,104 @@ main {
 
 .feedback .action-buttons {
     margin-bottom: 350px;
+}
+
+.care-for {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.care-for .top-panel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.care-for .subheader {
+    max-width: 540px;
+}
+
+.care-for .bottom-panel{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+.care-for .outline-dark {
+    flex-basis: auto;
+    margin-bottom: 150px;
+}
+
+.feedcard {
+    color: var(--white);
+    background-color: var(--navy);
+    text-align: center;
+    max-width: 440px;
+    min-height: 660px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.feedcard p {
+    padding: 20px 10px;
+}
+
+.feedcard button {
+    margin-bottom: 50px;
+    justify-self: end;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+footer.container {
+    padding-bottom: 30px;
+}
+
+footer a {
+    color: var(--white);
+}
+
+footer .top-panel {
+    padding-top: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .copyright {
+    text-transform: none;
+    font-weight: 400;
+}
+
+.footer__line {
+    flex: 1;
+    border-top: 1px solid var(--white);
+}
+
+footer .bottom-panel, .logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .zoo-logo {
+    filter: brightness(0) invert(1);
 }
