@@ -58,6 +58,10 @@ header .list>li>a:hover {
     color: var(--turquoise);
 }
 
+.active {
+    color: var(--turquoise);
+}
+
 main {
     margin: 0 auto;
 }
@@ -69,6 +73,10 @@ main {
 .dark {
     color: var(--white);
     background-color: var(--navy);
+}
+
+.social-media a:hover {
+    opacity: 0.5;
 }
 
 .introduction {
@@ -158,31 +166,10 @@ main {
     margin: 0 auto;
 }
 
-.action-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 55px;
-    margin-bottom: 50px;
-}
-
-.action-buttons i {
-    cursor: pointer;
-    font-size: 22px;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-.action-buttons--dark i {
-    border: 1px solid var(--black);
-}
-
-.action-buttons--light i {
-    border: 1px solid var(--white);
-}
-
 .carousel-container {
     width: calc(3.5 * (440px + 40px) + 250px);
     margin-bottom: 70px;
+    transition: transform 0.4s ease;
 }
 
 .carousel {
@@ -192,12 +179,17 @@ main {
 }
 
 .carousel-item {
-    max-width: 440px;
+    width: 440px;
+    height: 750px;
     cursor: pointer;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+}
+
+.carousel-item__wrapper {
+    height: 100%;
 }
 
 .name {
@@ -222,6 +214,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 42%;
 }
 
 .bottom-part button {
@@ -304,7 +297,8 @@ main {
     color: var(--black);
     border-radius: 5px;
     padding: 50px;
-    max-width: 515px;
+    width: 515px;
+    height: 460px;
     gap: 20px;
 }
 

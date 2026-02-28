@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
     padding: 26px;
+    width: fit-content;
 }
 
 .button i {
@@ -79,4 +80,37 @@
 .blank:hover {
     background-color: var(--orange);
     color: var(--white);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-bottom: 50px;
+}
+
+.action-buttons i {
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.action-buttons--dark i {
+    border: 1px solid var(--black);
+}
+.action-buttons--dark i:hover {
+    border: 1px solid var(--navy);
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.action-buttons--light i {
+    border: 1px solid var(--white);
+}
+
+.action-buttons--light i:hover {
+    color: var(--black);
+    background-color: var(--white);
+    border: 1px solid var(--white);
 }
