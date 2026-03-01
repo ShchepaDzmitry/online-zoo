@@ -1,6 +1,6 @@
 const createCarouselCard = (animal) => {
-    return  `
-    <a  href="../zoos/?id=${animal.id}" class="carousel-item">
+    return `
+    <a href="../zoos/?id=${animal.id}" class="carousel-item">
       <div class="carousel-item__wrapper">
         <div class="top-part">
           <p class="subheader name">${animal.name}</p>
@@ -9,14 +9,14 @@ const createCarouselCard = (animal) => {
         <div class="bottom-part">
           <p class="subheader">${animal.species}</p>
           <p>${animal.carouselCardDescription}</p>
-          <button class="button blank">
+          <span class="button blank">
             <span>view live cam</span>
             <i class="fa-solid fa-arrow-right"></i>
-          </button>
+          </span>
         </div>
       </div>
     </a>
-  `
+  `;
 };
 
 export default createCarouselCard;

@@ -217,8 +217,11 @@ main {
     height: 42%;
 }
 
-.bottom-part button {
+.bottom-part span {
     align-self: center;
+}
+
+span.button.blank {
     margin-top: 40px;
 }
 
@@ -320,6 +323,7 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    position: relative;
 }
 
 .care-for .top-panel {
@@ -411,4 +415,76 @@ footer .bottom-panel, .logos {
 
 footer .zoo-logo {
     filter: brightness(0) invert(1);
+}
+
+.feed-dialog {
+    position: fixed;
+    top: 5%;
+    left: 20%;
+    display: none;
+    width: 1170px;
+    max-height: 850px;
+    z-index: 5;
+}
+
+.feed-dialog-opened {
+    display: block;
+}
+
+.feed-dialog .image-container {
+    background-image: url('../../assets/images/feed_dialog_img.png');
+    overflow: hidden;
+    width: 100%;
+    height: 390px;
+    position: relative;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--white);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.text-action {
+    width: 100%;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    overflow: hidden;
+    border-radius: 0 0 5px 5px;
+    gap: 50px;
+}
+
+.text-container {
+    max-width: 670px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-container p {
+    max-width: 570px;
+}
+
+.action-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }

@@ -105,15 +105,6 @@ rightBtnYtCarouselElement.addEventListener("click", () => {
     renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard, currentVideoId);
 });
 
-
-window.onload = () => {
-    renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
-    const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
-    ytPreviewImageElement.classList.add('selected-yt-preview');
-    renderMainPreview(currentVideoId);
-    highlightNavElements(2);
-};
-
 ytCarouselContainer.addEventListener('click', (e) => {
     const container = e.target.closest('.youtube-preview-thumbnail-container');
     if (!container) return;
@@ -124,4 +115,10 @@ ytCarouselContainer.addEventListener('click', (e) => {
     currentVideoId = container.id;
 });
 
-
+window.onload = () => {
+    renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
+    const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
+    ytPreviewImageElement.classList.add('selected-yt-preview');
+    renderMainPreview(currentVideoId);
+    highlightNavElements(2);
+};

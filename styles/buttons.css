@@ -32,7 +32,7 @@
     background-color: var(--turquoise-hovered);
 }
 
-.orange:hover {
+.button.orange:hover {
     background-color: var(--orange-hovered);
 }
 

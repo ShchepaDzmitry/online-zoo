@@ -37,6 +37,11 @@ h3.turquoise {
     color: var(--turquoise);
 }
 
+h3.orange {
+    color: var(--orange);
+}
+
+
 h4.white {
     color: var(--white);
 }
