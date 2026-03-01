@@ -13,6 +13,7 @@ const animals = [
         didYouKnowText: "Pandas are often seen eating in a relaxed sitting posture, with their hind legs stretched out before them. They may appear sedentary, but they are skilled tree-climbers and efficient swimmers.",
         youtubeVideoIds: [{id: "gnEuhfyZPPQ", index: 1}, {id: "9LvjI3NelAU", index: 2}, {id: "DP9hbJmwbNU", index: 3}],
         zoosPageHeading: "live panda cams",
+        mapPageIconPath: "../../assets/icons/panda_map_icon.png"
     },
     {
         id: "animal_2",
@@ -23,20 +24,23 @@ const animals = [
         feedCardImgPath: "../../assets/images/andy_feedcard.png",
         feedCardDescription: "With your support, we can give Andy his favorite fruits. Especially when it's not fruit season in its natural habitat.",
         didYouKnowText: "Because of its role as a symbol of the US, but also because of its being a large predator, the bald eagle has many representations in popular culture. Not all of these representations are accurate. In particular, the movie or television bald eagle typically has a bold, powerful cry. The actual eagle has a much softer, chirpy voice, not in keeping with its popular image.",
-    },
+        mapPageIconPath: "../../assets/icons/lemur_map_icon.png"
+      },
     {
         id: "animal_3",
         name: "Glen",
         species: "Gorilla in Congo",
         carouselCardDescription: "Variety of snacks very important for the healthy life of gorillas.",
-        carouselCardImage: "../../assets/images/gorilla_glen.png"
+        carouselCardImage: "../../assets/images/gorilla_glen.png",
+        mapPageIconPath: "../../assets/icons/gorilla_map_icon.png"
       },
       {
         id: "animal_4",
         name: "Mike",
         species: "Chinese Alligator",
         carouselCardDescription: "From nose to tail, belly to back, hard scales protect this petite alligator.",
-        carouselCardImage: "../../assets/images/crocodile_mike.png"
+        carouselCardImage: "../../assets/images/crocodile_mike.png",
+        mapPageIconPath: "../../assets/icons/crocodile_map_icon.png"
       },
       {
         id: "animal_5",
@@ -45,21 +49,24 @@ const animals = [
         feedCardImgPath: "../../assets/images/eagles_feedcard.png",
         feedCardDescription: "Sam & Lora have hatched and raised numerous young and will be happy with your help.",
         carouselCardDescription: "Pair of eagle parents lay and protect eggs, feed their chicks and teach them to hunt and fly.",
-        carouselCardImage: "../../assets/images/sam_and_lora_eagles.png"
+        carouselCardImage: "../../assets/images/sam_and_lora_eagles.png",
+        mapPageIconPath: "../../assets/icons/eagle_map_icon.png"
       },
       {
         id: "animal_6",
         name: "Liz",
         species: "Australian Koala",
         carouselCardDescription: "The elevated walkways bring you to eye level with the koalas as they perch in their forest.",
-        carouselCardImage: "../../assets/images/koala_liz.png"
+        carouselCardImage: "../../assets/images/koala_liz.png",
+        mapPageIconPath: "../../assets/icons/koala_map_icon.png"
       },
       {
         id: "animal_7",
         name: "Shake",
         species: "African Lion",
         carouselCardDescription: "Lions roam the savannas and grasslands of Africa, hunting and raising cubs in the pride.",
-        carouselCardImage: "../../assets/images/lion_shake.png"
+        carouselCardImage: "../../assets/images/lion_shake.png",
+        mapPageIconPath: "../../assets/icons/lion_map_icon.png"
       },
       {
         id: "animal_8",
@@ -68,7 +75,8 @@ const animals = [
         feedCardImgPath: "../../assets/images/senja_feedcard.png",
         feedCardDescription: "Your $150 will help to care for Senja, a Sumatran tiger, for three weeks.",
         carouselCardDescription: "Sumatran Tigers are the smallest of the five sub-species, and are found in Indonesia.",
-        carouselCardImage: "../../assets/images/tiger_senja.png"
+        carouselCardImage: "../../assets/images/tiger_senja.png",
+        mapPageIconPath: "../../assets/icons/tiger_map_icon.png"
       },
 ];
 
