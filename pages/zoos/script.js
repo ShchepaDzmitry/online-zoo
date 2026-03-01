@@ -1,6 +1,7 @@
 import animals from "../../data/animals.js";
 import {renderCarouselArray, moveLeft, moveRight} from "../../utils/carouselUtils.js";
 import createYoutubePreviewCard from '../zoos/createYoutubePreviewCard.js'
+import highlightNavElements from "../../utils/headerNavHighlightsUtils.js";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -34,24 +35,6 @@ const renderMainPreview = (videoId) => {
 
 didYouKnowTextElement.innerText = currentAnimal.didYouKnowText;
 zoosPageHeadingElement.innerText = currentAnimal.zoosPageHeading;
-
-// HIGLIGHTING HEADER NAVIGATION
-
-const navItemsElement = document.querySelectorAll('.nav-item a');
-const thirdNavItemElement = navItemsElement[2];
-
-thirdNavItemElement.classList.add('active');
-
-navItemsElement.forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    thirdNavItemElement.classList.remove('active');
-  });
-
-  item.addEventListener('mouseleave', () => {
-    thirdNavItemElement.classList.add('active');
-  });
-});
-
 
 // LEFT SIDE PANEL
 
@@ -128,6 +111,7 @@ window.onload = () => {
     const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
     ytPreviewImageElement.classList.add('selected-yt-preview');
     renderMainPreview(currentVideoId);
+    highlightNavElements(2);
 };
 
 ytCarouselContainer.addEventListener('click', (e) => {

@@ -18,9 +18,18 @@
     font-size: 22px;
 }
 
-.orange {
+.button.orange {
     background-color: var(--orange);
     color: var(--white);
+}
+
+.button.turquoise {
+    background-color: var(--turquoise);
+    color: var(--white);
+}
+
+.button.turquoise:hover {
+    background-color: var(--turquoise-hovered);
 }
 
 .orange:hover {

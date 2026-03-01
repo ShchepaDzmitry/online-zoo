@@ -6,6 +6,7 @@ import createFeedbackCard from './createFeedbackCard.js';
 import createFeedCard from './createFeedCard.js';
 import animals from '../../data/animals.js';
 import {renderCarouselArray, moveLeft, moveRight} from '../../utils/carouselUtils.js'
+import highlightNavElements from "../../utils/headerNavHighlightsUtils.js";
 
 const animalCarouselElement = document.querySelector('.carousel');
 const payAndFeedCardsElement = document.querySelector('.pay-and-feed__cards');
@@ -15,8 +16,6 @@ const leftCarouselBtnElement = document.getElementById('carouselLeftButton');
 const rightCarouselBtnElement = document.getElementById('carouselRightButton');
 const leftFeedbackBtnElement = document.getElementById('feedbackLeftButton');
 const rightFeedbackBtnElement = document.getElementById('feedbackRightButton');
-const navItemsElement = document.querySelectorAll('.nav-item a');
-const firstNavItemElement = navItemsElement[0];
 
 
 // ANIMAL CAROUSEL
@@ -63,17 +62,5 @@ careForBottomPanelElement.prepend(largeImgForFeedcardElement);
 window.onload = () => {
   renderCarouselArray(animals, animalCarouselElement, createCarouselCard);
   renderCarouselArray(feedbackCards, feedbackRightPanelElement, createFeedbackCard);
+  highlightNavElements(0);
 };
-
-
-firstNavItemElement.classList.add('active');
-
-navItemsElement.forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    firstNavItemElement.classList.remove('active');
-  });
-
-  item.addEventListener('mouseleave', () => {
-    firstNavItemElement.classList.add('active');
-  });
-});
