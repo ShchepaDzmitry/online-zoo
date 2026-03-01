@@ -8,7 +8,21 @@ const id = params.get('id');
 
 const didYouKnowTextElement = document.getElementById('didYouKnow');
 const youtubePreviewContainerElement = document.getElementById('youtubePreviewContainer');
+const donationSectionHeadingElement = document.getElementById('donationSectionHeading');
+const donationSectionTextElement = document.getElementById('donationSectionText');
 const zoosPageHeadingElement = document.getElementById('zoosPageHeading');
+const commonNameElement = document.getElementById('commonName');
+const scientificNameElement = document.getElementById('scientificName');
+const typeElement = document.getElementById('type');
+const sizeElement = document.getElementById('size');
+const dietElement = document.getElementById('diet');
+const habitatElement = document.getElementById('habitat');
+const rangeElement = document.getElementById('range');
+const didYouKnowImgPathElement = document.getElementById('didYouKnowImgPath');
+const didYouKnowDescriptionElement = document.getElementById('didYouKnowDescription');
+
+
+
 const currentAnimal = animals.find(({id: animalId}) => animalId === id);
 let currentVideoId = currentAnimal.youtubeVideoIds[0].id;
 
@@ -33,8 +47,36 @@ const renderMainPreview = (videoId) => {
     `
 };
 
-didYouKnowTextElement.innerText = currentAnimal.didYouKnowText;
-zoosPageHeadingElement.innerText = currentAnimal.zoosPageHeading;
+const {
+    didYouKnowText,
+    zoosPageHeading,
+    makeDonationHeading,
+    makeDonationText,
+    commonName,
+    scientificName,
+    type,
+    size,
+    diet,
+    habitat,
+    range,
+    didYouKnowImgPath,
+    didYouKnowDescription
+} = currentAnimal;
+
+didYouKnowTextElement.innerText = didYouKnowText;
+zoosPageHeadingElement.innerText = zoosPageHeading;
+donationSectionHeadingElement.innerText = makeDonationHeading;
+donationSectionTextElement.innerText = makeDonationText;
+commonNameElement.innerText = commonName;
+scientificNameElement.innerText = scientificName;
+typeElement.innerText = type;
+sizeElement.innerText = size;
+dietElement.innerText = diet;
+habitatElement.innerText = habitat;
+rangeElement.innerText = range;
+didYouKnowImgPathElement.setAttribute('src', didYouKnowImgPath);
+didYouKnowImgPathElement.setAttribute('alt', commonName);
+didYouKnowDescriptionElement.innerText = didYouKnowDescription;
 
 // LEFT SIDE PANEL
 

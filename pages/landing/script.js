@@ -67,7 +67,7 @@ const donations = ['$20', '$30', '$50', '$80', '$100', 'other amount'];
 donationCointainerElement.innerHTML = donations.map((donation) => createDonationChip(donation)).join('');
 
 careForBottomPanelElement.addEventListener('click', (e) => {
-  if (e.target.closest('.button') && feedDialogElement.hasAttribute('closed')) {
+  if (e.target.closest('.button')) {
     feedDialogElement.classList.add('feed-dialog-opened');
     document.body.style.overflow = 'hidden';
     document.querySelector('.overlay').style.display = 'block';

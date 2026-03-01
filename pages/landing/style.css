@@ -419,12 +419,13 @@ footer .zoo-logo {
 
 .feed-dialog {
     position: fixed;
-    top: 5%;
-    left: 20%;
+    top: 50%;
+    left: 50%;
     display: none;
-    width: 1170px;
+    width: 60%;
     max-height: 850px;
     z-index: 5;
+    transform: translate(-50%, -50%);
 }
 
 .feed-dialog-opened {
