@@ -11,7 +11,8 @@ const animals = [
         makeDonationHeading: "make the bamboo donation!",
         makeDonationText: "Our process for bamboo donations first starts with a site evaluation. It is important that our team sees where the bamboo is growing, then determining if the bamboo is a species that our animals are currently eating. Thank you for your interest in donating bamboo for our pandas.",
         didYouKnowText: "Pandas are often seen eating in a relaxed sitting posture, with their hind legs stretched out before them. They may appear sedentary, but they are skilled tree-climbers and efficient swimmers.",
-        youtubePreviewSrc: "https://www.youtube.com/embed/gnEuhfyZPPQ?si=jb_cw1zS6xHcHViX",
+        youtubeVideoIds: [{id: "gnEuhfyZPPQ", index: 1}, {id: "9LvjI3NelAU", index: 2}, {id: "DP9hbJmwbNU", index: 3}],
+        zoosPageHeading: "live panda cams",
     },
     {
         id: "animal_2",

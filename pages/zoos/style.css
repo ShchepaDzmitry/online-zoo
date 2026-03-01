@@ -1,0 +1,187 @@
+.heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    position: relative;
+}
+
+.heading-wrapper h3 {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.heading-wrapper button {
+    position: absolute;
+    right: 0;
+}
+
+.live-cams {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 250px;
+    gap: 30px;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+.animal-nav {
+    background-color: var(--navy);
+    color: var(--white);
+    position: sticky;
+    height: fit-content;
+    top: 0;
+    width: 220px;
+}
+
+.live-chip {
+    text-transform: uppercase;
+    background-color: var(--orange);
+    border-bottom-right-radius: 5px;
+    width: 120px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    height: 40px;
+    gap: 5px;
+    justify-content: center;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.panel-button, .expand-button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+}
+
+.panel-button i, .expand-button i {
+    align-self: center;
+    font-size: 18px;
+    color: var(--white);
+    align-self: center;
+}
+
+.expand-button {
+
+}
+
+.panel-list li{
+    height: 150px;
+    border-bottom: 1px solid var(--white);
+    padding: 40px 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.panel-list a {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.panel-list li span {
+    line-height: 130%;
+    font-size: 18px;
+}
+
+.panel-list li:first-child, .panel-list li:last-child{
+    height: 76px;
+    display: block;
+    padding: 0;
+}
+
+.panel-list li:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.youtube-preview {
+    margin-bottom: 100px;
+}
+
+.youtube-preview iframe {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    height: 700px;
+}
+
+.live-cams-img {
+    height: 60px;
+}
+
+.live-cams-img path {
+    fill: var(--navy);
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.panel-button .fa-angles-left {
+    display: none;
+}
+
+.panel-opened {
+    width: 300px;
+}
+
+.panel-image-opened {
+    height: 50px;
+}
+
+.nav-description {
+    display: none;
+}
+
+.img-wrapper {
+    background-color: var(--orange);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-wrapper-opened {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+}
+
+.more-live-views {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yt-carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.yt-carousel {
+    display: flex;
+    gap: 30px;
+}
+
+.selected-yt-preview {
+    border: 3px solid var(--orange);
+}

@@ -10,6 +10,7 @@
     align-items: center;
     padding: 26px;
     width: fit-content;
+    height: fit-content;
 }
 
 .button i {

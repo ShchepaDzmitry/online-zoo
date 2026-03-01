@@ -5,6 +5,7 @@ import feedbackCards from './feedbackCards.js';
 import createFeedbackCard from './createFeedbackCard.js';
 import createFeedCard from './createFeedCard.js';
 import animals from '../../data/animals.js';
+import {renderCarouselArray, moveLeft, moveRight} from '../../utils/carouselUtils.js'
 
 const animalCarouselElement = document.querySelector('.carousel');
 const payAndFeedCardsElement = document.querySelector('.pay-and-feed__cards');
@@ -17,16 +18,9 @@ const rightFeedbackBtnElement = document.getElementById('feedbackRightButton');
 const navItemsElement = document.querySelectorAll('.nav-item a');
 const firstNavItemElement = navItemsElement[0];
 
-const renderCarouselArray = (carouselArray, carouselContainerElement, renderFn) => {
-  carouselContainerElement.innerHTML = carouselArray.map((animal) => renderFn(animal)).join('');
-};
-
-const moveRight = (arr) => [...arr.slice(1), arr[0]];
-
-const moveLeft = (arr)  => [arr[arr.length - 1], ...arr.slice(0, -1)];
 
 // ANIMAL CAROUSEL
-
+ 
 let carouselAnimals = [...animals];
 let carouselFeedbacks = [...feedbackCards];
 
