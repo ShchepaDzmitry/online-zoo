@@ -1,7 +1,7 @@
-import animals from "../../data/animals.js";
-import {renderCarouselArray, moveLeft, moveRight} from "../../utils/carouselUtils.js";
-import createYoutubePreviewCard from '../zoos/createYoutubePreviewCard.js'
-import highlightNavElements from "../../utils/headerNavHighlightsUtils.js";
+import animals from "../../data/animals";
+import {renderCarouselArray, moveLeft, moveRight} from "../../utils/carouselUtils";
+import createYoutubePreviewCard from './createYoutubePreviewCard'
+import highlightNavElements from "../../utils/headerNavHighlightsUtils";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
