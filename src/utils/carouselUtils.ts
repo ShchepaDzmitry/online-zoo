@@ -1,4 +1,4 @@
-export const renderCarouselArray = (carouselArray, carouselContainerElement, renderFn, selectedItem) => {
+export const renderCarouselArray = (carouselArray, carouselContainerElement, renderFn, selectedItem?: any) => {
     carouselContainerElement.innerHTML = carouselArray.map((carouselItem) => renderFn(carouselItem, selectedItem)).join('');
   };
   

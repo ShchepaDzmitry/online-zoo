@@ -16,6 +16,8 @@
     --orange-hovered: #d26004;
     --turquoise: #00a092;
     --turquoise-hovered: #05786e;
+    --gray: #A4A8AE;
+    --turquoise-select: #80CFC8;
 }
 
 header {
@@ -192,7 +194,7 @@ main {
     height: 100%;
 }
 
-.name {
+.animal-name {
     position: absolute;
     left: 0;
     top: 0;
@@ -428,10 +430,6 @@ footer .zoo-logo {
     transform: translate(-50%, -50%);
 }
 
-.feed-dialog-opened {
-    display: block;
-}
-
 .feed-dialog .image-container {
     background-image: url('../../assets/images/feed_dialog_img.png');
     overflow: hidden;
@@ -488,4 +486,223 @@ footer .zoo-logo {
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 2;
+}
+
+.donation-dialog__container {
+    max-width: 920px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: none;
+    max-height: 850px;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+}
+
+.donation-dialog__info {
+    padding-top: 20px;
+}
+
+.donation-dialog__info--text {
+    font-weight: 500;
+}
+
+.donation-dialog__info--text, .donation__form-container {
+    margin-bottom: 10px;
+    padding: 0 120px;
+}
+
+.donation-dialog__container h4 {
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 40px;
+    text-align: center;
+}
+
+.donation-dialog__line {
+    width: 100%;
+    border: 1px solid var(--gray);
+    margin-bottom: 40px;
+}
+
+.donation-dialog__form {
+    padding: 0 120px;
+}
+
+.donation-dialog__chips--container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.donation-chips-text {
+    margin-bottom: 10px;
+}
+
+.other-amount-container.form-group {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.button.select-pet__label {
+    padding: 26px 17px;
+}
+
+.other-amount-container .button {
+    padding: 26px 22px;
+}
+
+.select-item__container {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.select-pet__container--trigger,
+.select-month__container--trigger,
+.select-year__container--trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    min-width: 200px;
+    max-width: 440px;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+}
+
+.select-month__container--trigger span,
+.select-pet__container--trigger span,
+.select-year__container--trigger span  {
+    color: var(--gray);
+    flex-basis: 80%;
+}
+
+.select-month__container--trigger i,
+.select-pet__container--trigger i,
+.select-year__container--trigger i {
+    padding: 28px 5px;
+    background-color: var(--turquoise-select);
+    color: var(--black);
+}
+
+.select-pet__list {
+    width: 440px;
+}
+
+.select-pet__list--item:hover,
+.select-month__list--item:hover,
+.select-year__list--item:hover {
+   background-color: var(--turquoise-select);
+}
+
+.select-pet__list,
+.select-month__list,
+.select-year__list {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-top: none;
+    
+}
+
+.select-pet__list.open,
+.select-month__list.open,
+.select-year__list.open {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-item__container--month,
+.select-item__container--year {
+    position: relative;
+}
+
+.select-item__toggle-wrapper {
+    position: relative;
+    flex-basis: 60%;
+}
+
+.donation-dialog__checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.donation-dialog__checkbox-container input {
+    height: 30px;
+    width: 30px;
+}
+
+.donation-dialog__bottom-panel {
+    padding: 0 120px;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.donation-dialog__bottom-panel .button.turquoise {
+    padding: 26px 50px;
+}
+
+
+.step-list {
+    display: flex;
+    gap: 10px;
+}
+
+.step-list__item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--turquoise);
+}
+
+.active-step {
+    background-color: var(--turquoise);
+}
+
+.email-info-text {
+    padding: 0 120px;
+    margin-bottom: 40px;
+}
+
+.form-group.name {
+    margin-bottom: 40px;
+}
+
+.donation-dialog__card-container {
+    display: flex;
+    gap: 40px;
+}
+
+.form-group__card {
+    flex-basis: 75%;
+}
+
+.form-group__cvv {
+    flex-basis: 25%;
+}
+
+.form-group.form-group__card input,
+.form-group.form-group__cvv input {
+    padding: 24px 12px;
+}
+
+.dialog-opened {
+    display: block;
 }

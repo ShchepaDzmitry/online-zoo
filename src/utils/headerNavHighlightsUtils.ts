@@ -1,4 +1,4 @@
-const highlightNavElements = (elementIndex) => {
+const highlightNavElements = (elementIndex: number) => {
     const navItemsElement = document.querySelectorAll('.nav-item a');
     const orderedElement = navItemsElement[elementIndex];
 

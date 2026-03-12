@@ -3,7 +3,7 @@ const createCarouselCard = (animal) => {
     <a href="../zoos/?id=${animal.id}" class="carousel-item">
       <div class="carousel-item__wrapper">
         <div class="top-part">
-          <p class="subheader name">${animal.name}</p>
+          <p class="subheader animal-name">${animal.name}</p>
           <img src="${animal.carouselCardImage}" alt="${animal.name}">
         </div>
         <div class="bottom-part">

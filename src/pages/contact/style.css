@@ -45,8 +45,9 @@
 .form-group input, .form-group textarea {
     margin-bottom: 10px;
     border: 1px solid var(--black);
-    padding: 12px;
+    padding: 28px 12px;
     border-radius: 5px;
+    font-size: 18px;
 }
 
 .form-group textarea {

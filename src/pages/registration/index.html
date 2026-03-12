@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="../landing/style.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/typography.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>
+            <span>Online zoo</span>
+        </h1>
+        <img src="../../assets/icons/Logo.svg" alt="Logo" class="logo">
+        <nav class="navigation">
+            <ul class="list">
+                <li class="nav-item"><a href="#about">about</a></li>
+                <li class="nav-item"><a href="../map/index.html">map</a></li>
+                <li class="nav-item"><a href="../zoos/?id=animal_1">zoos</a></li>
+                <li class="nav-item"><a href="../contact/index.html">contact us</a></li>
+                <li class="nav-item"><a href="#design">design</a></li>
+            </ul>
+            <ul class=" list social-media">
+                <li><a href="https://www.youtube.com/"><img src="../../assets/icons/youtube_logo.png" alt="youtube logo"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="../../assets/icons/insta_logo.png" alt="instagram logo"></a></li>
+                <li><a href="https://www.facebook.com/"><img src="../../assets/icons/fb_logo.png" alt="facebook logo"></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form class="authorization-form">
+            <div class="form-group">
+                <label for="login"><span class="required">*</span>Login</label>
+                <input id="login" type="text" placeholder="Enter your login" required/>
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><span class="required">*</span>Password</label>
+                <input id="password" type="password" placeholder="Enter your password" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword"><span class="required">*</span>Confirm Password</label>
+                <input id="confirmPassword" type="password" placeholder="Confirm your password" required/>
+            </div>
+    
+            <div class="form-group">
+                <label for="name"><span class="required">*</span>Your Name</label>
+                <input id="name" type="text" placeholder="Enter your name" required/>
+            </div>
+
+            <div class="form-group">
+                <label for="name"><span class="required">*</span>Your Email</label>
+                <input id="email" type="email" placeholder="Enter your email" required/>
+            </div>
+            
+            
+            <div class="action-container">
+                <button type="submit" class="button turquoise" id="signUp">
+                    <span class="sign">sign up</span>
+                </button>
+    
+                <button class="button turquoise" id="cancel">
+                    <span>cancel</span>
+                </button>
+            </div>
+        </form>
+    </main>
+    <footer class="container dark">
+        <div class="top-panel">
+            <ul class="logos">
+                <li><img class="zoo-logo" src="../../assets/icons/Logo.svg" alt="Zoo online logo"></li>
+                <li><img src="../../assets/icons/yem_digital.png" alt="Yem digital logo"></li>
+                <li><img src="../../assets/icons/rs_school_js_logo.png" alt="Rs school logo"></li>
+            </ul>
+            <nav>
+                <ul class="list">
+                    <li><a href="#about">about</a></li>
+                    <li><a href="../map/index.html">map</a></li>
+                    <li><a href="../zoos/?id=animal_1">zoos</a></li>
+                    <li><a href="../contact/index.html">contact us</a></li>
+                </ul>
+            </nav>
+            <button class="button outline-light">
+                <span>donate for volunteers</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        <hr class="footer__line">
+        <div class="bottom-panel">
+            <ul class="copyright list">
+                <li>© 2021 DinaK </li>
+                <li>© Yem Digital </li>
+                <li>© RSSchool</li>
+            </ul>
+            <ul class="list social-media">
+                <li><a href="https://www.youtube.com/"><img src="../../assets/icons/youtube_logo.png" alt="youtube logo"></a></li>
+                <li><a href="https://www.instagram.com/"><img src="../../assets/icons/insta_logo.png" alt="instagram logo"></a></li>
+                <li><a href="https://www.facebook.com/"><img src="../../assets/icons/fb_logo.png" alt="facebook logo"></a></li>
+            </ul>
+        </div>
+    </footer>
+    <script type="module" src="script.ts"></script>
+</body>
+</html>

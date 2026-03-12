@@ -1,7 +1,7 @@
-const createDonationChip = (donationAmount) => {
+const createDonationChip = (donationAmount: string) => {
     return `
     <button class="button turquoise">
-        <span>${donationAmount}</span>
+        <span id='${donationAmount.slice(1)}'>${donationAmount}</span>
     </button>
     `
 };

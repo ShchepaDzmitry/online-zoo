@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../../styles/typography.css">
     <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../contact/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -24,11 +25,14 @@
                 <li class="nav-item"><a href="../contact/index.html">contact us</a></li>
                 <li class="nav-item"><a href="#design">design</a></li>
             </ul>
-            </ul>
+            <ul class=" list social-media">
                 <li><a href="https://www.youtube.com/"><img src="../../assets/icons/youtube_logo.png" alt="youtube logo"></a></li>
                 <li><a href="https://www.instagram.com/"><img src="../../assets/icons/insta_logo.png" alt="instagram logo"></a></li>
                 <li><a href="https://www.facebook.com/"><img src="../../assets/icons/fb_logo.png" alt="facebook logo"></a></li>
             </ul>
+            <div class="user">
+                <i class="fa-solid fa-user"></i>
+            </div>
         </nav>
     </header>
     <main>
@@ -63,7 +67,7 @@
             </div>
             <div class="small">
                 <p class="subheader">Quick Donate</p>
-                <button class="button outline-with-orange">
+                <button class="button outline-with-orange" id="donationsSectionBtn">
                     <span>$ donation amount</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
@@ -126,7 +130,7 @@
             <div class="overlay"></div>
             <div class="feed-dialog">
                 <div class="image-container">
-                    <i class="fa-solid fa-close close-button"></i>
+                    <i class="fa-solid fa-close close-button" id="feedDonationCloseBtn"></i>
                 </div>
                 <div class="text-action">
                     <div class="text-container">
@@ -143,6 +147,135 @@
             </button>
             <img src="../../assets/images/touch_the_animal.png" alt="Touch the animal image">
         </section>
+        <dialog class="donation-dialog__container">
+            <i class="fa-solid fa-close close-button" id="makeYourDonationCloseBtn"></i>
+            <h4>make your donation</h4>
+            <div class="donation-dialog__info" id="step1">
+                <p class="donation-dialog__info--text">Donation information:</p>
+                <hr class="donation-dialog__line">
+                <form class="donation-dialog__form">
+                    <div class="donation__form--container">
+                        <p class="donation-chips-text"><span class="required">*</span>Choose your donation amount: </label>
+                        <div class="donation-dialog__chips--container"></div>
+                        <div class="other-amount-container form-group">
+                            <label for="otherAmount" class="other-amount__label button turquoise">other amount</label>
+                            <input id="otherAmount" type="text"/>
+                        </div>
+                        <div class="select-item__container">
+                            <p class="button turquoise select-pet__label">for special pet</p>
+                            <div class="select-item__toggle-wrapper">
+                                <button class="select-pet__container--trigger" type="button" id="petsDropdownBtn">
+                                    <span>Choose your favourite</span>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </button>
+                                <ul id="selectPet" class="select-pet__list">
+                                    <li class="select-pet__list--item" id="panda">Lukas the Panda</li>
+                                    <li class="select-pet__list--item" id="lemur">Andy the Lemur</li>
+                                    <li class="select-pet__list--item" id="gorilla">Glen the Gorilla</li>
+                                    <li class="select-pet__list--item" id="alligator">Mike the Alligator</li>
+                                    <li class="select-pet__list--item" id="eagles">Sam & Lora the eagles family</li>
+                                    <li class="select-pet__list--item" id="koala">Liz the Koala</li>
+                                    <li class="select-pet__list--item" id="lion">Shake the Lion</li>
+                                    <li class="select-pet__list--item" id="tiger">Senja the Tiger</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="donation-dialog__checkbox-container">
+                        <input type="checkbox" id="reccuringGift">
+                        <label for="reccuringGift">Make this a monthly recurring gift</label>
+                    </div>
+                </form>
+            </div>
+            <div class="donation-dialog__info" id="step2">
+                <p class="donation-dialog__info--text">Billing information:</p>
+                <hr class="donation-dialog__line">
+                <form class="donation-dialog__form">
+                    <div class="form-group name">
+                        <label for="name"><span class="required">*</span>Your Name</label>
+                        <input id="name" type="text" placeholder="First and last name" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><span class="required">*</span>Your Email Address</label>
+                        <input id="email" type="email" placeholder="Enter your email" required/>
+                    </div>
+                </form>
+                <p class="email-info-text">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
+            </div>
+            <div class="donation-dialog__info" id="step3">
+                <p class="donation-dialog__info--text">Payment information:</p>
+                <hr class="donation-dialog__line">
+                <form class="donation-dialog__form">
+                    <div class="donation-dialog__card-container">
+                        <div class="form-group form-group__card">
+                            <label for="cardNumber"><span class="required">*</span>Credit Card Number</label>
+                            <input id="cardNumber" type="text" required/>
+                        </div>
+                        <div class="form-group form-group__cvv">
+                            <label for="cvvNumber"><span class="required">*</span>CVV Number</label>
+                            <input id="cvvNumber" type="text" required/>
+                        </div>
+                    </div>
+                    <p class="donation-chips-text"><span class="required">*</span>Expiration date: </label>
+                    <div class="select-item__container">
+                        <div class="select-item__container--month">
+                            <button class="select-month__container--trigger" type="button" id="monthDropdownBtn">
+                                <span>Month</span>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <ul id="selectMonth" class="select-month__list">
+                                <li class="select-month__list--item" id="january_1">01</li>
+                                <li class="select-month__list--item" id="february_2">02</li>
+                                <li class="select-month__list--item" id="march_3">03</li>
+                                <li class="select-month__list--item" id="april_4">04</li>
+                                <li class="select-month__list--item" id="may_5">05</li>
+                                <li class="select-month__list--item" id="june_6">06</li>
+                                <li class="select-month__list--item" id="july_7">07</li>
+                                <li class="select-month__list--item" id="august_8">08</li>
+                                <li class="select-month__list--item" id="september_9">09</li>
+                                <li class="select-month__list--item" id="october_10">10</li>
+                                <li class="select-month__list--item" id="november_11">11</li>
+                                <li class="select-month__list--item" id="december_12">12</li>
+                            </ul>
+                        </div>
+                        <div class="select-item__container--year">
+                            <button class="select-year__container--trigger" type="button" id="yearDropdownBtn">
+                                <span>Year</span>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <ul id="selectYear" class="select-year__list">
+                                <li class="select-year__list--item" id="2026">2026</li>
+                                <li class="select-year__list--item" id="2027">2027</li>
+                                <li class="select-year__list--item" id="2028">2028</li>
+                                <li class="select-year__list--item" id="2029">2029</li>
+                                <li class="select-year__list--item" id="2030">2030</li>
+                                <li class="select-year__list--item" id="2031">2031</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="donation-dialog__checkbox-container">
+                        <input type="checkbox" id="rememberCard" />
+                        <label for="rememberCard">Save card info for future donations</label>
+                    </div>
+                </form>
+            </div>
+            <div class="donation-dialog__bottom-panel">
+                <ul class="step-list">
+                    <li class="step-list__item"></li>
+                    <li class="step-list__item"></li>
+                    <li class="step-list__item"></li>
+                </ul>
+                <button class="button blank-turquoise" id="backBtn">Back</button>
+                <button class="button turquoise" id="nextBtn">
+                    <span>next</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="button orange" id="completeDonationBtn">
+                    <span>complete donation</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </dialog>
     </main>
     <footer class="container dark">
         <div class="top-panel">
