@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../landing/style.css">
     <link rel="stylesheet" href="../../styles/buttons.css">
     <link rel="stylesheet" href="../../styles/typography.css">
+    <link rel="stylesheet" href="../contact/style.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -33,44 +34,51 @@
         </nav>
     </header>
     <main>
-        <form class="authorization-form">
-            <div class="form-group">
-                <label for="login"><span class="required">*</span>Login</label>
-                <input id="login" type="text" placeholder="Enter your login" required/>
-                <span class="error-message"></span>
-            </div>
-
-            <div class="form-group">
-                <label for="password"><span class="required">*</span>Password</label>
-                <input id="password" type="password" placeholder="Enter your password" required/>
-            </div>
-
-            <div class="form-group">
-                <label for="confirmPassword"><span class="required">*</span>Confirm Password</label>
-                <input id="confirmPassword" type="password" placeholder="Confirm your password" required/>
-            </div>
+        <div class="form-container">
+            <h4 class="white">create an account</h4>
+            <form class="authorization-form">
+                <div class="form-group">
+                    <label for="login"><span class="required">*</span>Login</label>
+                    <input id="login" type="text" placeholder="Enter your login" required/>
+                    <span class="error-message"></span>
+                </div>
     
-            <div class="form-group">
-                <label for="name"><span class="required">*</span>Your Name</label>
-                <input id="name" type="text" placeholder="Enter your name" required/>
-            </div>
-
-            <div class="form-group">
-                <label for="name"><span class="required">*</span>Your Email</label>
-                <input id="email" type="email" placeholder="Enter your email" required/>
-            </div>
-            
-            
-            <div class="action-container">
-                <button type="submit" class="button turquoise" id="signUp">
-                    <span class="sign">sign up</span>
-                </button>
+                <div class="form-group">
+                    <label for="password"><span class="required">*</span>Password</label>
+                    <input id="password" type="password" placeholder="Enter your password" required/>
+                    <span class="error-message"></span>
+                </div>
     
-                <button class="button turquoise" id="cancel">
-                    <span>cancel</span>
-                </button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="confirmPassword"><span class="required">*</span>Confirm Password</label>
+                    <input id="confirmPassword" type="password" placeholder="Confirm your password" required/>
+                    <span class="error-message"></span>
+                </div>
+        
+                <div class="form-group">
+                    <label for="name"><span class="required">*</span>Your Name</label>
+                    <input id="name" type="text" placeholder="Enter your name" required/>
+                    <span class="error-message"></span>
+                </div>
+    
+                <div class="form-group">
+                    <label for="name"><span class="required">*</span>Your Email</label>
+                    <input id="email" type="email" placeholder="Enter your email" required/>
+                    <span class="error-message"></span>
+                </div>
+                
+                
+                <div class="action-container">
+                    <button class="button turquoise" id="cancel">
+                        <span>cancel</span>
+                    </button>
+
+                    <button type="submit" class="button turquoise" id="signUp" disabled>
+                        <span class="sign">sign up</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </main>
     <footer class="container dark">
         <div class="top-panel">

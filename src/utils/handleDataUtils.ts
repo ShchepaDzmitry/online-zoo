@@ -1,4 +1,5 @@
-import { FormData } from "../pages/registration/script";
+import { RegistrationFormData } from "../pages/registration/interfaces/registrationFormData";
+// import { redirectTo } from "./redirectToUtils";
 
 const INITIAL_PATH = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/';
 
@@ -17,7 +18,7 @@ export async function getData<T>(additionalPath?: string): Promise<T> {
     }
 };
 
-export async function postData<T>(body: FormData, additionalPath?: string): Promise<T> {
+export async function postData<T>(body: RegistrationFormData, additionalPath?: string): Promise<T> {
 
   try {
     const response = await fetch(`${INITIAL_PATH}${additionalPath}`, {
@@ -31,7 +32,6 @@ export async function postData<T>(body: FormData, additionalPath?: string): Prom
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
-
     return response.json();
   } catch (error) {
     throw error;
