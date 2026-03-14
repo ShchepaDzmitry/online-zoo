@@ -1,10 +1,11 @@
 .loader {
-    width: 50px;
-    height: 50px;
-    border: 10px solid var(--turquoise);
+    width: 150px;
+    height: 150px;
+    border: 20px solid var(--turquoise);
     border-radius: 50%;
     animation: spin 2s linear infinite;
-    border-top: 8px solid var(--white);
+    border-top: 20px solid var(--white);
+    margin: 0 auto;
 }
 
 @keyframes spin {

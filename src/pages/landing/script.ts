@@ -10,6 +10,8 @@ import highlightNavElements from "../../utils/headerNavHighlightsUtils";
 import createDonationChip from './createDonationChip';
 import { getData, getUserData } from '../../utils/handleDataUtils';
 import { UserProfile } from '../sign-in/types/loginTypes';
+import { PetApiResponse, Pet } from './interfaces/pet';
+import { showLoader } from '../../utils/loaderUtils';
 // import fetchData from "../../utils/handleDataUtils";
 
 const animalCarouselElement = document.querySelector<HTMLElement>('.carousel');
@@ -38,20 +40,7 @@ const handleDonationDialog = (openDialogButton: HTMLElement, closeDialogButton: 
   });
 };
 
-// ANIMAL CAROUSEL
- 
-let carouselAnimals = [...animals];
 let carouselFeedbacks = [...feedbackCards];
-
-leftCarouselBtnElement!.addEventListener("click", () => {
-  carouselAnimals = moveLeft(carouselAnimals);
-  renderCarouselArray(carouselAnimals, animalCarouselElement, createCarouselCard);
-});
-
-rightCarouselBtnElement!.addEventListener("click", () => {
-  carouselAnimals = moveRight(carouselAnimals);
-  renderCarouselArray(carouselAnimals, animalCarouselElement, createCarouselCard);
-});
 
 // FEEDBACK CAROUSEL
 
@@ -92,20 +81,10 @@ window.onload = async () => {
   checkIfUserLogedIn(localStorage.getItem('username'));
   await getLoggedInUserInfo(isLoggedIn);
 
-  renderCarouselArray(animals, animalCarouselElement, createCarouselCard);
+  // renderCarouselArray(animals, animalCarouselElement, createCarouselCard);
   renderCarouselArray(feedbackCards, feedbackRightPanelElement, createFeedbackCard);
   checkTheStepNum();
 };
-
-// const animalsData = await fetchData('pets');
-
-// MEET SOME OUR PETS
-// async function renderCarouselCards() {
-//   const animalsData = await fetchData('pets');
-
-// }
-
-// await renderCarouselCards();
 
 // DONATION MODAL
 
@@ -271,4 +250,51 @@ signOutBtnElement?.addEventListener('click', () => {
   document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
 })
 
+// MEET SOME OUR PETS DATA FETCHING
 
+const petImagePaths = [
+  "../../assets/images/panda_lucas.png",
+  "../../assets/images/lemur_andy.png",
+  "../../assets/images/gorilla_glen.png",
+  "../../assets/images/crocodile_mike.png",
+  "../../assets/images/did_you_know_eagles.png",
+  "../../assets/images/koala_liz.png",
+  "../../assets/images/lion_shake.png",
+  "../../assets/images/tiger_senja.png",
+];
+
+let carouselAnimals: Pet[];
+
+async function renderCarouselCards() {
+  showLoader(animalCarouselElement as HTMLElement);
+
+  try {
+    const response: PetApiResponse = await getData<PetApiResponse>('pets');
+    const requiredPets: Pet[] = response.data.slice(0, 8).map((pet, ind) => pet = {...pet, img: petImagePaths[ind]});
+    carouselAnimals = [...requiredPets];
+  
+    renderCarouselArray(requiredPets, animalCarouselElement, createCarouselCard);
+  
+  } catch(error) {
+    const errorMessage = 'Something went wrong. Please, refresh the page';
+    animalCarouselElement!.innerHTML = 
+    `<p class="subheader error-message">
+      <span>${(error as Error).message}.</span>
+      <br>
+      <span>${errorMessage}</span>
+      </p>
+    `;
+  }
+}
+
+await renderCarouselCards();
+
+leftCarouselBtnElement!.addEventListener("click", () => {
+  carouselAnimals = moveLeft(carouselAnimals);
+  renderCarouselArray(carouselAnimals, animalCarouselElement, createCarouselCard);
+});
+
+rightCarouselBtnElement!.addEventListener("click", () => {
+  carouselAnimals = moveRight(carouselAnimals);
+  renderCarouselArray(carouselAnimals, animalCarouselElement, createCarouselCard);
+});

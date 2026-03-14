@@ -18,6 +18,7 @@
     --turquoise-hovered: #05786e;
     --gray: #A4A8AE;
     --turquoise-select: #80CFC8;
+    --error-text: red;
 }
 
 header {
@@ -178,6 +179,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
+    position: relative;
 }
 
 .carousel-item {
@@ -780,4 +782,9 @@ footer .zoo-logo {
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+}
+
+.carousel .subheader.error-message {
+    color: var(--error-text);
+    margin-left: 300px;
 }
