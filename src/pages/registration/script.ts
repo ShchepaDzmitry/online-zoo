@@ -1,12 +1,9 @@
 import { postData } from "../../utils/handleDataUtils";
 import { RegistrationFormData } from "./interfaces/registrationFormData";
 import { RegistrationFormInput } from "./interfaces/registrationFormInput";
+import { validateLogin, validatePassword } from "../../utils/validationUtils";
+import { showErrorMessage, checkFormValidity, clearErrorMessage } from "../../utils/handleFormInputUtils";
 
-// const loginInputElement = document.getElementById('login');
-// const passwordInputElement = document.getElementById('password');
-// const confirmPasswordInputElement = document.getElementById('confirmPassword');
-// const nameInputElement = document.getElementById('name');
-// const emailInputElement = document.getElementById('email');
 const signUpBtnElement = document.getElementById('signUp') as HTMLButtonElement;
 const authFormContainer = document.querySelector<HTMLFormElement>('.authorization-form');
 
@@ -63,10 +60,10 @@ registrationFormInputsData.forEach(({fieldName, validate, errorMsg, isValid}) =>
 
             formData = {...formData, [fieldName]: value}
 
-            showErrorMessage(isValid, errorMsg, inputElement);
+            showErrorMessage(isValid, errorMsg, inputElement, registrationFormInputsData);
 
             const formInputsValidity = registrationFormInputsData.map(elem => elem.isValid);
-            checkFormValidity(formInputsValidity);
+            checkFormValidity(formInputsValidity, signUpBtnElement);
         });
 
         inputElement.addEventListener('focus', () => {
@@ -74,14 +71,6 @@ registrationFormInputsData.forEach(({fieldName, validate, errorMsg, isValid}) =>
         });
     }
 });
-
-const validateLogin = (value: string): boolean => {
-    return value.length >= 3 && /^[A-Za-z]/.test(value);
-};
-
-const validatePassword = (value: string): boolean => {
-    return value.length >= 6 && /^[A-Za-z]/.test(value);
-};
 
 const validatePasswordConfirmation = (value: string): boolean => {
     return value === formData.password;
@@ -95,43 +84,11 @@ const validateEmail = (value: string): boolean => {
     return value.length >= 3 && /^[A-Za-z]/.test(value);
 };
 
-const showErrorMessage = (isValid: boolean, errorMsg: string, inputFieldElem: HTMLElement): void => {
-    const errorMessageElement = inputFieldElem.nextElementSibling;
-
-    if (!isValid && errorMessageElement) {
-        errorMessageElement.textContent = errorMsg;
-        inputFieldElem.classList.add('error')
-        registrationFormInputsData.find((form) => form.fieldName === inputFieldElem.id)!.isValid = false;
-    } else {
-        errorMessageElement!.textContent = '';
-        inputFieldElem.classList.remove('error')
-        registrationFormInputsData.find((form) => form.fieldName === inputFieldElem.id)!.isValid = true;
-    }
-};
-
-const clearErrorMessage = (inputFieldElem: HTMLElement): void => {
-    const errorMessageElement = inputFieldElem.nextElementSibling;
-
-    if (errorMessageElement!.textContent) {
-        errorMessageElement!.textContent = '';
-        inputFieldElem.classList.remove('error')
-    }
-}
-
-const checkFormValidity = (arr: boolean[]) => {
-    if (!arr.includes(false)) {
-        signUpBtnElement.disabled = false;
-    } else {
-        signUpBtnElement.disabled = true;
-    }
-}
-   
-
 signUpBtnElement?.addEventListener('click', async (e) => {
     e.preventDefault();
-    await postData(formData, 'auth/register')
+    const response = await postData(formData, 'auth/register');
     // window.location.href = '../landing/index.html';
-    console.log(formData)
+    console.log(response)
 });
 
 

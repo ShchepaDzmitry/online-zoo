@@ -30,8 +30,24 @@
                 <li><a href="https://www.instagram.com/"><img src="../../assets/icons/insta_logo.png" alt="instagram logo"></a></li>
                 <li><a href="https://www.facebook.com/"><img src="../../assets/icons/fb_logo.png" alt="facebook logo"></a></li>
             </ul>
-            <div class="user">
-                <i class="fa-solid fa-user"></i>
+            <div class="login-user__container">
+                <div class="login-user__info">
+                    <i class="fa-solid fa-user"></i>
+                    <p class="user-login"></p>
+                </div>
+                <div class="login-user__modal">
+                    <div class="login-user__modal--logged-in" id="isLoggedIn">
+                        <div class="login-user__profile-info">
+                            <p class="login-user__profile-info--name"></p>
+                            <p class="login-user__profile-info--email"></p>
+                        </div> 
+                        <button class="sign-out">sign out</button>
+                    </div>
+                    <div class="login-user__modal--logged-out" id="isLoggedOut">
+                        <button class="sign-in"><a href="../sign-in/index.html">sign in</a></button>
+                        <button class="register"><a href="../registration/index.html">register</a></button>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>

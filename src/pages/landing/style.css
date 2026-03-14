@@ -706,3 +706,17 @@ footer .zoo-logo {
 .dialog-opened {
     display: block;
 }
+
+.login-user__modal {
+    max-width: 920px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: none;
+    max-height: 850px;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+}

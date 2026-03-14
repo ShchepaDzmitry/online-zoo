@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
+    <link rel="stylesheet" href="../landing/style.css">
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../../styles/typography.css">
+    <link rel="stylesheet" href="../contact/style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -26,37 +33,37 @@
             </ul>
             <div class="user">
                 <i class="fa-solid fa-user"></i>
-                <div class="feed-dialog" id="authModal">
-                    <h4>please sign</h4>
-                    <form class="authorization-form">
-                        <div class="form-group">
-                            <label for="name"><span class="required">*</span>Your Name</label>
-                            <input id="name" type="text" placeholder="Enter your name" required/>
-                        </div>
                 
-                        <div class="form-group">
-                            <label for="email"><span class="required">*</span>Your Email Address</label>
-                            <input id="email" type="email" placeholder="Enter your email" required/>
-                        </div>
-                        
-                        <div class="action-cotainer">
-
-                        </div>
-                        <button type="submit" class="button turquoise">
-                            <span class="sign">sign in</span>
-                        </button>
-
-                        <button class="button turquoise cancel">
-                            <span>cancel</span>
-                        </button>
-                
-                    </form>
-                </div>
             </div>
         </nav>
     </header>
     <main>
+        <div id="authModal">
+            <h4>please sign</h4>
+            <form class="authorization-form">
+                <div class="form-group">
+                    <label for="login"><span class="required">*</span>Your Login</label>
+                    <input id="login" type="text" placeholder="Enter your login" required/>
+                    <span class="error-message"></span>
+                </div>
         
+                <div class="form-group">
+                    <label for="password"><span class="required">*</span>Your Password</label>
+                    <input id="password" type="password" placeholder="Enter your password" required/>
+                    <span class="error-message"></span>
+                </div>
+                
+                <div class="action-cotainer">
+                    <button type="submit" class="button turquoise" id="signInBtn" disabled>
+                        <span class="sign">sign in</span>
+                    </button>
+
+                    <button class="button turquoise cancel">
+                        <span>cancel</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </main>
     <footer class="container dark">
         <div class="top-panel">
@@ -92,5 +99,6 @@
             </ul>
         </div>
     </footer>
+    <script src="script.ts" type="module"></script>
 </body>
 </html>

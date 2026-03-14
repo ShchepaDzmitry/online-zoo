@@ -8,6 +8,8 @@ import animals from '../../data/animals';
 import {renderCarouselArray, moveLeft, moveRight} from '../../utils/carouselUtils'
 import highlightNavElements from "../../utils/headerNavHighlightsUtils";
 import createDonationChip from './createDonationChip';
+import { getData, getUserData } from '../../utils/handleDataUtils';
+import { UserProfile } from '../sign-in/types/loginTypes';
 // import fetchData from "../../utils/handleDataUtils";
 
 const animalCarouselElement = document.querySelector<HTMLElement>('.carousel');
@@ -85,10 +87,13 @@ donationCointainerElement!.innerHTML = donations.map((donation) => createDonatio
 
 handleDonationDialog(careForBottomPanelElement as HTMLElement, feedDonationCloseBtnElement as HTMLElement, feedDialogElement as HTMLElement);
 
-window.onload = () => {
+window.onload = async () => {
+  highlightNavElements(0);
+  checkIfUserLogedIn(user);
+  await getLoggedInUserInfo(isLoggedIn);
+
   renderCarouselArray(animals, animalCarouselElement, createCarouselCard);
   renderCarouselArray(feedbackCards, feedbackRightPanelElement, createFeedbackCard);
-  highlightNavElements(0);
   checkTheStepNum();
 };
 
@@ -196,3 +201,47 @@ toggleSelectList(selectYearTriggerElement as HTMLElement, selectYearListElement 
 
 handleDonationDialog(donationsSectionBtnElement as HTMLElement, makeYourDonationCloseBtnElement as HTMLElement, donationDialogContainer as HTMLElement);
 
+// USER LOGING SECTION
+
+const loginUserInfoElement = document.querySelector<HTMLElement>('.login-user__info');
+const loginUserModalContainer = document.querySelector<HTMLElement>('.login-user__modal');
+const userLoginElement = document.querySelector<HTMLElement>('.user-login');
+const userNameElement = document.querySelector<HTMLElement>('.login-user__profile-info--name');
+const userEmailElement = document.querySelector<HTMLElement>('.login-user__profile-info--email');
+const isLoggedInUserModalElement = document.querySelector<HTMLElement>('#isLoggedIn');
+const isLoggedOutUserModalElement = document.querySelector<HTMLElement>('#isLoggedOut');
+
+const user = localStorage.getItem('username');
+let isLoggedIn = false;
+
+const checkIfUserLogedIn = (user: string | null): void => {
+  if (user) {
+    userLoginElement!.textContent = user;
+    isLoggedIn = true;
+    isLoggedInUserModalElement!.style.display = 'flex';
+    isLoggedOutUserModalElement!.style.display = 'none';
+  } else {
+    isLoggedInUserModalElement!.style.display = 'none';
+    isLoggedOutUserModalElement!.style.display = 'flex';
+    isLoggedIn = false;
+  }
+};
+
+async function getLoggedInUserInfo(isLoggedIn: boolean) {
+  if (isLoggedIn) {
+    const authToken = localStorage.getItem('auth_token') as string;
+
+    const {data: {name, email}} = await getUserData<UserProfile>(authToken, '/auth/profile');
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+
+    userNameElement!.textContent = name;
+    userEmailElement!.textContent = email;
+  }
+};
+
+loginUserInfoElement?.addEventListener('click', (e)=> {
+  loginUserModalContainer!.style.display = 'block';
+  
+});
