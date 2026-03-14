@@ -708,15 +708,76 @@ footer .zoo-logo {
 }
 
 .login-user__modal {
-    max-width: 920px;
+    width: 420px;
     border-radius: 5px;
     overflow: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
     display: none;
-    max-height: 850px;
+    height: 250px;
     z-index: 5;
     transform: translate(-50%, -50%);
     background-color: var(--white);
+}
+
+.profile-information.subheader, .chose-an-action.subheader {
+    color: var(--white);
+    background: var(--orange);
+    padding: 10px;
+    text-align: center;
+}
+
+.login-user__modal--logged-in {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    gap: 10px;
+}
+
+.sign-out.button.turquoise {
+    padding: 10px;
+    align-self: center;
+}
+
+.login-user__profile-info--panel {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login-user__profile-info--panel span {
+    color: var(--turquoise);
+}
+
+.login-user__info {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.login-user__info:hover {
+    color: var(--turquoise);
+}
+
+.login-user__modal--logged-out {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.login-user__modal--logged-out p {
+    text-align: center;
+}
+
+.logged-out__btn-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
 }

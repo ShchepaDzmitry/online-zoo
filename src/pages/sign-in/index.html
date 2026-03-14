@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../styles/buttons.css">
     <link rel="stylesheet" href="../../styles/typography.css">
     <link rel="stylesheet" href="../contact/style.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="../registration/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -20,7 +20,7 @@
         <img src="../../assets/icons/Logo.svg" alt="Logo" class="logo">
         <nav class="navigation">
             <ul class="list">
-                <li class="nav-item"><a href="#about">about</a></li>
+                <li class="nav-item"><a href="../landing/index.html">about</a></li>
                 <li class="nav-item"><a href="../map/index.html">map</a></li>
                 <li class="nav-item"><a href="../zoos/?id=animal_1">zoos</a></li>
                 <li class="nav-item"><a href="../contact/index.html">contact us</a></li>
@@ -38,22 +38,28 @@
         </nav>
     </header>
     <main>
-        <div id="authModal">
-            <h4>please sign</h4>
+        <div class="form-container">
+            <h4 class="white">please sign in</h4>
             <form class="authorization-form">
                 <div class="form-group">
                     <label for="login"><span class="required">*</span>Your Login</label>
                     <input id="login" type="text" placeholder="Enter your login" required/>
-                    <span class="error-message"></span>
+                    <div class="error-container">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span class="error-message"></span>
+                    </div>
                 </div>
         
                 <div class="form-group">
                     <label for="password"><span class="required">*</span>Your Password</label>
                     <input id="password" type="password" placeholder="Enter your password" required/>
-                    <span class="error-message"></span>
+                    <div class="error-container">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span class="error-message"></span>
+                    </div>
                 </div>
                 
-                <div class="action-cotainer">
+                <div class="action-container">
                     <button type="submit" class="button turquoise" id="signInBtn" disabled>
                         <span class="sign">sign in</span>
                     </button>
@@ -74,7 +80,7 @@
             </ul>
             <nav>
                 <ul class="list">
-                    <li><a href="#about">about</a></li>
+                    <li><a href="../landing/index.html">about</a></li>
                     <li><a href="../map/index.html">map</a></li>
                     <li><a href="../zoos/?id=animal_1">zoos</a></li>
                     <li><a href="../contact/index.html">contact us</a></li>

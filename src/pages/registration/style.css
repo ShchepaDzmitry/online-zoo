@@ -32,6 +32,12 @@ input.error {
     border: 2px solid var(--error-text);
 }
 
+.error-container i {
+    color: var(--error-text);
+    display: none;
+    margin-right: 5px;
+}
+
 .error-message {
     color: var(--error-text);
 }

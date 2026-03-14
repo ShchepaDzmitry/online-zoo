@@ -36,16 +36,28 @@
                     <p class="user-login"></p>
                 </div>
                 <div class="login-user__modal">
+                    <i class="fa-solid fa-close close-button" id="userLoginModalCloseBtn"></i>
                     <div class="login-user__modal--logged-in" id="isLoggedIn">
+                        <p class="profile-information subheader">Profile information</p>
                         <div class="login-user__profile-info">
-                            <p class="login-user__profile-info--name"></p>
-                            <p class="login-user__profile-info--email"></p>
+                            <div class="login-user__profile-info--panel">
+                                <span>User name: </span>
+                                <p class="login-user__profile-info--name"></p>
+                            </div>
+                            <div class="login-user__profile-info--panel">
+                                <span>User email: </span>
+                                <p class="login-user__profile-info--email"></p>
+                            </div>
                         </div> 
-                        <button class="sign-out">sign out</button>
+                        <button class="sign-out button turquoise" id="signOutBtn">sign out</button>
                     </div>
                     <div class="login-user__modal--logged-out" id="isLoggedOut">
-                        <button class="sign-in"><a href="../sign-in/index.html">sign in</a></button>
-                        <button class="register"><a href="../registration/index.html">register</a></button>
+                        <p class="chose-an-action subheader">Welcome to Online ZOO!</p>
+                        <p>Please start the jorney or join us!</p>
+                        <div class="logged-out__btn-container">
+                            <a class="sign-in button turquoise" href="../sign-in/index.html">sign in</a>
+                            <a class="register button turquoise" href="../registration/index.html">register</a>
+                        </div>
                     </div>
                 </div>
             </div>

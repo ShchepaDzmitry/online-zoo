@@ -89,7 +89,7 @@ handleDonationDialog(careForBottomPanelElement as HTMLElement, feedDonationClose
 
 window.onload = async () => {
   highlightNavElements(0);
-  checkIfUserLogedIn(user);
+  checkIfUserLogedIn(localStorage.getItem('username'));
   await getLoggedInUserInfo(isLoggedIn);
 
   renderCarouselArray(animals, animalCarouselElement, createCarouselCard);
@@ -210,17 +210,21 @@ const userNameElement = document.querySelector<HTMLElement>('.login-user__profil
 const userEmailElement = document.querySelector<HTMLElement>('.login-user__profile-info--email');
 const isLoggedInUserModalElement = document.querySelector<HTMLElement>('#isLoggedIn');
 const isLoggedOutUserModalElement = document.querySelector<HTMLElement>('#isLoggedOut');
+const userLoginModalCloseBtnElement = document.querySelector<HTMLButtonElement>('#userLoginModalCloseBtn');
+const signOutBtnElement = document.querySelector<HTMLButtonElement>('#signOutBtn');
 
-const user = localStorage.getItem('username');
 let isLoggedIn = false;
 
 const checkIfUserLogedIn = (user: string | null): void => {
   if (user) {
+    console.log('is loged in')
     userLoginElement!.textContent = user;
     isLoggedIn = true;
     isLoggedInUserModalElement!.style.display = 'flex';
     isLoggedOutUserModalElement!.style.display = 'none';
   } else {
+    console.log('is not loged in')
+    userLoginElement!.textContent = '';
     isLoggedInUserModalElement!.style.display = 'none';
     isLoggedOutUserModalElement!.style.display = 'flex';
     isLoggedIn = false;
@@ -242,6 +246,29 @@ async function getLoggedInUserInfo(isLoggedIn: boolean) {
 };
 
 loginUserInfoElement?.addEventListener('click', (e)=> {
-  loginUserModalContainer!.style.display = 'block';
-  
+  if ((e.target as HTMLElement).closest('.login-user__info')) {
+    loginUserModalContainer!.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.querySelector<HTMLElement>('.overlay')!.style.display = 'block';
+  }
 });
+
+userLoginModalCloseBtnElement?.addEventListener('click', () => {
+  loginUserModalContainer!.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+})
+
+const signOutUser = () => {
+  localStorage.clear();
+  checkIfUserLogedIn(localStorage.getItem('username'));
+}
+
+signOutBtnElement?.addEventListener('click', () => {
+  signOutUser();
+  loginUserModalContainer!.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+})
+
+

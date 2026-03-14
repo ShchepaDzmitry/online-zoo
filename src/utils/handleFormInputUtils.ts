@@ -2,26 +2,31 @@ import { RegistrationFormInput } from "../pages/registration/interfaces/registra
 import { LoginFormInput } from "../pages/sign-in/interfaces/loginFormInputs";
 
 export const showErrorMessage = (isValid: boolean, errorMsg: string, inputFieldElem: HTMLElement, formInputData: Array<RegistrationFormInput | LoginFormInput>): void => {
-    const errorMessageElement = inputFieldElem.nextElementSibling;
+    const errorMessageTextElement = inputFieldElem.nextElementSibling!.lastElementChild;
+    const errorMessageIconElement = inputFieldElem.nextElementSibling!.firstElementChild as HTMLElement;
 
-    if (!errorMessageElement) return;
+    if (!errorMessageTextElement) return;
 
-    if (!isValid && errorMessageElement) {
-        errorMessageElement.textContent = errorMsg;
+    if (!isValid && errorMessageTextElement) {
+        errorMessageTextElement.textContent = errorMsg;
+        errorMessageIconElement!.style.display = 'inline';
         inputFieldElem.classList.add('error')
         formInputData.find((form: RegistrationFormInput | LoginFormInput) => form.fieldName === inputFieldElem.id)!.isValid = false;
     } else {
-        errorMessageElement!.textContent = '';
+        errorMessageIconElement!.style.display = 'none';
+        errorMessageTextElement!.textContent = '';
         inputFieldElem.classList.remove('error')
         formInputData.find((form: RegistrationFormInput | LoginFormInput) => form.fieldName === inputFieldElem.id)!.isValid = true;
     }
 };
 
 export const clearErrorMessage = (inputFieldElem: HTMLElement): void => {
-    const errorMessageElement = inputFieldElem.nextElementSibling;
+    const errorMessageTextElement = inputFieldElem.nextElementSibling!.lastElementChild;
+    const errorMessageIconElement = inputFieldElem.nextElementSibling!.firstElementChild as HTMLElement;
 
-    if (errorMessageElement!.textContent) {
-        errorMessageElement!.textContent = '';
+    if (errorMessageTextElement!.textContent) {
+        errorMessageTextElement!.textContent = '';
+        errorMessageIconElement!.style.display = 'none';
         inputFieldElem.classList.remove('error')
     }
 };
