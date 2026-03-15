@@ -84,7 +84,7 @@ main {
 
 .introduction {
     height: 800px;
-    background-image: url('../../assets/images/panda_background.png');
+    background-image: url('../../public/assets/images/panda_background.png');
     background-size: 90% 100%;
     padding-top: 110px;
     background-repeat: no-repeat;
@@ -273,7 +273,7 @@ span.button.blank {
 .feedback {
     padding: 150px 0 150px 250px;
     background: linear-gradient(to bottom, var(--navy), transparent),
-    url('../../assets/images/feedback_section_bg.png') center / cover no-repeat;
+    url('../../public/assets/images/feedback_section_bg.png') center / cover no-repeat;
     overflow-x: hidden;
 }
 
@@ -435,7 +435,7 @@ footer .zoo-logo {
 }
 
 .feed-dialog .image-container {
-    background-image: url('../../assets/images/feed_dialog_img.png');
+    background-image: url('../../public/assets/images/feed_dialog_img.png');
     overflow: hidden;
     width: 100%;
     height: 390px;

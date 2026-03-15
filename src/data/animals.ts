@@ -13,7 +13,7 @@ const animals = [
       didYouKnowText: "Pandas are often seen eating in a relaxed sitting posture, with their hind legs stretched out before them. They may appear sedentary, but they are skilled tree-climbers and efficient swimmers.",
       youtubeVideoIds: [{id: "gnEuhfyZPPQ", index: 1}, {id: "9LvjI3NelAU", index: 2}, {id: "DP9hbJmwbNU", index: 3}],
       zoosPageHeading: "live panda cams",
-      mapPageIconPath: "../../assets/icons/panda_map_icon.png",
+      mapPageIconPath: "/online-zoo/assets/icons/panda_map_icon.png",
       donationSectionHeading: "make the bamboo donation!",
       donationSectionText: "Our process for bamboo donations first starts with a site evaluation. It is important that our team sees where the bamboo is growing, then determining if the bamboo is a species that our animals are currently eating. Thank you for your interest in donating bamboo for our pandas.",
       commonName: "Giant Panda",
@@ -44,7 +44,7 @@ const animals = [
       diet: "Herbivore",
       habitat: "Arid, open areas and forests",
       range: "Southeast Asia",
-      didYouKnowImgPath: "../../assets/images/did_you_know_lemur.png",
+      didYouKnowImgPath: "/online-zoo/assets/images/did_you_know_lemur.png",
       makeDonationHeading: "provide Andy the lemur with fruits!",
       didYouKnowText: "More than 90% of lemur species are endangered and might face extinction in the nearest future. Watch the ring-tailed lemurs play and climb in this soothing setting and support them by donating for the fruits they adore.",
       didYouKnowDescription: "Ring-tailed lemurs are named for the 13 alternating black and white bands that adorn their tails. Unlike most other lemurs, ringtails spend 40 percent of their time on the ground, moving quadrupedally along the forest floor. Ring-tailed lemurs live in southwestern Madagascar, in arid, open areas and forests in territories that range from 15 to 57 acres (0.06 to 0.2 square kilometers) in size. As with all lemurs, olfactory communication is important for ringtails. Ring-tailed lemurs have scent glands on their wrists and chests that they use to mark their foraging routes. Ringtails eat leaves, flowers and insects. They can also eat fruit, herbs and small vertebrates. Females usually give birth to their first baby when they are three years old, and usually once a year every year after that. All adult females participate in raising the offspring of the group. The median life expectancy for a ring-tailed lemur is about 16 years."
@@ -68,7 +68,7 @@ const animals = [
       diet: "Omnivore",
       habitat: "Rainforests",
       range: "Western Africa",
-      didYouKnowImgPath: "../../assets/images/did_you_know_gorilla.png",
+      didYouKnowImgPath: "/online-zoo/assets/images/did_you_know_gorilla.png",
       didYouKnowDescription: "Western lowland gorillas are the smallest of the four subspecies. They live in thick tropical rainforests, where they find plenty of food for their vegetarian diet. They eat roots, shoots, fruit, wild celery, and tree bark and pulp. Gorillas can climb trees, but they’re usually found on the ground in communities—known as troops. Troops are led by one dominant, older adult male, often called a silverback because of the swath of silver hair that adorns his otherwise dark fur. Troops also include several other young males, some females, and their offspring. The leader organizes troop activities, such as eating, nesting in leaves, and moving about the group's home range. Gorillas prefer traveling on all fours, pushing themselves forward with their knuckles and soles of their feet. Female gorillas give birth to one infant after a pregnancy of nearly nine months. These infants ride on their mothers’ backs from the age of four months through the first two or three years of their lives."
       },
       {
@@ -100,7 +100,7 @@ const animals = [
         diet: "Omnivore",
         habitat: "Seacoasts, rivers, large lakes or marshes ",
         range: "Continental United States",
-        didYouKnowImgPath: "../../assets/images/did_you_know_eagles.png",
+        didYouKnowImgPath: "/online-zoo/assets/images/did_you_know_eagles.png",
         didYouKnowDescription: "The bald eagle, with its snowy-feathered (not bald) head and white tail, is the proud national bird symbol of the United States—yet the bird was nearly wiped out there. For many decades, bald eagles were hunted for sport and for the 'protection' of fishing grounds.  These powerful birds of prey use their talons to fish, but they get many of their meals by scavenging carrion or stealing the kills of other animals. They live near water and favor coasts and lakes where fish are plentiful, though they will also snare and eat small mammals. Bald eagles are believed to mate for life. A pair constructs an enormous stick nest—one of the bird-world's biggest—high above the ground and tends to a pair of eggs each year. Immature eagles are dark, and until they are about five years old, they lack the distinctive white markings that make their parents so easy to identify."
       },
       {
@@ -109,7 +109,7 @@ const animals = [
         species: "Australian Koala",
         carouselCardDescription: "The elevated walkways bring you to eye level with the koalas as they perch in their forest.",
         carouselCardImage: "../../assets/images/koala_liz.png",
-        mapPageIconPath: "../../assets/icons/koala_map_icon.png"
+        mapPageIconPath: "/online-zoo/assets/icons/koala_map_icon.png"
       },
       {
         id: "animal_7",
@@ -117,7 +117,7 @@ const animals = [
         species: "African Lion",
         carouselCardDescription: "Lions roam the savannas and grasslands of Africa, hunting and raising cubs in the pride.",
         carouselCardImage: "../../assets/images/lion_shake.png",
-        mapPageIconPath: "../../assets/icons/lion_map_icon.png"
+        mapPageIconPath: "/online-zoo/assets/icons/lion_map_icon.png"
       },
       {
         id: "animal_8",
@@ -127,7 +127,7 @@ const animals = [
         feedCardDescription: "Your $150 will help to care for Senja, a Sumatran tiger, for three weeks.",
         carouselCardDescription: "Sumatran Tigers are the smallest of the five sub-species, and are found in Indonesia.",
         carouselCardImage: "../../assets/images/tiger_senja.png",
-        mapPageIconPath: "../../assets/icons/tiger_map_icon.png"
+        mapPageIconPath: "/online-zoo/assets/icons/tiger_map_icon.png"
       },
 ];
 
