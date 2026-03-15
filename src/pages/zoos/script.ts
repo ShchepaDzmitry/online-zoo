@@ -6,10 +6,10 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
 const animalImagesData: Array<{id: number, imgPath: string, videoId: string}> = [
-    {id: 1, imgPath: '../../assets/images/did_you_know_panda.png', videoId: 'gnEuhfyZPPQ'},
-    {id: 2, imgPath: '../../assets/images/did_you_know_lemur.png', videoId: '2M1BmfHlOEI'},
-    {id: 3, imgPath: '../../assets/images/did_you_know_gorilla.png', videoId: 'yfSyjwY6zSQ'},
-    {id: 5, imgPath: '../../assets/images/did_you_know_eagles.png', videoId: '41eq4VzCYc4'},
+    {id: 1, imgPath: '/online-zoo/assets/images/did_you_know_panda.png', videoId: 'gnEuhfyZPPQ'},
+    {id: 2, imgPath: '/online-zoo/assets/images/did_you_know_lemur.png', videoId: '2M1BmfHlOEI'},
+    {id: 3, imgPath: '/online-zoo/assets/images/did_you_know_gorilla.png', videoId: 'yfSyjwY6zSQ'},
+    {id: 5, imgPath: '/online-zoo/assets/images/did_you_know_eagles.png', videoId: '41eq4VzCYc4'},
 ];
    
 const didYouKnowTextElement = document.getElementById('didYouKnow');

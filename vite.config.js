@@ -13,6 +13,8 @@ export default {
         contact: resolve(__dirname, "src/pages/contact/index.html"),
         map: resolve(__dirname, "src/pages/map/index.html"),
         zoos: resolve(__dirname, "src/pages/zoos/index.html"),
+        registration: resolve(__dirname, "src/pages/registration/index.html"),
+        signIn: resolve(__dirname, "src/pages/sign-in/index.html"),
       },
     },
   },

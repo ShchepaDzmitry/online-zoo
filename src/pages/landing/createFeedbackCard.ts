@@ -3,7 +3,7 @@ import { Feedback } from "./interfaces/feedback";
 const createFeedbackCard = (feedback: Feedback) => {
   return `
     <div class="feedback__card">
-          <img src="../../assets/icons/quotes.png" alt="icon quote">
+          <img src="/online-zoo/assets/icons/quotes.png" alt="icon quote">
           <p class="subheader">
             <span>${feedback.city}</span>, <span>${feedback.month}</span> <span>${feedback.year}</span>
           </p>

@@ -48,7 +48,7 @@ careForBottomPanelElement!.innerHTML = feedCardAnimals.filter(({feedCardDescript
 
 
 const largeImgForFeedcardElement = document.createElement('img');
-largeImgForFeedcardElement.setAttribute('src', '../../assets/images/koala_feedcard.png');
+largeImgForFeedcardElement.setAttribute('src', '/online-zoo/assets/images/koala_feedcard.png');
 largeImgForFeedcardElement.setAttribute('alt', 'Koala image');
 largeImgForFeedcardElement.setAttribute('height', '660px')
 largeImgForFeedcardElement.setAttribute('width', '910px')
@@ -359,14 +359,14 @@ signOutBtnElement?.addEventListener('click', () => {
 // MEET SOME OUR PETS DATA FETCHING
 
 const petImagePaths = [
-  "../../assets/images/panda_lucas.png",
-  "../../assets/images/lemur_andy.png",
-  "../../assets/images/gorilla_glen.png",
-  "../../assets/images/crocodile_mike.png",
-  "../../assets/images/did_you_know_eagles.png",
-  "../../assets/images/koala_liz.png",
-  "../../assets/images/lion_shake.png",
-  "../../assets/images/tiger_senja.png",
+  "/online-zoo/assets/images/panda_lucas.png",
+  "/online-zoo/assets/images/lemur_andy.png",
+  "/online-zoo/assets/images/gorilla_glen.png",
+  "/online-zoo/assets/images/crocodile_mike.png",
+  "/online-zoo/assets/images/did_you_know_eagles.png",
+  "/online-zoo/assets/images/koala_liz.png",
+  "/online-zoo/assets/images/lion_shake.png",
+  "/online-zoo/assets/images/tiger_senja.png",
 ];
 
 let carouselAnimals: Array<Pet>;
