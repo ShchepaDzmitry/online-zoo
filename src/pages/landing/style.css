@@ -278,6 +278,8 @@ span.button.blank {
 }
 
 .feedback__top-container {
+    height: 970px;
+    overflow: hidden;
     display: flex;
     gap: 50px;
     margin-bottom: 50px;
@@ -286,11 +288,11 @@ span.button.blank {
 
 .feedback__left-panel {
     max-width: 560px;
-    flex-grow: 1;
+    flex-basis: 560px;
 }
 
 .feedback__right-panel {
-    flex-grow: 2;
+    width: 1080px;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -784,7 +786,8 @@ footer .zoo-logo {
     margin-bottom: 30px;
 }
 
-.carousel .subheader.error-message {
+.carousel .subheader.error-message,
+.feedback__right-panel .subheader.error-message{
     color: var(--error-text);
     margin-left: 300px;
 }
