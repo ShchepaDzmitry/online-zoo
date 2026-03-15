@@ -3,7 +3,7 @@ import { Pet } from "../pages/landing/interfaces/pet";
 
 export type CarouselItem = Pet | Feedback;
 
-export const renderCarouselArray = (carouselArray: Array<Pet | Feedback>, carouselContainerElement: HTMLElement, renderFn, selectedItem?: unknown): void => {
+export const renderCarouselArray = (carouselArray: Array<Pet | Feedback>, carouselContainerElement: HTMLElement, renderFn: (item: CarouselItem, selectedItem?: unknown) => string, selectedItem?: unknown): void => {
     carouselContainerElement.innerHTML = carouselArray.map((carouselItem: (Pet | Feedback)) => renderFn(carouselItem, selectedItem)).join('');
 };
   

@@ -2,7 +2,7 @@ import createCarouselCard from './createCarouselCard';
 import payAndFeedCards from './payAndFeedCards';
 import createPayAndFeedCard from './createPayAndFeedCard';
 import createFeedbackCard from './createFeedbackCard';
-import createFeedCard from './createFeedCard';
+import createFeedCard, { AnimalFeedCard } from './createFeedCard';
 import animals from '../../data/animals';
 import {renderCarouselArray, moveLeft, moveRight} from '../../utils/carouselUtils'
 import highlightNavElements from "../../utils/headerNavHighlightsUtils";
@@ -43,7 +43,8 @@ const handleDonationDialog = (openDialogButton: HTMLElement, closeDialogButton: 
 };
 
 payAndFeedCardsElement!.innerHTML = payAndFeedCards.map((card) => createPayAndFeedCard(card)).join('');
-careForBottomPanelElement!.innerHTML = animals.filter(({feedCardDescription}) => !!feedCardDescription).map((animal) => createFeedCard(animal)).join('');
+const feedCardAnimals = animals.map((animal): AnimalFeedCard => ({feedCardImgPath: animal.feedCardImgPath as string, feedCardDescription: animal.feedCardDescription as string}));
+careForBottomPanelElement!.innerHTML = feedCardAnimals.filter(({feedCardDescription}) => !!feedCardDescription).map((animal) => createFeedCard(animal)).join('');
 
 
 const largeImgForFeedcardElement = document.createElement('img');
