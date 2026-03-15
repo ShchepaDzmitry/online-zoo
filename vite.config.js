@@ -1,7 +1,7 @@
 import { resolve } from "path";
 
 export default {
-  base: "online-zoo",
+  base: "/online-zoo/",
   root: "src",
   build: {
     target: "chrome87",
