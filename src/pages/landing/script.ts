@@ -369,7 +369,7 @@ const petImagePaths = [
   "../../assets/images/tiger_senja.png",
 ];
 
-let carouselAnimals: Array<Pet | Feedback>;
+let carouselAnimals: Array<Pet>;
 
 const hadleErrorResponse = (error: unknown, containerElement: HTMLElement): void => {
   const errorMessage = 'Something went wrong. Please, refresh the page';
@@ -397,7 +397,6 @@ async function renderCarouselCards() {
   }
 }
 
-await renderCarouselCards();
 
 leftCarouselBtnElement!.addEventListener("click", () => {
   carouselAnimals = moveLeft(carouselAnimals);
@@ -411,7 +410,7 @@ rightCarouselBtnElement!.addEventListener("click", () => {
 
 // FEEDBACK CAROUSEL
 
-let carouselFeedbacks: Array<Pet | Feedback>;
+let carouselFeedbacks: Array<Feedback>;
 
 async function renderFeedbackCards() {
   showLoader(feedbackRightPanelElement as HTMLElement);
@@ -426,7 +425,14 @@ async function renderFeedbackCards() {
   }
 }
 
-await renderFeedbackCards();
+
+
+async function initRender() {
+  await renderCarouselCards();
+  await renderFeedbackCards();
+}
+
+initRender();
 
 leftFeedbackBtnElement!.addEventListener("click", () => {
   carouselFeedbacks = moveLeft(carouselFeedbacks);
