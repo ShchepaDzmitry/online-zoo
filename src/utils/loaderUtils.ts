@@ -5,6 +5,6 @@ export const showLoader = (container: HTMLElement) => {
     container.appendChild(loaderElement);
 };
 
-export const hideLoader = (container: HTMLElement) => {
-    container.innerHTML = '';
+export const hideLoader = () => {
+    document.querySelector<HTMLElement>('.loader')!.style.display = 'none';
 }

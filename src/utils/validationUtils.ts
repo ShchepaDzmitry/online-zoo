@@ -3,5 +3,5 @@ export const validateLogin = (value: string): boolean => {
 };
 
 export const validatePassword = (value: string): boolean => {
-    return value.length >= 6 && /^[A-Za-z]/.test(value);
+    return value.length >= 6 && /^(?=.*[!@#$%^&*(),.?":{}|<>])/.test(value);
 };

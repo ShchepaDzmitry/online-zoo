@@ -1,6 +1,12 @@
 import highlightNavElements from "../../utils/headerNavHighlightsUtils";
-import { getData } from "../../utils/handleDataUtils";
+import { getData, getUserData } from "../../utils/handleDataUtils";
 import { AnimalApiResponse } from "./interfaces/animal";
+import { hideLoader, showLoader } from "../../utils/loaderUtils";
+import { AnimalCameraApiResponse } from "./interfaces/animalCamera";
+import { closeModalDialog } from "../../utils/closeModalUtils";
+import { UserProfile } from "../sign-in/types/loginTypes";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -14,7 +20,6 @@ const animalImagesData: Array<{id: number, imgPath: string, videoId: string}> = 
    
 const didYouKnowTextElement = document.getElementById('didYouKnow');
 const youtubePreviewContainerElement = document.getElementById('youtubePreviewContainer');
-// https://shchepadzmitry.github.io/online-zoo/
 const commonNameElement = document.getElementById('commonName');
 const scientificNameElement = document.getElementById('scientificName');
 const typeElement = document.getElementById('type');
@@ -24,11 +29,14 @@ const habitatElement = document.getElementById('habitat');
 const rangeElement = document.getElementById('range');
 const didYouKnowImgPathElement = document.getElementById('didYouKnowImgPath') as HTMLImageElement;
 const didYouKnowDescriptionElement = document.getElementById('didYouKnowDescription');
+const zoosPageHeadingElement = document.querySelector<HTMLElement>('#zoosPageHeading');
+let animalLongitude!: string;
+let animalLatitude!: string;
+let animalMapLabel!: string;
 
 const renderDidYouKnowSection = (animal: AnimalApiResponse) => {
-    const {size, commonName, description, diet, detailedDescription, habitat, scientificName, range, type, id} = animal.data;
+    const {size, commonName, description, diet, detailedDescription, habitat, scientificName, range, type, id, latitude, longitude} = animal.data;
     const additionalAnimalInfo: {id: number, imgPath: string, videoId: string} | undefined = animalImagesData.find((animal) => animal!.id === id);
-    console.log(animalImagesData, additionalAnimalInfo)
 
     sizeElement!.textContent = size;
     dietElement!.textContent = diet;
@@ -41,11 +49,14 @@ const renderDidYouKnowSection = (animal: AnimalApiResponse) => {
     didYouKnowTextElement!.textContent = description;
     didYouKnowImgPathElement!.src = additionalAnimalInfo!.imgPath;
 
+    animalLongitude = longitude.slice(0,-3);
+    animalLatitude = latitude.slice(0,-3);
+    animalMapLabel = `${commonName} location`;
+
     renderMainPreview(additionalAnimalInfo!.videoId)
 }
 
 const renderMainPreview = (videoId: string) => {
-    console.log(videoId)
     youtubePreviewContainerElement!.innerHTML = `
     <iframe 
         width="560"
@@ -146,23 +157,174 @@ ytCarouselContainer?.addEventListener('click', (e) => {
 });
 
 window.onload = async () => {
-    console.log(id)
     // renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
     // const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
     // ytPreviewImageElement!.classList.add('selected-yt-preview');
+    await getAnimalsCameraData();
     const animalResponse = await getAnimalData(id as string);
-    console.log(animalResponse)
     renderDidYouKnowSection(animalResponse as AnimalApiResponse);
     highlightNavElements(2);
+    checkIfUserLogedIn(localStorage.getItem('username'));
+    await getLoggedInUserInfo(isLoggedIn);
 };
 
+const animalDescriptionContainerElement = document.querySelector<HTMLElement>('.animal-description-wrapper');
 
-// async function getAnimalsCameraData() {
-//     const response = await getData<AnimalCameraApiResponse>(`/cameras`);
-// }
+const handleErrorMessage = (errorContainerElement: HTMLElement, error: Error) => {
+    const deafaultErrorMessage = 'Something went wrong. Please, refresh the page'
+    errorContainerElement!.innerHTML = `<p class='subheader error-container'>${deafaultErrorMessage} ${(error as Error).message}</p>`;
+}
 
+async function getAnimalsCameraData() {
+    try {
+        showLoader(zoosPageHeadingElement as HTMLElement);
+        const response = await getData<AnimalCameraApiResponse>(`/cameras`);
+    
+        const pet = response.data.find((animal) => animal.petId === Number(id));
+    
+        if (pet) {
+            zoosPageHeadingElement!.textContent = pet.text;
+        }
+
+    } catch(error) {
+        handleErrorMessage(zoosPageHeadingElement as HTMLElement, error as Error);
+    }
+}
 
 async function getAnimalData(petId: string) {
-    const response = await getData<AnimalApiResponse>(`/pets/${petId}`);
-    return response;
+    try {
+        showLoader(animalDescriptionContainerElement as HTMLElement)
+        const response = await getData<AnimalApiResponse>(`/pets/${petId}`);
+        hideLoader();
+        return response;
+    } catch (error) {
+        handleErrorMessage(animalDescriptionContainerElement as HTMLElement, error as Error);
+    }
+    
 }
+
+// USER LOGING SECTION
+
+const loginUserInfoElement = document.querySelector<HTMLElement>('.login-user__info');
+const loginUserModalContainer = document.querySelector<HTMLElement>('.login-user__modal');
+const userLoginElement = document.querySelector<HTMLElement>('.user-login');
+const userNameElement = document.querySelector<HTMLElement>('.login-user__profile-info--name');
+const userEmailElement = document.querySelector<HTMLElement>('.login-user__profile-info--email');
+const isLoggedInUserModalElement = document.querySelector<HTMLElement>('#isLoggedIn');
+const isLoggedOutUserModalElement = document.querySelector<HTMLElement>('#isLoggedOut');
+const userLoginModalCloseBtnElement = document.querySelector<HTMLButtonElement>('#userLoginModalCloseBtn');
+const signOutBtnElement = document.querySelector<HTMLButtonElement>('#signOutBtn');
+
+let isLoggedIn = false;
+
+const checkIfUserLogedIn = (user: string | null): void => {
+  if (user) {
+    console.log('is loged in')
+    userLoginElement!.textContent = user;
+    isLoggedIn = true;
+    isLoggedInUserModalElement!.style.display = 'flex';
+    isLoggedOutUserModalElement!.style.display = 'none';
+  } else {
+    console.log('is not loged in')
+    userLoginElement!.textContent = '';
+    isLoggedInUserModalElement!.style.display = 'none';
+    isLoggedOutUserModalElement!.style.display = 'flex';
+    isLoggedIn = false;
+  }
+};
+
+async function getLoggedInUserInfo(isLoggedIn: boolean) {
+  if (isLoggedIn) {
+    const authToken = localStorage.getItem('auth_token') as string;
+
+    const {data: {name, email}} = await getUserData<UserProfile>(authToken, '/auth/profile');
+
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+
+    userNameElement!.textContent = name;
+    userEmailElement!.textContent = email;
+  }
+};
+
+loginUserInfoElement?.addEventListener('click', (e)=> {
+  if ((e.target as HTMLElement).closest('.login-user__info')) {
+    loginUserModalContainer!.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.querySelector<HTMLElement>('.overlay')!.style.display = 'block';
+  }
+});
+
+closeModalDialog(userLoginModalCloseBtnElement as HTMLElement, loginUserModalContainer as HTMLElement);
+
+const signOutUser = () => {
+  localStorage.clear();
+  checkIfUserLogedIn(localStorage.getItem('username'));
+}
+
+signOutBtnElement?.addEventListener('click', () => {
+  signOutUser();
+  loginUserModalContainer!.style.display = 'none';
+  document.body.style.overflow = 'auto';
+  document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+})
+
+// MAP MODAL WINDOW
+
+const viewMapBtnElement = document.querySelector<HTMLElement>('#viewMapBtn');
+const mapModalCloseBtnElement = document.querySelector<HTMLElement>('#mapModalCloseBtn');
+const mapModalContainer = document.getElementById('mapContainer');
+let map: L.Map | null = null;
+
+
+const showMap = (latitude: string, longitude: string, label: string): void => {
+    if (map) {
+        map.remove();
+    }
+
+    setTimeout(() => {
+        map = L.map('map').setView([+latitude, +longitude], 10);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {attribution: "© OpenStreetMap contributors",}).addTo(map);
+    
+        L.marker([+latitude, +longitude]).addTo(map).bindPopup(label).openPopup(); 
+    }, 0)
+};
+
+const closeMap = () => {
+    mapModalContainer!.style.display = 'none';
+    if (map) {
+        map.remove();
+        map = null;
+    }
+}
+
+viewMapBtnElement?.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    document.querySelector<HTMLElement>('.overlay')!.style.display = 'block';
+    mapModalContainer!.style.display = 'block';
+    showMap(animalLatitude, animalLongitude, animalMapLabel);
+});
+
+mapModalCloseBtnElement?.addEventListener('click', () => {
+    closeMap();
+    document.body.style.overflow = 'auto';
+    document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.body.style.overflow = 'auto';
+        document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+        closeMap()
+    };
+})
+
+document.querySelector<HTMLElement>('.overlay')?.addEventListener("click", (e: MouseEvent) => {
+    if (!(e.target as HTMLElement).contains(mapModalContainer)) {
+        console.log('hello')
+        closeMap();
+        document.body.style.overflow = 'auto';
+        document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
+    };
+});
+

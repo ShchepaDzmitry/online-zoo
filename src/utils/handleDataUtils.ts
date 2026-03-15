@@ -10,7 +10,8 @@ export async function getData<T>(additionalPath?: string): Promise<T> {
       const response = await fetch(`${INITIAL_PATH}${additionalPath}`);
 
       if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        const errorMessage = await response.json();
+        throw new Error(`HTTP error: ${response.status}, ${errorMessage.error}`);
       }
   
       return response.json();

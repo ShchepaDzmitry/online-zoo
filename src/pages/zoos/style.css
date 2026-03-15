@@ -9,6 +9,7 @@
 .heading-wrapper h3 {
     text-align: center;
     margin-bottom: 0;
+    width: 60%;
 }
 
 .heading-wrapper button {
@@ -251,4 +252,48 @@
 .did-you-know-description {
     padding-right: 200px;
     margin-bottom: 150px;
+}
+
+.error-container {
+    color: var(--error-text);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.animal-description-wrapper {
+    position: relative;
+}
+
+.map-modal-container {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    display: none;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: var(--orange);
+    border-radius: 5px;
+}
+
+.map-container {
+    width: 400px;
+    height: 250px;
+    position: relative;
+}
+
+.map-container .close-button {
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--orange);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1000;
 }

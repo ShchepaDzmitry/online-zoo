@@ -1,6 +1,6 @@
 export interface AnimalCamera {
-    id: string;
-    petId: string;
+    id: number;
+    petId: number;
     text: string;
 };
 
