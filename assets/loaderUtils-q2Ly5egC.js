@@ -1,0 +1,1 @@
+const o=d=>{const e=document.createElement("div");e.classList.add("loader"),e.style.display="block",d.appendChild(e)},s=()=>{document.querySelector(".loader").style.display="none"};export{s as h,o as s};

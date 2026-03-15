@@ -6,10 +6,10 @@
     <title>Registration</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script type="module" crossorigin src="/online-zoo/assets/registration-DpkkcYHr.js"></script>
+  <script type="module" crossorigin src="/online-zoo/assets/registration-B-5POydb.js"></script>
   <link rel="modulepreload" crossorigin href="/online-zoo/assets/buttons-CH7OIFB-.js">
-  <link rel="modulepreload" crossorigin href="/online-zoo/assets/validationUtils-atAc5uyD.js">
-  <link rel="modulepreload" crossorigin href="/online-zoo/assets/handleDataUtils-MkUHwuzO.js">
+  <link rel="modulepreload" crossorigin href="/online-zoo/assets/validationUtils-JhnoAPfg.js">
+  <link rel="modulepreload" crossorigin href="/online-zoo/assets/handleDataUtils-BfIG_Wfg.js">
   <link rel="modulepreload" crossorigin href="/online-zoo/assets/handleFormInputUtils-BpVNkJOq.js">
   <link rel="stylesheet" crossorigin href="/online-zoo/assets/buttons-HLet5aSB.css">
   <link rel="stylesheet" crossorigin href="/online-zoo/assets/validationUtils-xViOy4VH.css">
@@ -34,6 +34,37 @@
                 <li><a href="https://www.instagram.com/"><img src="../../assets/icons/insta_logo.png" alt="instagram logo"></a></li>
                 <li><a href="https://www.facebook.com/"><img src="../../assets/icons/fb_logo.png" alt="facebook logo"></a></li>
             </ul>
+            <div class="login-user__container">
+                <div class="login-user__info">
+                    <i class="fa-solid fa-user"></i>
+                    <p class="user-login"></p>
+                </div>
+                <div class="login-user__modal">
+                    <i class="fa-solid fa-close close-button" id="userLoginModalCloseBtn"></i>
+                    <div class="login-user__modal--logged-in" id="isLoggedIn">
+                        <p class="profile-information subheader">Profile information</p>
+                        <div class="login-user__profile-info">
+                            <div class="login-user__profile-info--panel">
+                                <span>User name: </span>
+                                <p class="login-user__profile-info--name"></p>
+                            </div>
+                            <div class="login-user__profile-info--panel">
+                                <span>User email: </span>
+                                <p class="login-user__profile-info--email"></p>
+                            </div>
+                        </div> 
+                        <button class="sign-out button turquoise" id="signOutBtn">sign out</button>
+                    </div>
+                    <div class="login-user__modal--logged-out" id="isLoggedOut">
+                        <p class="chose-an-action subheader">Welcome to Online ZOO!</p>
+                        <p>Please start the jorney or join us!</p>
+                        <div class="logged-out__btn-container">
+                            <a class="sign-in button turquoise" href="../sign-in/index.html">sign in</a>
+                            <a class="register button turquoise" href="../registration/index.html">register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
     </header>
     <main>

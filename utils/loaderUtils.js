@@ -4,6 +4,6 @@ export const showLoader = (container) => {
     loaderElement.style.display = 'block';
     container.appendChild(loaderElement);
 };
-export const hideLoader = (container) => {
-    container.innerHTML = '';
+export const hideLoader = () => {
+    document.querySelector('.loader').style.display = 'none';
 };

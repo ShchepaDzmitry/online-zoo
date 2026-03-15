@@ -4,7 +4,8 @@ export async function getData(additionalPath) {
     try {
         const response = await fetch(`${INITIAL_PATH}${additionalPath}`);
         if (!response.ok) {
-            throw new Error(`HTTP error: ${response.status}`);
+            const errorMessage = await response.json();
+            throw new Error(`HTTP error: ${response.status}, ${errorMessage.error}`);
         }
         return response.json();
     }

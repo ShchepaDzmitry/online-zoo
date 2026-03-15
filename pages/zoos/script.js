@@ -1,5 +1,9 @@
 import highlightNavElements from "../../utils/headerNavHighlightsUtils";
-import { getData } from "../../utils/handleDataUtils";
+import { getData, getUserData } from "../../utils/handleDataUtils";
+import { hideLoader, showLoader } from "../../utils/loaderUtils";
+import { closeModalDialog } from "../../utils/closeModalUtils";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 const animalImagesData = [
@@ -10,7 +14,6 @@ const animalImagesData = [
 ];
 const didYouKnowTextElement = document.getElementById('didYouKnow');
 const youtubePreviewContainerElement = document.getElementById('youtubePreviewContainer');
-// https://shchepadzmitry.github.io/online-zoo/
 const commonNameElement = document.getElementById('commonName');
 const scientificNameElement = document.getElementById('scientificName');
 const typeElement = document.getElementById('type');
@@ -20,10 +23,13 @@ const habitatElement = document.getElementById('habitat');
 const rangeElement = document.getElementById('range');
 const didYouKnowImgPathElement = document.getElementById('didYouKnowImgPath');
 const didYouKnowDescriptionElement = document.getElementById('didYouKnowDescription');
+const zoosPageHeadingElement = document.querySelector('#zoosPageHeading');
+let animalLongitude;
+let animalLatitude;
+let animalMapLabel;
 const renderDidYouKnowSection = (animal) => {
-    const { size, commonName, description, diet, detailedDescription, habitat, scientificName, range, type, id } = animal.data;
+    const { size, commonName, description, diet, detailedDescription, habitat, scientificName, range, type, id, latitude, longitude } = animal.data;
     const additionalAnimalInfo = animalImagesData.find((animal) => animal.id === id);
-    console.log(animalImagesData, additionalAnimalInfo);
     sizeElement.textContent = size;
     dietElement.textContent = diet;
     habitatElement.textContent = habitat;
@@ -34,10 +40,12 @@ const renderDidYouKnowSection = (animal) => {
     didYouKnowDescriptionElement.textContent = detailedDescription;
     didYouKnowTextElement.textContent = description;
     didYouKnowImgPathElement.src = additionalAnimalInfo.imgPath;
+    animalLongitude = longitude.slice(0, -3);
+    animalLatitude = latitude.slice(0, -3);
+    animalMapLabel = `${commonName} location`;
     renderMainPreview(additionalAnimalInfo.videoId);
 };
 const renderMainPreview = (videoId) => {
-    console.log(videoId);
     youtubePreviewContainerElement.innerHTML = `
     <iframe 
         width="560"
@@ -124,19 +132,148 @@ ytCarouselContainer?.addEventListener('click', (e) => {
     // currentVideoId = container.id;
 });
 window.onload = async () => {
-    console.log(id);
     // renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
     // const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
     // ytPreviewImageElement!.classList.add('selected-yt-preview');
+    await getAnimalsCameraData();
     const animalResponse = await getAnimalData(id);
-    console.log(animalResponse);
     renderDidYouKnowSection(animalResponse);
     highlightNavElements(2);
+    checkIfUserLogedIn(localStorage.getItem('username'));
+    await getLoggedInUserInfo(isLoggedIn);
 };
-// async function getAnimalsCameraData() {
-//     const response = await getData<AnimalCameraApiResponse>(`/cameras`);
-// }
-async function getAnimalData(petId) {
-    const response = await getData(`/pets/${petId}`);
-    return response;
+const animalDescriptionContainerElement = document.querySelector('.animal-description-wrapper');
+const handleErrorMessage = (errorContainerElement, error) => {
+    const deafaultErrorMessage = 'Something went wrong. Please, refresh the page';
+    errorContainerElement.innerHTML = `<p class='subheader error-container'>${deafaultErrorMessage} ${error.message}</p>`;
+};
+async function getAnimalsCameraData() {
+    try {
+        showLoader(zoosPageHeadingElement);
+        const response = await getData(`/cameras`);
+        const pet = response.data.find((animal) => animal.petId === Number(id));
+        if (pet) {
+            zoosPageHeadingElement.textContent = pet.text;
+        }
+    }
+    catch (error) {
+        handleErrorMessage(zoosPageHeadingElement, error);
+    }
 }
+async function getAnimalData(petId) {
+    try {
+        showLoader(animalDescriptionContainerElement);
+        const response = await getData(`/pets/${petId}`);
+        hideLoader();
+        return response;
+    }
+    catch (error) {
+        handleErrorMessage(animalDescriptionContainerElement, error);
+    }
+}
+// USER LOGING SECTION
+const loginUserInfoElement = document.querySelector('.login-user__info');
+const loginUserModalContainer = document.querySelector('.login-user__modal');
+const userLoginElement = document.querySelector('.user-login');
+const userNameElement = document.querySelector('.login-user__profile-info--name');
+const userEmailElement = document.querySelector('.login-user__profile-info--email');
+const isLoggedInUserModalElement = document.querySelector('#isLoggedIn');
+const isLoggedOutUserModalElement = document.querySelector('#isLoggedOut');
+const userLoginModalCloseBtnElement = document.querySelector('#userLoginModalCloseBtn');
+const signOutBtnElement = document.querySelector('#signOutBtn');
+let isLoggedIn = false;
+const checkIfUserLogedIn = (user) => {
+    if (user) {
+        console.log('is loged in');
+        userLoginElement.textContent = user;
+        isLoggedIn = true;
+        isLoggedInUserModalElement.style.display = 'flex';
+        isLoggedOutUserModalElement.style.display = 'none';
+    }
+    else {
+        console.log('is not loged in');
+        userLoginElement.textContent = '';
+        isLoggedInUserModalElement.style.display = 'none';
+        isLoggedOutUserModalElement.style.display = 'flex';
+        isLoggedIn = false;
+    }
+};
+async function getLoggedInUserInfo(isLoggedIn) {
+    if (isLoggedIn) {
+        const authToken = localStorage.getItem('auth_token');
+        const { data: { name, email } } = await getUserData(authToken, '/auth/profile');
+        localStorage.setItem('name', name);
+        localStorage.setItem('email', email);
+        userNameElement.textContent = name;
+        userEmailElement.textContent = email;
+    }
+}
+;
+loginUserInfoElement?.addEventListener('click', (e) => {
+    if (e.target.closest('.login-user__info')) {
+        loginUserModalContainer.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        document.querySelector('.overlay').style.display = 'block';
+    }
+});
+closeModalDialog(userLoginModalCloseBtnElement, loginUserModalContainer);
+const signOutUser = () => {
+    localStorage.clear();
+    checkIfUserLogedIn(localStorage.getItem('username'));
+};
+signOutBtnElement?.addEventListener('click', () => {
+    signOutUser();
+    loginUserModalContainer.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    document.querySelector('.overlay').style.display = 'none';
+});
+// MAP MODAL WINDOW
+const viewMapBtnElement = document.querySelector('#viewMapBtn');
+const mapModalCloseBtnElement = document.querySelector('#mapModalCloseBtn');
+const mapModalContainer = document.getElementById('mapContainer');
+let map = null;
+const showMap = (latitude, longitude, label) => {
+    if (map) {
+        map.remove();
+    }
+    setTimeout(() => {
+        map = L.map('map').setView([+latitude, +longitude], 10);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { attribution: "© OpenStreetMap contributors", }).addTo(map);
+        L.marker([+latitude, +longitude]).addTo(map).bindPopup(label).openPopup();
+    }, 0);
+};
+const closeMap = () => {
+    mapModalContainer.style.display = 'none';
+    if (map) {
+        map.remove();
+        map = null;
+    }
+};
+viewMapBtnElement?.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    document.querySelector('.overlay').style.display = 'block';
+    mapModalContainer.style.display = 'block';
+    showMap(animalLatitude, animalLongitude, animalMapLabel);
+});
+mapModalCloseBtnElement?.addEventListener('click', () => {
+    closeMap();
+    document.body.style.overflow = 'auto';
+    document.querySelector('.overlay').style.display = 'none';
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.body.style.overflow = 'auto';
+        document.querySelector('.overlay').style.display = 'none';
+        closeMap();
+    }
+    ;
+});
+document.querySelector('.overlay')?.addEventListener("click", (e) => {
+    if (!e.target.contains(mapModalContainer)) {
+        console.log('hello');
+        closeMap();
+        document.body.style.overflow = 'auto';
+        document.querySelector('.overlay').style.display = 'none';
+    }
+    ;
+});
