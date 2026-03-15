@@ -13,6 +13,8 @@ import { PetApiResponse, Pet } from './interfaces/pet';
 import { showLoader } from '../../utils/loaderUtils';
 import { FeedBackApiResponse, Feedback } from './interfaces/feedback';
 import { closeModalDialog } from '../../utils/closeModalUtils';
+import { validateLogin } from '../../utils/validationUtils';
+import { checkFormValidity, showErrorMessage } from '../../utils/handleFormInputUtils';
 
 const animalCarouselElement = document.querySelector<HTMLElement>('.carousel');
 const payAndFeedCardsElement = document.querySelector<HTMLElement>('.pay-and-feed__cards');
@@ -79,7 +81,7 @@ const completeDonationModalBtnElement  = document.querySelector<HTMLElement>('#c
 const stepListItemElements = document.querySelectorAll<HTMLElement>('.step-list__item');
 const donationDialogInfoElements = document.querySelectorAll<HTMLElement>('.donation-dialog__info');
 
-let step = 3;
+let step = 1;
 
 const checkTheStepNum = () => {
   if (step === 1) {
@@ -131,6 +133,164 @@ donationModalNextBtnElement?.addEventListener('click', () => {
 })
 
 donationChipsContainer!.innerHTML = donations.slice(0, -1).map((amount: string) => createDonationChip(amount)).join('');
+
+let donationFormData = {
+  step_1: {
+    donationAmount: '',
+    selectedPet: '',
+    isMonthlyGift: false,
+  },
+  step_2: {
+    name: '',
+    email: '',
+  },
+  step_3: {
+    cardNumber: '',
+    cvvNumber: '',
+    expirationDate: '',
+    isCardSaved: false,
+  }
+};
+
+const donationFormInputsData = [
+ 
+  {
+    fieldName: 'email',
+    isValid: false,
+    validate: (value: string): boolean => validateLogin(value),
+    errorMsg: 'Please enter a valid email',
+  },
+  {
+    fieldName: 'name',
+    isValid: false,
+    validate: (value: string): boolean => validateLogin(value),
+    errorMsg: 'Please enter a valid name',
+  },
+  {
+    fieldName: 'cardNumber',
+    isValid: false,
+    validate: (value: string): boolean => validateLogin(value),
+    errorMsg: 'Please enter a valid card number',
+  },
+  {
+    fieldName: 'cvvNumber',
+    isValid: false,
+    validate: (value: string): boolean => validateLogin(value),
+    errorMsg: 'Please enter a valid CVV number',
+  },
+  {
+    fieldName: 'expirationDate',
+    isValid: false,
+    validate: (value: string): boolean => validateLogin(value),
+    errorMsg: 'Please enter a valid expiration date',
+  },
+];
+
+const validateAmount = (value: string) => {
+  return !!Number(value);
+};
+
+const validateSelectedPet = (value: string) => {
+  return !!value;
+}
+
+const donationFormInputsDataStep1 = [
+  {
+    fieldName: 'otherAmount',
+    isValid: false,
+    validate: (value: string): boolean => validateAmount(value),
+    errorMsg: 'Please enter a valid amount',
+  },
+  {
+    fieldName: 'selectedPet',
+    isValid: false,
+    validate: (value: string): boolean => validateSelectedPet(value),
+    errorMsg: 'Please select a pet',
+  },
+]
+
+const donationChipsElements = document.querySelectorAll<HTMLElement>('.donation-dialog__chips--container button');
+const donationChipsInputElement = document.querySelector<HTMLInputElement>('#donationsAmount');
+const otherAmountInputElement = document.querySelector<HTMLInputElement>('#otherAmount');
+const step1FormElement = document.querySelector<HTMLFormElement>('#step1Form');
+const step1NextBtnElement = document.querySelector<HTMLButtonElement>('#nextBtnStep1');
+const errorContainerElement = document.querySelector<HTMLElement>('.error-container.subheader');
+const selectedPetsElements = document.querySelectorAll<HTMLElement>('.select-pet__list--item');
+const selectedPetsInputElement = document.querySelector<HTMLInputElement>('#selectedPet');
+
+
+// STEP 1
+donationFormInputsDataStep1.forEach(({fieldName, validate, isValid, errorMsg}) => {
+  const inputElement = document.querySelector<HTMLInputElement>(`#${fieldName}`);
+
+  if (inputElement) {
+    donationChipsElements.forEach((chipElement) => {
+      chipElement.addEventListener('click', () => {
+        donationChipsElements.forEach((chip) => chip.classList.remove('active'));
+        chipElement.classList.add('active');
+    
+        const value = chipElement.id;
+        
+        otherAmountInputElement!.value = '';
+        donationChipsInputElement!.value = value;
+    
+        donationFormData.step_1.donationAmount = value;
+      })
+    });
+    
+    otherAmountInputElement!.addEventListener("blur", (e) => {
+      donationChipsElements.forEach((chipElement) => chipElement.classList.remove("active"));
+
+      const {value} = e.target as HTMLInputElement;
+
+      isValid = validate(value);
+
+      donationChipsInputElement!.value = otherAmountInputElement!.value;
+      donationFormData.step_1.donationAmount = otherAmountInputElement!.value;
+
+      showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1 as any);
+
+      const formInputsValidity = donationFormInputsDataStep1.map(elem => elem.isValid);
+      checkFormValidity(formInputsValidity, step1NextBtnElement as HTMLButtonElement);
+
+      errorContainerElement!.textContent = '';
+    });
+
+    selectedPetsElements.forEach((pet) => {
+      pet.addEventListener('click', (e) => {
+        const value = pet.id;
+
+        if (fieldName === 'selectedPet') {
+          isValid = validateSelectedPet(value);
+          console.log(inputElement);
+  
+          donationFormData.step_1.selectedPet = value;
+          selectedPetsInputElement!.value = value;
+  
+          showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1 as any);
+  
+          const formInputsValidity = donationFormInputsDataStep1.map(elem => elem.isValid);
+          checkFormValidity(formInputsValidity, step1NextBtnElement as HTMLButtonElement);
+  
+          console.log(donationFormInputsDataStep1);
+  
+          errorContainerElement!.textContent = '';
+        }
+    
+      })
+    })
+    
+    step1FormElement?.addEventListener('submit', (e) => {
+      e.preventDefault();
+    
+      goToNextStep();
+      checkTheStepNum();
+    })
+  }
+  
+})
+
+
 
 // SELECT FUNCTIONALITY
 

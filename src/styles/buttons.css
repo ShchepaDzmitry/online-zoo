@@ -28,6 +28,10 @@
     color: var(--white);
 }
 
+.button.turquoise.active {
+    background-color: var(--turquoise-hovered);
+}
+
 .button.turquoise:hover {
     background-color: var(--turquoise-hovered);
 }

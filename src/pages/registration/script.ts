@@ -3,6 +3,7 @@ import { RegistrationFormData } from "./interfaces/registrationFormData";
 import { RegistrationFormInput } from "./interfaces/registrationFormInput";
 import { validateLogin, validatePassword } from "../../utils/validationUtils";
 import { showErrorMessage, checkFormValidity, clearErrorMessage } from "../../utils/handleFormInputUtils";
+import { SuccessLoginResponse } from "../sign-in/types/loginTypes";
 
 const signUpBtnElement = document.getElementById('signUp') as HTMLButtonElement;
 
@@ -10,31 +11,31 @@ const registrationFormInputsData: RegistrationFormInput[] = [
     {
         fieldName: 'login',
         isValid: false,
-        validate: (value): boolean => validateLogin(value),
+        validate: (value: string): boolean => validateLogin(value),
         errorMsg: 'Please enter a valid login',
     },
     {
         fieldName: 'password',
         isValid: false,
-        validate: (value): boolean => validatePassword(value),
+        validate: (value: string): boolean => validatePassword(value),
         errorMsg: 'Please enter a valid password',
     },
     {
         fieldName: 'confirmPassword',
         isValid: false,
-        validate: (value): boolean => validatePasswordConfirmation(value),
+        validate: (value: string): boolean => validatePasswordConfirmation(value),
         errorMsg: 'Your passwords do not match',
     },
     {
         fieldName: 'name',
         isValid: false,
-        validate: (value): boolean => validateName(value),
+        validate: (value: string): boolean => validateName(value),
         errorMsg: 'Please enter a valid name',
     },
     {
         fieldName: 'email',
         isValid: false,
-        validate: (value): boolean => validateEmail(value),
+        validate: (value: string): boolean => validateEmail(value),
         errorMsg: 'Please enter a valid email',
     },
 ];
@@ -89,15 +90,16 @@ const errorContainerElement = document.querySelector<HTMLElement>('.error-contai
 signUpBtnElement?.addEventListener('click', async (e) => {
     e.preventDefault();
     try {
-        await postData(formData, 'auth/register');
-
+        const response = await postData<SuccessLoginResponse>(formData, 'auth/register');
+        if (response.message === 'User registered successfully') {
+            window.location.href = '../landing/index.html';
+            localStorage.setItem("auth_token", response.data.access_token);
+            localStorage.setItem("username", formData.login);
+            localStorage.setItem("email", formData.email);
+            localStorage.setItem("name", formData.name);
+        }
     } catch(error) {
         errorContainerElement!.textContent = (error as Error).message;
 
     }
 });
-
-
-// authFormContainer?.addEventListener('submit', (e) => {
-//     e.preventDefault();
-// })

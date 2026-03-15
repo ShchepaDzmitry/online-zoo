@@ -176,19 +176,26 @@
             </button>
             <img src="../../assets/images/touch_the_animal.png" alt="Touch the animal image">
         </section>
-        <dialog class="donation-dialog__container">
+        <dialog class="donation-dialog__container" open="true">
             <i class="fa-solid fa-close close-button" id="makeYourDonationCloseBtn"></i>
             <h4>make your donation</h4>
             <div class="donation-dialog__info" id="step1">
                 <p class="donation-dialog__info--text">Donation information:</p>
                 <hr class="donation-dialog__line">
-                <form class="donation-dialog__form">
+                <form class="donation-dialog__form" id="step1Form">
                     <div class="donation__form--container">
                         <p class="donation-chips-text"><span class="required">*</span>Choose your donation amount: </label>
-                        <div class="donation-dialog__chips--container"></div>
+                        <div class="">
+                            <div class="donation-dialog__chips--container"></div>
+                            <input type="hidden" id="donationsAmount" required>
+                        </div>
                         <div class="other-amount-container form-group">
                             <label for="otherAmount" class="other-amount__label button turquoise">other amount</label>
                             <input id="otherAmount" type="text"/>
+                            <div class="error-container">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                <span class="error-message"></span>
+                            </div>
                         </div>
                         <div class="select-item__container">
                             <p class="button turquoise select-pet__label">for special pet</p>
@@ -209,11 +216,20 @@
                                 </ul>
                             </div>
                         </div>
+                        <input id="selectedPet" type="text" hidden/>
+                        <div class="error-container subheader">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <span class="error-message"></span>
+                        </div>
                     </div>
                     <div class="donation-dialog__checkbox-container">
                         <input type="checkbox" id="reccuringGift">
                         <label for="reccuringGift">Make this a monthly recurring gift</label>
                     </div>
+                    <button class="button turquoise" id="nextBtnStep1" type="submit" disabled>
+                        <span>next</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </form>
             </div>
             <div class="donation-dialog__info" id="step2">
@@ -295,7 +311,7 @@
                     <li class="step-list__item"></li>
                 </ul>
                 <button class="button blank-turquoise" id="backBtn">Back</button>
-                <button class="button turquoise" id="nextBtn">
+                <button class="button turquoise" id="nextBtn" style="display: none;">
                     <span>next</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </button>
