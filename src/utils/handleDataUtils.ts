@@ -52,8 +52,10 @@ export async function postData<T>(body: RegistrationFormData | LoginFormData, ad
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
+      const errorMessage = await response.json();
+      throw new Error(`HTTP error: ${response.status}, ${errorMessage.error}`);
     }
+
     return response.json();
   } catch (error) {
     throw error;

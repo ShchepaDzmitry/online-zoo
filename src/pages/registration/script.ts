@@ -5,8 +5,6 @@ import { validateLogin, validatePassword } from "../../utils/validationUtils";
 import { showErrorMessage, checkFormValidity, clearErrorMessage } from "../../utils/handleFormInputUtils";
 
 const signUpBtnElement = document.getElementById('signUp') as HTMLButtonElement;
-const authFormContainer = document.querySelector<HTMLFormElement>('.authorization-form');
-
 
 const registrationFormInputsData: RegistrationFormInput[] = [
     {
@@ -64,6 +62,8 @@ registrationFormInputsData.forEach(({fieldName, validate, errorMsg, isValid}) =>
 
             const formInputsValidity = registrationFormInputsData.map(elem => elem.isValid);
             checkFormValidity(formInputsValidity, signUpBtnElement);
+
+            errorContainerElement!.textContent = '';
         });
 
         inputElement.addEventListener('focus', () => {
@@ -84,11 +84,17 @@ const validateEmail = (value: string): boolean => {
     return value.length >= 3 && /^[A-Za-z]/.test(value);
 };
 
+const errorContainerElement = document.querySelector<HTMLElement>('.error-container.subheader');
+
 signUpBtnElement?.addEventListener('click', async (e) => {
     e.preventDefault();
-    const response = await postData(formData, 'auth/register');
-    // window.location.href = '../landing/index.html';
-    console.log(response)
+    try {
+        await postData(formData, 'auth/register');
+
+    } catch(error) {
+        errorContainerElement!.textContent = (error as Error).message;
+
+    }
 });
 
 

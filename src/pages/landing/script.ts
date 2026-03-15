@@ -12,6 +12,7 @@ import { UserProfile } from '../sign-in/types/loginTypes';
 import { PetApiResponse, Pet } from './interfaces/pet';
 import { showLoader } from '../../utils/loaderUtils';
 import { FeedBackApiResponse, Feedback } from './interfaces/feedback';
+import { closeModalDialog } from '../../utils/closeModalUtils';
 
 const animalCarouselElement = document.querySelector<HTMLElement>('.carousel');
 const payAndFeedCardsElement = document.querySelector<HTMLElement>('.pay-and-feed__cards');
@@ -214,11 +215,7 @@ loginUserInfoElement?.addEventListener('click', (e)=> {
   }
 });
 
-userLoginModalCloseBtnElement?.addEventListener('click', () => {
-  loginUserModalContainer!.style.display = 'none';
-  document.body.style.overflow = 'auto';
-  document.querySelector<HTMLElement>('.overlay')!.style.display = 'none';
-})
+closeModalDialog(userLoginModalCloseBtnElement as HTMLElement, loginUserModalContainer as HTMLElement);
 
 const signOutUser = () => {
   localStorage.clear();

@@ -43,6 +43,8 @@ loginFormInputsData.forEach(({fieldName, validate, isValid, errorMsg}) => {
             const inputFormValidity = loginFormInputsData.map((form: LoginFormInput) => form.isValid);
 
             checkFormValidity(inputFormValidity, signInBtnElement as HTMLButtonElement);
+
+            errorContainerElement!.textContent = '';
         });
 
         inputElement.addEventListener('focus', () => {
@@ -52,15 +54,20 @@ loginFormInputsData.forEach(({fieldName, validate, isValid, errorMsg}) => {
     
 })
 
+const errorContainerElement = document.querySelector<HTMLElement>('.error-container.subheader');
+
 signInBtnElement?.addEventListener('click', async (e: Event) => {
     e.preventDefault();
-    const response = await postData<SuccessLoginResponse>(loginFormData, 'auth/login');
+    
+    try {
+        const response = await postData<SuccessLoginResponse>(loginFormData, 'auth/login');
 
     if (response.message === 'Login successful') {
         window.location.href = '../landing/index.html';
         localStorage.setItem("auth_token", response.data.access_token);
         localStorage.setItem("username", loginFormData.login);
-        localStorage.setItem("email", loginFormData.e);
     }
-    console.log(response);
+    } catch(error) {
+        errorContainerElement!.textContent = (error as Error).message;
+    }
 })
