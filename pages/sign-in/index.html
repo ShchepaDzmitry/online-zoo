@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Zoo</title>
+    <title>Sign In</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script type="module" crossorigin src="/online-zoo/assets/landing-V3OVqCZP.js"></script>
+  <script type="module" crossorigin src="/online-zoo/assets/signIn-Bgiq7w73.js"></script>
   <link rel="modulepreload" crossorigin href="/online-zoo/assets/buttons-CH7OIFB-.js">
-  <link rel="modulepreload" crossorigin href="/online-zoo/assets/animals-CV2fTrRu.js">
-  <link rel="modulepreload" crossorigin href="/online-zoo/assets/headerNavHighlightsUtils-BD3-y1ED.js">
+  <link rel="modulepreload" crossorigin href="/online-zoo/assets/validationUtils-atAc5uyD.js">
   <link rel="modulepreload" crossorigin href="/online-zoo/assets/handleDataUtils-MkUHwuzO.js">
   <link rel="modulepreload" crossorigin href="/online-zoo/assets/handleFormInputUtils-BpVNkJOq.js">
   <link rel="stylesheet" crossorigin href="/online-zoo/assets/buttons-HLet5aSB.css">
-  <link rel="stylesheet" crossorigin href="/online-zoo/assets/landing-ftVEd6In.css">
+  <link rel="stylesheet" crossorigin href="/online-zoo/assets/validationUtils-xViOy4VH.css">
   <link rel="stylesheet" crossorigin href="/online-zoo/assets/style-CbGq06Rt.css">
 </head>
 <body>
@@ -24,9 +23,9 @@
         <img src="/online-zoo/assets/Logo-BNU7I8YN.svg" alt="Logo" class="logo">
         <nav class="navigation">
             <ul class="list">
-                <li class="nav-item"><a href="#about">about</a></li>
+                <li class="nav-item"><a href="../landing/index.html">about</a></li>
                 <li class="nav-item"><a href="../map/index.html">map</a></li>
-                <li class="nav-item"><a href="../zoos/?id=1">zoos</a></li>
+                <li class="nav-item"><a href="../zoos/?id=animal_1">zoos</a></li>
                 <li class="nav-item"><a href="../contact/index.html">contact us</a></li>
                 <li class="nav-item"><a href="#design">design</a></li>
             </ul>
@@ -35,296 +34,47 @@
                 <li><a href="https://www.instagram.com/"><img src="data:image/png;base64,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" alt="instagram logo"></a></li>
                 <li><a href="https://www.facebook.com/"><img src="data:image/png;base64,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" alt="facebook logo"></a></li>
             </ul>
-            <div class="login-user__container">
-                <div class="login-user__info">
-                    <i class="fa-solid fa-user"></i>
-                    <p class="user-login"></p>
-                </div>
-                <div class="login-user__modal">
-                    <i class="fa-solid fa-close close-button" id="userLoginModalCloseBtn"></i>
-                    <div class="login-user__modal--logged-in" id="isLoggedIn">
-                        <p class="profile-information subheader">Profile information</p>
-                        <div class="login-user__profile-info">
-                            <div class="login-user__profile-info--panel">
-                                <span>User name: </span>
-                                <p class="login-user__profile-info--name"></p>
-                            </div>
-                            <div class="login-user__profile-info--panel">
-                                <span>User email: </span>
-                                <p class="login-user__profile-info--email"></p>
-                            </div>
-                        </div> 
-                        <button class="sign-out button turquoise" id="signOutBtn">sign out</button>
-                    </div>
-                    <div class="login-user__modal--logged-out" id="isLoggedOut">
-                        <p class="chose-an-action subheader">Welcome to Online ZOO!</p>
-                        <p>Please start the jorney or join us!</p>
-                        <div class="logged-out__btn-container">
-                            <a class="sign-in button turquoise" href="../sign-in/index.html">sign in</a>
-                            <a class="register button turquoise" href="../registration/index.html">register</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="user">
+                <i class="fa-solid fa-user"></i>
+                
             </div>
         </nav>
     </header>
     <main>
-        <section class="introduction container">
-            <h2>watch your favorite animal online</h2>
-            <p>Explore the exciting and mysterious world of wild animals in a natural setting without leaving your home.</p>
-            <a href="../zoos/?id=1" class="button orange view-live-cam">
-                <span>view live cam</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </section>
-        <section class="welcome container">
-            <div class="top panel">
-                <div>
-                    <h3 class="turquoise">welcome to the online zoo!</h3>
-                    <p>On our website, using live webcams, fans of all ages can observe various animals. Among them, are Giant pandas, eagles, alligators, forest gorillas, African lions, and others. It is the whole natural world in real-time in front of our cameras. We hope you will enjoy watching closely and explore animals’ behavior and habitats! Note: animals are not always on view on cameras, so please check back if you don't see anything</p>
+        <div class="form-container">
+            <h4 class="white">please sign in</h4>
+            <form class="authorization-form">
+                <div class="form-group">
+                    <label for="login"><span class="required">*</span>Your Login</label>
+                    <input id="login" type="text" placeholder="Enter your login" required/>
+                    <div class="error-container">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span class="error-message"></span>
+                    </div>
                 </div>
-                <img src="/online-zoo/assets/welcome-Bm20sNFL.png" alt="Welcome Zoo Logo">
-            </div>
-            <div class="bottom panel">
-                <img src="/online-zoo/assets/eagles-K_lfcQ9O.png" alt="Eagles">
-                <div>
-                    <h3 class="turquoise">how we work</h3>
-                    <p>Online Zoo is a nonprofit committed to inspiring awareness and preservation of nature and wild animals in our zoo and worldwide. Every day, our experts work to safeguard the health and wellness of the animals. To continue these efforts, we need your help. We're so grateful to our numerous supporters. All donations, large and small, go a long way to the conservation efforts of our pets.</p>
+        
+                <div class="form-group">
+                    <label for="password"><span class="required">*</span>Your Password</label>
+                    <input id="password" type="password" placeholder="Enter your password" required/>
+                    <div class="error-container">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <span class="error-message"></span>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section class="dark container donations">
-            <div class="large">
-                <h4>your donations makes a difference!</h4>
-                <p>The Online Zoo's animal webcams are some of the most famous on the internet. Tune in to watch your favourite animals — live, 24/7!</p>
-            </div>
-            <div class="small">
-                <p class="subheader">Quick Donate</p>
-                <button class="button outline-with-orange" id="donationsSectionBtn">
-                    <span>$ donation amount</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </section>
-        <section class="friends">
-            <div class="panel">
-                <h3 class="turquoise">meet some our pets</h3>
-                <p class="subheader">Do you have a special place in your heart for animals? Who are your favorites? Perhaps you'd like to donate to special ones or all our pets? We think it's important for you to choose how your donation is used. </p>
-            </div>
-            <div>
-                <div class="action-buttons action-buttons--dark">
-                    <i class="fa-solid fa-arrow-left" id="carouselLeftButton"></i>
-                    <i class="fa-solid fa-arrow-right" id="carouselRightButton"></i>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel"></div>
-                </div>
-            </div>
-            <a class="button outline-dark" href="../zoos/?id=1">
-                <span>choose your favourite</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </section>
-        <section class="pay-and-feed container dark">
-            <h3>pay and feed</h3>
-            <div class="pay-and-feed__cards">
-            </div>
-            <button class="button orange feed">
-                <span>donate now</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </section>
-        <section class="feedback dark">
-            <div class="feedback__top-container">
-                <div class="feedback__left-panel">
-                    <h3>what our users think</h3>
-                    <p class="subheader">We are continuously striving to improve the experiences of our future guests. Below you can leave your own feedback, or simply view feedback from past clients. </p>
-                </div>
-                <div class="feedback__right-panel">
-                </div>
-            </div>
-            <div class="action-buttons action-buttons--light">
-                <i class="fa-solid fa-arrow-left" id="feedbackLeftButton"></i>
-                <i class="fa-solid fa-arrow-right" id="feedbackRightButton"></i>
-            </div>
-            <button class="button outline-light">
-                <span>leave feedback</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </section>
-        <section class="container light care-for">
-            <div class="top-panel">
-                <h3 class="turquoise">care for the animals you love</h3>
-                <p class="subheader">You can help to look after the animals you love with your gift today</p>
-            </div>
-            <div class="bottom-panel">
+
+                <div class="error-container subheader"></div>
                 
-            </div>
-            <div class="overlay"></div>
-            <div class="feed-dialog">
-                <div class="image-container">
-                    <i class="fa-solid fa-close close-button" id="feedDonationCloseBtn"></i>
-                </div>
-                <div class="text-action">
-                    <div class="text-container">
-                        <h3 class="orange">together we care, save and protect!</h3>
-                        <p>Your most generous gift not only cares for countless animals, but it also offers hope and a vital lifeline to the world’s most endangered wildlife relying on us to survive.</p>
-                    </div>
-                    <div class="action-container">
-                    </div>
-                </div>
-            </div>
-            <button class="button outline-dark">
-                <span>choose your favourite</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <img src="/online-zoo/assets/touch_the_animal-CXp4bwoQ.png" alt="Touch the animal image">
-        </section>
-        <dialog class="donation-dialog__container" open="true">
-            <i class="fa-solid fa-close close-button" id="makeYourDonationCloseBtn"></i>
-            <h4>make your donation</h4>
-            <div class="donation-dialog__info" id="step1">
-                <p class="donation-dialog__info--text">Donation information:</p>
-                <hr class="donation-dialog__line">
-                <form class="donation-dialog__form" id="step1Form">
-                    <div class="donation__form--container">
-                        <p class="donation-chips-text"><span class="required">*</span>Choose your donation amount: </label>
-                        <div class="">
-                            <div class="donation-dialog__chips--container"></div>
-                            <input type="hidden" id="donationsAmount" required>
-                        </div>
-                        <div class="other-amount-container form-group">
-                            <label for="otherAmount" class="other-amount__label button turquoise">other amount</label>
-                            <input id="otherAmount" type="text"/>
-                            <div class="error-container">
-                                <i class="fa-solid fa-circle-exclamation"></i>
-                                <span class="error-message"></span>
-                            </div>
-                        </div>
-                        <div class="select-item__container">
-                            <p class="button turquoise select-pet__label">for special pet</p>
-                            <div class="select-item__toggle-wrapper">
-                                <button class="select-pet__container--trigger" type="button" id="petsDropdownBtn">
-                                    <span>Choose your favourite</span>
-                                    <i class="fa-solid fa-angle-down"></i>
-                                </button>
-                                <ul id="selectPet" class="select-pet__list">
-                                    <li class="select-pet__list--item" id="panda">Lukas the Panda</li>
-                                    <li class="select-pet__list--item" id="lemur">Andy the Lemur</li>
-                                    <li class="select-pet__list--item" id="gorilla">Glen the Gorilla</li>
-                                    <li class="select-pet__list--item" id="alligator">Mike the Alligator</li>
-                                    <li class="select-pet__list--item" id="eagles">Sam & Lora the eagles family</li>
-                                    <li class="select-pet__list--item" id="koala">Liz the Koala</li>
-                                    <li class="select-pet__list--item" id="lion">Shake the Lion</li>
-                                    <li class="select-pet__list--item" id="tiger">Senja the Tiger</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <input id="selectedPet" type="text" hidden/>
-                        <div class="error-container subheader">
-                            <i class="fa-solid fa-circle-exclamation"></i>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-                    <div class="donation-dialog__checkbox-container">
-                        <input type="checkbox" id="reccuringGift">
-                        <label for="reccuringGift">Make this a monthly recurring gift</label>
-                    </div>
-                    <button class="button turquoise" id="nextBtnStep1" type="submit" disabled>
-                        <span>next</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                <div class="action-container">
+                    <button class="button turquoise cancel">
+                        <span>cancel</span>
                     </button>
-                </form>
-            </div>
-            <div class="donation-dialog__info" id="step2">
-                <p class="donation-dialog__info--text">Billing information:</p>
-                <hr class="donation-dialog__line">
-                <form class="donation-dialog__form">
-                    <div class="form-group name">
-                        <label for="name"><span class="required">*</span>Your Name</label>
-                        <input id="name" type="text" placeholder="First and last name" required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><span class="required">*</span>Your Email Address</label>
-                        <input id="email" type="email" placeholder="Enter your email" required/>
-                    </div>
-                </form>
-                <p class="email-info-text">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
-            </div>
-            <div class="donation-dialog__info" id="step3">
-                <p class="donation-dialog__info--text">Payment information:</p>
-                <hr class="donation-dialog__line">
-                <form class="donation-dialog__form">
-                    <div class="donation-dialog__card-container">
-                        <div class="form-group form-group__card">
-                            <label for="cardNumber"><span class="required">*</span>Credit Card Number</label>
-                            <input id="cardNumber" type="text" required/>
-                        </div>
-                        <div class="form-group form-group__cvv">
-                            <label for="cvvNumber"><span class="required">*</span>CVV Number</label>
-                            <input id="cvvNumber" type="text" required/>
-                        </div>
-                    </div>
-                    <p class="donation-chips-text"><span class="required">*</span>Expiration date: </label>
-                    <div class="select-item__container">
-                        <div class="select-item__container--month">
-                            <button class="select-month__container--trigger" type="button" id="monthDropdownBtn">
-                                <span>Month</span>
-                                <i class="fa-solid fa-angle-down"></i>
-                            </button>
-                            <ul id="selectMonth" class="select-month__list">
-                                <li class="select-month__list--item" id="january_1">01</li>
-                                <li class="select-month__list--item" id="february_2">02</li>
-                                <li class="select-month__list--item" id="march_3">03</li>
-                                <li class="select-month__list--item" id="april_4">04</li>
-                                <li class="select-month__list--item" id="may_5">05</li>
-                                <li class="select-month__list--item" id="june_6">06</li>
-                                <li class="select-month__list--item" id="july_7">07</li>
-                                <li class="select-month__list--item" id="august_8">08</li>
-                                <li class="select-month__list--item" id="september_9">09</li>
-                                <li class="select-month__list--item" id="october_10">10</li>
-                                <li class="select-month__list--item" id="november_11">11</li>
-                                <li class="select-month__list--item" id="december_12">12</li>
-                            </ul>
-                        </div>
-                        <div class="select-item__container--year">
-                            <button class="select-year__container--trigger" type="button" id="yearDropdownBtn">
-                                <span>Year</span>
-                                <i class="fa-solid fa-angle-down"></i>
-                            </button>
-                            <ul id="selectYear" class="select-year__list">
-                                <li class="select-year__list--item" id="2026">2026</li>
-                                <li class="select-year__list--item" id="2027">2027</li>
-                                <li class="select-year__list--item" id="2028">2028</li>
-                                <li class="select-year__list--item" id="2029">2029</li>
-                                <li class="select-year__list--item" id="2030">2030</li>
-                                <li class="select-year__list--item" id="2031">2031</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="donation-dialog__checkbox-container">
-                        <input type="checkbox" id="rememberCard" />
-                        <label for="rememberCard">Save card info for future donations</label>
-                    </div>
-                </form>
-            </div>
-            <div class="donation-dialog__bottom-panel">
-                <ul class="step-list">
-                    <li class="step-list__item"></li>
-                    <li class="step-list__item"></li>
-                    <li class="step-list__item"></li>
-                </ul>
-                <button class="button blank-turquoise" id="backBtn">Back</button>
-                <button class="button turquoise" id="nextBtn" style="display: none;">
-                    <span>next</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <button class="button orange" id="completeDonationBtn">
-                    <span>complete donation</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-            </div>
-        </dialog>
+
+                    <button type="submit" class="button turquoise" id="signInBtn" disabled>
+                        <span class="sign">sign in</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </main>
     <footer class="container dark">
         <div class="top-panel">
@@ -335,9 +85,9 @@
             </ul>
             <nav>
                 <ul class="list">
-                    <li><a href="#about">about</a></li>
+                    <li><a href="../landing/index.html">about</a></li>
                     <li><a href="../map/index.html">map</a></li>
-                    <li><a href="../zoos/?id=1">zoos</a></li>
+                    <li><a href="../zoos/?id=animal_1">zoos</a></li>
                     <li><a href="../contact/index.html">contact us</a></li>
                 </ul>
             </nav>

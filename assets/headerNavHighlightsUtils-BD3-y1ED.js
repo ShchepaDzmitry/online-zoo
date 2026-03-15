@@ -1,0 +1,1 @@
+const n=a=>{const t=document.querySelectorAll(".nav-item a"),e=t[a];e.classList.add("active"),t.forEach(s=>{s.addEventListener("mouseenter",()=>{e.classList.remove("active")}),s.addEventListener("mouseleave",()=>{e.classList.add("active")})})};export{n as h};
