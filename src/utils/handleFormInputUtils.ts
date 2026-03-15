@@ -1,7 +1,10 @@
+import { DonationFormInput } from "../pages/landing/interfaces/donationFormInput";
 import { RegistrationFormInput } from "../pages/registration/interfaces/registrationFormInput";
 import { LoginFormInput } from "../pages/sign-in/interfaces/loginFormInputs";
 
-export const showErrorMessage = (isValid: boolean, errorMsg: string, inputFieldElem: HTMLElement, formInputData: Array<RegistrationFormInput | LoginFormInput>): void => {
+type FormInput = RegistrationFormInput | LoginFormInput | DonationFormInput;
+
+export const showErrorMessage = (isValid: boolean, errorMsg: string, inputFieldElem: HTMLElement, formInputData: Array<FormInput>): void => {
     const errorMessageTextElement = inputFieldElem.nextElementSibling!.lastElementChild;
     const errorMessageIconElement = inputFieldElem.nextElementSibling!.firstElementChild as HTMLElement;
 
@@ -11,12 +14,12 @@ export const showErrorMessage = (isValid: boolean, errorMsg: string, inputFieldE
         errorMessageTextElement.textContent = errorMsg;
         errorMessageIconElement!.style.display = 'inline';
         inputFieldElem.classList.add('error')
-        formInputData.find((form: RegistrationFormInput | LoginFormInput) => form.fieldName === inputFieldElem.id)!.isValid = false;
+        formInputData.find((form: FormInput) => form.fieldName === inputFieldElem.id)!.isValid = false;
     } else {
         errorMessageIconElement!.style.display = 'none';
         errorMessageTextElement!.textContent = '';
         inputFieldElem.classList.remove('error')
-        formInputData.find((form: RegistrationFormInput | LoginFormInput) => form.fieldName === inputFieldElem.id)!.isValid = true;
+        formInputData.find((form: FormInput) => form.fieldName === inputFieldElem.id)!.isValid = true;
     }
 };
 

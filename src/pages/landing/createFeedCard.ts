@@ -1,4 +1,9 @@
-const createFeedCard = (animal) => {
+export interface AnimalFeedCard {
+    feedCardImgPath: string;
+    feedCardDescription: string;
+}
+
+const createFeedCard = (animal: AnimalFeedCard) => {
     return `
         <div class="feedcard">
             <img src="${animal.feedCardImgPath}" alt="feedcard">

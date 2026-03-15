@@ -13,8 +13,8 @@ import { PetApiResponse, Pet } from './interfaces/pet';
 import { showLoader } from '../../utils/loaderUtils';
 import { FeedBackApiResponse, Feedback } from './interfaces/feedback';
 import { closeModalDialog } from '../../utils/closeModalUtils';
-import { validateLogin } from '../../utils/validationUtils';
 import { checkFormValidity, showErrorMessage } from '../../utils/handleFormInputUtils';
+import { DonationFormInput } from './interfaces/donationFormInput';
 
 const animalCarouselElement = document.querySelector<HTMLElement>('.carousel');
 const payAndFeedCardsElement = document.querySelector<HTMLElement>('.pay-and-feed__cards');
@@ -152,40 +152,6 @@ let donationFormData = {
   }
 };
 
-const donationFormInputsData = [
- 
-  {
-    fieldName: 'email',
-    isValid: false,
-    validate: (value: string): boolean => validateLogin(value),
-    errorMsg: 'Please enter a valid email',
-  },
-  {
-    fieldName: 'name',
-    isValid: false,
-    validate: (value: string): boolean => validateLogin(value),
-    errorMsg: 'Please enter a valid name',
-  },
-  {
-    fieldName: 'cardNumber',
-    isValid: false,
-    validate: (value: string): boolean => validateLogin(value),
-    errorMsg: 'Please enter a valid card number',
-  },
-  {
-    fieldName: 'cvvNumber',
-    isValid: false,
-    validate: (value: string): boolean => validateLogin(value),
-    errorMsg: 'Please enter a valid CVV number',
-  },
-  {
-    fieldName: 'expirationDate',
-    isValid: false,
-    validate: (value: string): boolean => validateLogin(value),
-    errorMsg: 'Please enter a valid expiration date',
-  },
-];
-
 const validateAmount = (value: string) => {
   return !!Number(value);
 };
@@ -194,7 +160,7 @@ const validateSelectedPet = (value: string) => {
   return !!value;
 }
 
-const donationFormInputsDataStep1 = [
+const donationFormInputsDataStep1: DonationFormInput[] = [
   {
     fieldName: 'otherAmount',
     isValid: false,
@@ -248,7 +214,7 @@ donationFormInputsDataStep1.forEach(({fieldName, validate, isValid, errorMsg}) =
       donationChipsInputElement!.value = otherAmountInputElement!.value;
       donationFormData.step_1.donationAmount = otherAmountInputElement!.value;
 
-      showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1 as any);
+      showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1);
 
       const formInputsValidity = donationFormInputsDataStep1.map(elem => elem.isValid);
       checkFormValidity(formInputsValidity, step1NextBtnElement as HTMLButtonElement);
@@ -257,7 +223,7 @@ donationFormInputsDataStep1.forEach(({fieldName, validate, isValid, errorMsg}) =
     });
 
     selectedPetsElements.forEach((pet) => {
-      pet.addEventListener('click', (e) => {
+      pet.addEventListener('click', () => {
         const value = pet.id;
 
         if (fieldName === 'selectedPet') {
@@ -267,7 +233,7 @@ donationFormInputsDataStep1.forEach(({fieldName, validate, isValid, errorMsg}) =
           donationFormData.step_1.selectedPet = value;
           selectedPetsInputElement!.value = value;
   
-          showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1 as any);
+          showErrorMessage(isValid, errorMsg, inputElement, donationFormInputsDataStep1);
   
           const formInputsValidity = donationFormInputsDataStep1.map(elem => elem.isValid);
           checkFormValidity(formInputsValidity, step1NextBtnElement as HTMLButtonElement);

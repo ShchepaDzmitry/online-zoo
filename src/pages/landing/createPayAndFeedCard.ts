@@ -1,4 +1,13 @@
-const createPayAndFeedCard = (payAndFeedCard) => {
+export interface PayAndFeedCard {
+    image: string;
+    number: string;
+    icon: string;
+    heading: string;
+    description: string;
+}
+
+
+const createPayAndFeedCard = (payAndFeedCard: PayAndFeedCard) => {
     return  `
     <div>
         <div class="pay-and-feed__header">
