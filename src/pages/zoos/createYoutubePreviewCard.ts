@@ -1,4 +1,4 @@
-const createYoutubePreviewCard = (videoInfo, selectedId) => {
+const createYoutubePreviewCard = (videoInfo: {id: string, index: string}, selectedId: string) => {
     return  `
     <div class="youtube-preview-thumbnail-container" ${videoInfo.id === selectedId ? 'selected-yt-preview' : ''} id="${videoInfo.id}">
     <div class="cam-container">

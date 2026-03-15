@@ -1,16 +1,22 @@
-import animals from "../../data/animals";
-import {renderCarouselArray, moveLeft, moveRight} from "../../utils/carouselUtils";
-import createYoutubePreviewCard from './createYoutubePreviewCard'
 import highlightNavElements from "../../utils/headerNavHighlightsUtils";
+import { getData } from "../../utils/handleDataUtils";
+import { AnimalApiResponse } from "./interfaces/animal";
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
+const animalImagesData: Array<{id: number, imgPath: string, videoId: string}> = [
+    {id: 1, imgPath: '../../assets/images/did_you_know_panda.png', videoId: 'gnEuhfyZPPQ'},
+    {id: 2, imgPath: '../../assets/images/did_you_know_lemur.png', videoId: '2M1BmfHlOEI'},
+    {id: 3, imgPath: '../../assets/images/did_you_know_gorilla.png', videoId: 'yfSyjwY6zSQ'},
+    {id: 5, imgPath: '../../assets/images/did_you_know_eagles.png', videoId: '41eq4VzCYc4'},
+];
+   
 const didYouKnowTextElement = document.getElementById('didYouKnow');
 const youtubePreviewContainerElement = document.getElementById('youtubePreviewContainer');
-const donationSectionHeadingElement = document.getElementById('donationSectionHeading');
-const donationSectionTextElement = document.getElementById('donationSectionText');
-const zoosPageHeadingElement = document.getElementById('zoosPageHeading');
+// const donationSectionHeadingElement = document.getElementById('donationSectionHeading');
+// const donationSectionTextElement = document.getElementById('donationSectionText');
+// const zoosPageHeadingElement = document.getElementById('zoosPageHeading');
 const commonNameElement = document.getElementById('commonName');
 const scientificNameElement = document.getElementById('scientificName');
 const typeElement = document.getElementById('type');
@@ -18,15 +24,30 @@ const sizeElement = document.getElementById('size');
 const dietElement = document.getElementById('diet');
 const habitatElement = document.getElementById('habitat');
 const rangeElement = document.getElementById('range');
-const didYouKnowImgPathElement = document.getElementById('didYouKnowImgPath');
+const didYouKnowImgPathElement = document.getElementById('didYouKnowImgPath') as HTMLImageElement;
 const didYouKnowDescriptionElement = document.getElementById('didYouKnowDescription');
 
+const renderDidYouKnowSection = (animal: AnimalApiResponse) => {
+    const {size, commonName, description, diet, detailedDescription, habitat, scientificName, range, type, id} = animal.data;
+    const additionalAnimalInfo: {id: number, imgPath: string, videoId: string} | undefined = animalImagesData.find((animal) => animal!.id === id);
+    console.log(animalImagesData, additionalAnimalInfo)
 
+    sizeElement!.textContent = size;
+    dietElement!.textContent = diet;
+    habitatElement!.textContent = habitat;
+    rangeElement!.textContent = range;
+    scientificNameElement!.textContent = scientificName;
+    commonNameElement!.textContent = commonName;
+    typeElement!.textContent = type;
+    didYouKnowDescriptionElement!.textContent = detailedDescription;
+    didYouKnowTextElement!.textContent = description;
+    didYouKnowImgPathElement!.src = additionalAnimalInfo!.imgPath;
 
-const currentAnimal = animals.find(({id: animalId}) => animalId === id);
-let currentVideoId = currentAnimal.youtubeVideoIds[0].id;
+    renderMainPreview(additionalAnimalInfo!.videoId)
+}
 
 const renderMainPreview = (videoId: string) => {
+    console.log(videoId)
     youtubePreviewContainerElement!.innerHTML = `
     <iframe 
         width="560"
@@ -46,37 +67,6 @@ const renderMainPreview = (videoId: string) => {
     </iframe>
     `
 };
-
-const {
-    didYouKnowText,
-    zoosPageHeading,
-    makeDonationHeading,
-    makeDonationText,
-    commonName,
-    scientificName,
-    type,
-    size,
-    diet,
-    habitat,
-    range,
-    didYouKnowImgPath,
-    didYouKnowDescription
-} = currentAnimal;
-
-didYouKnowTextElement!.innerText = didYouKnowText;
-zoosPageHeadingElement!.innerText = zoosPageHeading;
-donationSectionHeadingElement!.innerText = makeDonationHeading;
-donationSectionTextElement!.innerText = makeDonationText;
-commonNameElement!.innerText = commonName;
-scientificNameElement!.innerText = scientificName;
-typeElement!.innerText = type;
-sizeElement!.innerText = size;
-dietElement!.innerText = diet;
-habitatElement!.innerText = habitat;
-rangeElement!.innerText = range;
-didYouKnowImgPathElement!.setAttribute('src', didYouKnowImgPath);
-didYouKnowImgPathElement!.setAttribute('alt', commonName);
-didYouKnowDescriptionElement!.innerText = didYouKnowDescription;
 
 // LEFT SIDE PANEL
 
@@ -130,7 +120,7 @@ panelButtonElement?.addEventListener("click", () => {
 })
 
 // YOUTUBE CAROUSEL
-let carouselVideos = [...currentAnimal.youtubeVideoIds];
+// let carouselVideos = [...currentAnimal.youtubeVideoIds];
 
 
 const leftBtnYtCarouselElement = document.getElementById('youtubeCarouselLeftButton')
@@ -138,13 +128,13 @@ const rightBtnYtCarouselElement = document.getElementById('youtubeCarouselRightB
 const ytCarouselContainer = document.querySelector('.yt-carousel');
 
 leftBtnYtCarouselElement?.addEventListener("click", () => {
-    carouselVideos = moveLeft(carouselVideos);
-  renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard, currentVideoId);
+//     carouselVideos = moveLeft(carouselVideos);
+//   renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard, currentVideoId);
 });
 
 rightBtnYtCarouselElement?.addEventListener("click", () => {
-    carouselVideos = moveRight(carouselVideos);
-    renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard, currentVideoId);
+    // carouselVideos = moveRight(carouselVideos);
+    // renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard, currentVideoId);
 });
 
 ytCarouselContainer?.addEventListener('click', (e) => {
@@ -154,13 +144,27 @@ ytCarouselContainer?.addEventListener('click', (e) => {
     selectedImageContainer!.classList.remove('selected-yt-preview');
     container.classList.add('selected-yt-preview');
     renderMainPreview(container.id);
-    currentVideoId = container.id;
+    // currentVideoId = container.id;
 });
 
-window.onload = () => {
-    renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
-    const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
-    ytPreviewImageElement!.classList.add('selected-yt-preview');
-    renderMainPreview(currentVideoId);
+window.onload = async () => {
+    console.log(id)
+    // renderCarouselArray(carouselVideos, ytCarouselContainer, createYoutubePreviewCard);
+    // const ytPreviewImageElement = document.querySelector('.youtube-preview-thumbnail-container');
+    // ytPreviewImageElement!.classList.add('selected-yt-preview');
+    const animalResponse = await getAnimalData(id as string);
+    console.log(animalResponse)
+    renderDidYouKnowSection(animalResponse as AnimalApiResponse);
     highlightNavElements(2);
 };
+
+
+// async function getAnimalsCameraData() {
+//     const response = await getData<AnimalCameraApiResponse>(`/cameras`);
+// }
+
+
+async function getAnimalData(petId: string) {
+    const response = await getData<AnimalApiResponse>(`/pets/${petId}`);
+    return response;
+}
