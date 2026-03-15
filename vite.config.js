@@ -8,6 +8,7 @@ export default {
     outDir: "../dist",
     rollupOptions: {
       input: {
+        index: resolve(__dirname, "src/index.html"),
         landing: resolve(__dirname, "src/pages/landing/index.html"),
         contact: resolve(__dirname, "src/pages/contact/index.html"),
         map: resolve(__dirname, "src/pages/map/index.html"),

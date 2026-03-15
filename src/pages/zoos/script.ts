@@ -14,9 +14,7 @@ const animalImagesData: Array<{id: number, imgPath: string, videoId: string}> = 
    
 const didYouKnowTextElement = document.getElementById('didYouKnow');
 const youtubePreviewContainerElement = document.getElementById('youtubePreviewContainer');
-// const donationSectionHeadingElement = document.getElementById('donationSectionHeading');
-// const donationSectionTextElement = document.getElementById('donationSectionText');
-// const zoosPageHeadingElement = document.getElementById('zoosPageHeading');
+// https://shchepadzmitry.github.io/online-zoo/
 const commonNameElement = document.getElementById('commonName');
 const scientificNameElement = document.getElementById('scientificName');
 const typeElement = document.getElementById('type');
