@@ -22,6 +22,105 @@
     --error-text: red;
 }
 
+.container {
+    padding: 0 250px;
+}
+
+/********************TYPOGRAPHY************************/
+
 h1 {
     visibility: hidden;
+}
+
+h1 {
+    visibility: hidden;
+    position: absolute;
+}
+
+h2 {
+    font-size: 82px;
+    color: var(--turquoise);
+    width: 890px;
+    margin-bottom: 30px;
+    font-weight: 800;
+    letter-spacing: 1%;
+}
+
+h3 {
+    font-size: 54px;
+    margin-bottom: 50px;
+}
+
+h4 {
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+h2, h3, h4 {
+    text-transform: uppercase;
+}
+
+.subheader {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 15px;
+}
+
+h3.turquoise, h4.turquoise {
+    color: var(--turquoise);
+}
+
+h3.orange {
+    color: var(--orange);
+}
+
+
+h4.white {
+    color: var(--white);
+}
+
+p {
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0%;
+    font-size: 18px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-bottom: 50px;
+
+    fa-icon {
+        cursor: pointer;
+        font-size: 22px;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    &--dark {
+        fa-icon {
+            border: 1px solid var(--black);
+        }
+
+        fa-icon:hover {
+            border: 1px solid var(--navy);
+            background-color: var(--navy);
+            color: var(--white);
+        }
+    }
+
+    &--light {
+        fa-icon {
+            border: 1px solid var(--white);
+        }
+
+        fa-icon:hover {
+            color: var(--black);
+            background-color: var(--white);
+            border: 1px solid var(--white);
+        }
+    }
 }

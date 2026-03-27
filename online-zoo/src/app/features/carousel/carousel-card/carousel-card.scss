@@ -1,0 +1,42 @@
+.carousel-item {
+    width: 440px;
+    height: 750px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    &__wrapper {
+        height: 100%;
+    }
+}
+
+.animal-name {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--white);
+    background-color: var(--navy);
+    border-bottom-right-radius: 5px;
+    padding: 15px 25px;
+}
+
+.top-part img {
+    display: block;
+    width: 100%;
+}
+
+.bottom-part {
+    background-color: var(--navy);
+    color: var(--white);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 42%;
+}
+
+.bottom-part span {
+    align-self: center;
+}
