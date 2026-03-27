@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration: .7s;
+    max-width: 1920px;
+    list-style: none;
+}
+
+:root {
+    --navy: #20113d;
+    --black: #000;
+    --white: #fff;
+    --orange: #f58021;
+    --orange-hovered: #d26004;
+    --turquoise: #00a092;
+    --turquoise-hovered: #05786e;
+    --gray: #A4A8AE;
+    --turquoise-select: #80CFC8;
+    --error-text: red;
+}
+
+h1 {
+    visibility: hidden;
+}
