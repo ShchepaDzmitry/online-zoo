@@ -45,5 +45,45 @@
     </div>
     <app-carousel></app-carousel>
     <app-button [additionalClass]="'outline-dark'" [buttonText]="'choose your favourite'"></app-button>
-
+</section>
+<section class="pay-and-feed container dark">
+    <h3>pay and feed</h3>
+    <div class="pay-and-feed__cards">
+    @for (card of payAndFeedCards; track $index) {
+        <app-pay-and-feed-card [card]="card"></app-pay-and-feed-card>
+    }
+    </div>
+    <app-button [additionalClass]="'orange'" [buttonText]="'donate now'"></app-button>
+</section>
+<section class="feedback dark">
+    <div class="feedback__top-container">
+        <div class="feedback__left-panel">
+            <h3>what our users think</h3>
+            <p class="subheader">We are continuously striving to improve the experiences of our future guests. Below you can leave your own feedback, or simply view feedback from past clients. </p>
+        </div>
+        <div class="feedback__right-panel">
+            <app-feedback-carousel></app-feedback-carousel>
+        </div>
+    </div>
+    <div class="action-buttons action-buttons--light">
+        <i class="fa-solid fa-arrow-left" id="feedbackLeftButton"></i>
+        <i class="fa-solid fa-arrow-right" id="feedbackRightButton"></i>
+    </div>
+    <app-button [additionalClass]="'outline-light'" [buttonText]="'leave feedback'"></app-button>
+</section>
+<section class="container light care-for">
+    <div class="top-panel">
+        <h3 class="turquoise">care for the animals you love</h3>
+        <p class="subheader">You can help to look after the animals you love with your gift today</p>
+    </div>
+    <div class="bottom-panel">
+        <img src="/assets/koala_feedcard.png" alt="Koala" class="bottom-panel__koala">
+        @for (card of feedCards; track $index) {
+            <app-feedcard [feedCard]="card"></app-feedcard>
+        }
+    </div>
+    
+    <app-button [additionalClass]="'outline-dark'" [buttonText]="'choose your favourite'"></app-button>
+    
+    <img src="/assets/touch_the_animal.png" alt="Touch the animal image">
 </section>

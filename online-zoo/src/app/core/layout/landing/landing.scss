@@ -107,3 +107,74 @@
 .carousel-item__wrapper {
     height: 100%;
 }
+
+.feedback {
+    padding: 150px 0 150px 250px;
+    background: linear-gradient(to bottom, var(--navy), transparent),
+    url('/assets/feedback_section_bg.png') center / cover no-repeat;
+    overflow-x: hidden;
+}
+
+.feedback__top-container {
+    height: 670px;
+    overflow: hidden;
+    display: flex;
+    gap: 50px;
+    margin-bottom: 50px;
+    width: calc(250px + 560px + 50px + 2 * 515px + 30px); /*padding left + max-width + gap + 2 cards + gap*/
+}
+
+.feedback__left-panel {
+    flex-basis: 560px;
+    flex-shrink: 0;
+}
+
+.feedback__right-panel {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 750px;
+}
+
+.care-for {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+
+    app-button {
+        margin-bottom: 150px;
+    }
+}
+
+.care-for .top-panel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.care-for .subheader {
+    max-width: 540px;
+}
+
+.care-for .bottom-panel{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+.bottom-panel__koala {
+    height: 660px;
+    width: 910px;
+}
+
+.care-for .outline-dark {
+    flex-basis: auto;
+    margin-bottom: 150px;
+}
+

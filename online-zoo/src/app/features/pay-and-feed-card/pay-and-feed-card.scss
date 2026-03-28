@@ -1,0 +1,40 @@
+.pay-and-feed {
+    margin-top: 150px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 100px;
+        margin-bottom: 60px;
+
+        &--line {
+            flex: 1;
+            border-top: 1px solid var(--white);
+        }
+    }
+
+    &__content {
+        display: flex;
+        gap: 90px;
+        width: 85%;
+        margin-bottom: 90px;
+    }
+
+    &__icon {
+        margin-bottom: 30px;
+    }
+
+    &__image {
+        align-self: flex-start;
+    }
+
+    .subheader {
+        margin-bottom: 60px;
+    }
+    
+    .button {
+        margin-left: 650px;
+    }
+}

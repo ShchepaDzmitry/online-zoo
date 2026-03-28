@@ -1,0 +1,12 @@
+<swiper-container
+  [slidesPerView]="2"
+  [spaceBetween]="20"
+  [navigation]="true"
+  [loop]="true"
+>
+@for (card of feedbackService.cards(); track card.id) {
+    <swiper-slide>
+        <app-feedback-card [card]="card"></app-feedback-card>
+    </swiper-slide>
+}
+</swiper-container>

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, effect, inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit, computed, inject } from '@angular/core';
 import { CarouselCard } from './carousel-card/carousel-card';
 import { AnimalService } from '../animal/services/animal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,12 +16,7 @@ export class Carousel implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
 
-  constructor() {
-    // Этот код сработает АВТОМАТИЧЕСКИ, когда данные в сервисе обновятся
-    effect(() => {
-      console.log('Данные в сигнале обновились:', this.animalService.animals());
-    });
-  }
+  animals = computed(() => this.animalService.animals);
 
   ngOnInit(): void {
     console.log(this.animalService.getAnimals(), this.animalService.animals());
