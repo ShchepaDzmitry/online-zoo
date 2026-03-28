@@ -5,7 +5,7 @@
   [loop]="true"
   class="carousel-container"
 >
-@for (animal of animalService.animals(); track animal.id) {
+@for (animal of animalsWithImages(); track animal.id) {
     <swiper-slide>
         <app-carousel-card [animal]="animal"></app-carousel-card>
     </swiper-slide>

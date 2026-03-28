@@ -3,6 +3,7 @@ import { CarouselCard } from './carousel-card/carousel-card';
 import { AnimalService } from '../animal/services/animal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { IAnimal } from '../animal/animal.model';
 
 @Component({
   selector: 'app-carousel',
@@ -16,7 +17,13 @@ export class Carousel implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
 
-  animals = computed(() => this.animalService.animals);
+  animalsWithImages = computed(() => {
+    const data = this.animalService.animals();
+    return data.map((animal: IAnimal) => ({
+      ...animal,
+      img: '/assets/panda_lucas.png',
+    }));
+  });
 
   ngOnInit(): void {
     console.log(this.animalService.getAnimals(), this.animalService.animals());

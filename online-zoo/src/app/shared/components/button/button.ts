@@ -12,6 +12,7 @@ import { NgClass } from '@angular/common';
 export class Button {
   buttonText = input('');
   additionalClass = input<string>('');
+  type = input('');
 
   baseClass = 'button';
   faArrowRight = faArrowRight;

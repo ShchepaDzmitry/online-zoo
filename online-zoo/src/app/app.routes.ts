@@ -18,4 +18,13 @@ export const routes: Routes = [
     path: 'zoos',
     loadComponent: () => import('./core/layout/zoos/zoos').then((m) => m.Zoos),
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./core/auth/pages/login/login.js').then((m) => m.Login),
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./core/auth/pages/register/register.js').then((m) => m.Register),
+  },
+  { path: '**', redirectTo: 'home' },
 ];
