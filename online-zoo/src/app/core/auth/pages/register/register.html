@@ -1,4 +1,9 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="form-container">
+
+    @if (error()) {
+        <p class="subheader error-container">The error has been appeared {{error()}}. Please refresh the page</p>
+    }
+
     <div class="form-group">
         <label for="login"><span class="required">*</span>Your Login</label>
         <input id="login" type="text" placeholder="Enter your login" formControlName="login"/>
@@ -108,5 +113,5 @@
         }
     </div>
 
-    <app-button [type]="'submit'" [buttonText]="'Register'" [additionalClass]="'turquoise'"></app-button>
+    <app-button [type]="'submit'" [buttonText]="loading() ? 'Loading...' : 'Register'" [additionalClass]="'turquoise'" [isValid]="registerForm.invalid"></app-button>
 </form>

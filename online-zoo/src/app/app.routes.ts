@@ -26,5 +26,5 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./core/auth/pages/register/register.js').then((m) => m.Register),
   },
-  { path: '**', redirectTo: 'home' },
+  // { path: '**', redirectTo: 'home' },
 ];

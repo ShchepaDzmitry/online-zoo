@@ -1,11 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../../../../shared/components/button/button';
 import { Auth } from '../../auth';
-import { ILoginForm, IUserSuccessResponse } from '../../auth.model';
-import { RouterLink, Route, Router } from '@angular/router';
+import { ILoginForm } from '../../auth.model';
+import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -14,13 +16,17 @@ import { RouterLink, Route, Router } from '@angular/router';
   styleUrl: './login.scss',
 })
 export class Login {
-  formBuilder = inject(FormBuilder);
-  authService = inject(Auth);
-  router = inject(Router);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly authService = inject(Auth);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+
   faCircleExclamation = faCircleExclamation;
+  readonly error = signal<string | null>(null);
+  readonly loading = signal(false);
 
   loginForm = this.formBuilder.group({
-    login: ['', [Validators.required, Validators.pattern(/^[A-Za-z]/), Validators.minLength(3)]],
+    login: ['', [Validators.required, Validators.pattern(/^[A-Za-z+$]/), Validators.minLength(3)]],
     password: [
       '',
       [
@@ -40,20 +46,21 @@ export class Login {
   }
 
   onSubmit() {
-    const loginForm = {
-      login: this.login!.value ?? '',
-      password: this.password!.value ?? '',
-    };
-    if (loginForm.login && loginForm.password) {
-      this.authService.login(loginForm).subscribe({
+    this.loading.set(true);
+
+    this.authService
+      .login(this.loginForm.getRawValue() as ILoginForm)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.loading.set(false))
+      )
+      .subscribe({
         next: () => {
           this.router.navigate(['/home']);
-          console.log(this.router.navigate(['/home']));
         },
         error: (error) => {
-          console.error('Критическая ошибка запроса:', error);
+          this.error.set(error);
         },
       });
-    }
   }
 }

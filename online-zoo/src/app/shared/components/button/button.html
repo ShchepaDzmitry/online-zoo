@@ -1,4 +1,4 @@
-<button [ngClass]="finalClass()" [type]="type()">
+<button [ngClass]="finalClass()" [type]="type()" [disabled]="isValid()">
     <span>{{buttonText()}}</span>
     <fa-icon [icon]="faArrowRight" />
 </button>

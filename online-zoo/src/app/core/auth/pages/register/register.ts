@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -9,6 +9,11 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../../../../shared/components/button/button';
+import { Router } from '@angular/router';
+import { Auth } from '../../auth';
+import { IRegistrationForm } from '../../auth.model';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { finalize } from 'rxjs';
 
 const confirmPasswordValidator = (groupControl: AbstractControl): ValidationErrors | null => {
   return groupControl.get('password')?.value === groupControl.get('confirmPassword')?.value
@@ -23,11 +28,18 @@ const confirmPasswordValidator = (groupControl: AbstractControl): ValidationErro
   styleUrl: '../login/login.scss',
 })
 export class Register {
-  formBuilder = inject(FormBuilder);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly authService = inject(Auth);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+
   faCircleExclamation = faCircleExclamation;
+  readonly error = signal<string | null>(null);
+  readonly loading = signal(false);
+
   loginNameValidationRuLes = [
     Validators.required,
-    Validators.pattern(/^[A-Za-z]/),
+    Validators.pattern(/^[A-Za-z+$]/),
     Validators.minLength(3),
   ];
 
@@ -70,6 +82,22 @@ export class Register {
   }
 
   onSubmit() {
-    console.log(this.registerForm);
+    this.loading.set(true);
+
+    this.authService
+      .register(this.registerForm.getRawValue() as IRegistrationForm)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.loading.set(false))
+      )
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          this.error.set(error);
+          this.loading.set(false);
+        },
+      });
   }
 }

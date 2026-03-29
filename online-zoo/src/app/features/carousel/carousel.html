@@ -1,14 +1,21 @@
-<swiper-container
-  [slidesPerView]="4"
-  [spaceBetween]="20"
-  [navigation]="true"
-  [loop]="true"
-  class="carousel-container"
->
+@if (loading()) {
+  <p>We are prepairing animals for you</p>
+} @else if(error()) {
+  <p class="subheader error-container">The error has been appeared {{error()}}</p>
+} @else {
+  <swiper-container
+    [slidesPerView]="4"
+    [spaceBetween]="20"
+    [navigation]="true"
+    [loop]="true"
+    class="carousel-container"
+  >
 @for (animal of animalsWithImages(); track animal.id) {
     <swiper-slide>
         <app-carousel-card [animal]="animal"></app-carousel-card>
     </swiper-slide>
 }
 </swiper-container>
+}
+
 

@@ -14,7 +14,9 @@ export class Api {
   get<T>(additionalPath: string = ''): Observable<T> {
     return this.http.get<T>(`${this.INITIAL_PATH}${additionalPath}`).pipe(
       catchError((error: HttpErrorResponse) => {
-        const customError = new Error(`HTTP error: ${error.status}, ${error.message || ''}`);
+        const customError = new Error(
+          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`
+        );
 
         return throwError(() => customError);
       })
@@ -24,7 +26,9 @@ export class Api {
   post<T>(body: ILoginForm | IRegistrationForm, additionalPath: string = ''): Observable<T> {
     return this.http.post<T>(`${this.INITIAL_PATH}${additionalPath}`, body).pipe(
       catchError((error: HttpErrorResponse) => {
-        const customError = new Error(`HTTP error: ${error.status}, ${error.message || ''}`);
+        const customError = new Error(
+          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`
+        );
 
         return throwError(() => customError);
       })
