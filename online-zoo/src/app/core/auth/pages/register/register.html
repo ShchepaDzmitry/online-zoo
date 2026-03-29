@@ -113,5 +113,11 @@
         }
     </div>
 
-    <app-button [type]="'submit'" [buttonText]="loading() ? 'Loading...' : 'Register'" [additionalClass]="'turquoise'" [isValid]="registerForm.invalid"></app-button>
+    <app-button
+        [type]="'submit'"
+        [buttonText]="loading() ? 'Loading...' : 'Register'"
+        [additionalClass]="'turquoise'"
+        [isDisabled]="registerForm.invalid"
+        [isArrowIncluded]="false">
+    </app-button>
 </form>

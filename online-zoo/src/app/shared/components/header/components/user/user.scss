@@ -1,0 +1,65 @@
+.login-user {
+    position: relative;
+}
+
+.login-user__info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.login-user__modal {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.login-user__profile-info--panel {
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.login-user__profile-info--panel span {
+    color: var(--turquoise);
+}
+
+.login-user__info {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.login-user__info:hover {
+    color: var(--turquoise);
+}
+
+.login-user__modal--logged-out {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.login-user__modal--logged-in {
+    margin: 10px;
+}
+
+.login-user__modal--logged-out p {
+    text-align: center;
+}
+
+.logged-out__btn-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+

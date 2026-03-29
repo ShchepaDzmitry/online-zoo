@@ -54,7 +54,13 @@
             }
         </div>
     
-        <app-button [type]="'submit'" [buttonText]="loading() ? 'Loading...' : 'Sign In'" [additionalClass]="'turquoise'" [isValid]="loginForm.invalid"></app-button>
+        <app-button
+            [type]="'submit'"
+            [buttonText]="loading() ? 'Loading...' : 'Sign In'"
+            [additionalClass]="'turquoise'"
+            [isDisabled]="loginForm.invalid"
+            [isArrowIncluded]="false">
+        </app-button>
     </form>
 
 

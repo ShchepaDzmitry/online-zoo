@@ -13,7 +13,8 @@ export class Button {
   buttonText = input('');
   additionalClass = input<string>('');
   type = input('');
-  isValid = input(true);
+  isDisabled = input(false);
+  isArrowIncluded = input(true);
 
   baseClass = 'button';
   faArrowRight = faArrowRight;

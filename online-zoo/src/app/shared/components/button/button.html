@@ -1,4 +1,6 @@
-<button [ngClass]="finalClass()" [type]="type()" [disabled]="isValid()">
+<button [ngClass]="finalClass()" [type]="type()" [disabled]="isDisabled()">
     <span>{{buttonText()}}</span>
-    <fa-icon [icon]="faArrowRight" />
+    @if (isArrowIncluded()) {
+        <fa-icon [icon]="faArrowRight" />
+    }
 </button>
