@@ -1,14 +1,22 @@
 <div>
-    <div class="pay-and-feed__header">
-        <span>{{card().number}}</span>
-        <hr class="pay-and-feed__header--line">
+  <div class="pay-and-feed__header">
+    <span>{{ card().number }}</span>
+    <hr class="pay-and-feed__header--line" />
+  </div>
+  <div class="pay-and-feed__content">
+    <img
+      class="pay-and-feed__image"
+      src="{{ card().image }}"
+      alt="pay and feed image {{ card().number }}"
+    />
+    <div class="pay-and-feed__description">
+      <img
+        class="pay-and-feed__icon"
+        src="{{ card().icon }}"
+        alt="pay and feed icon {{ card().number }}"
+      />
+      <p class="subheader">{{ card().heading }}</p>
+      <p>{{ card().description }}</p>
     </div>
-    <div class="pay-and-feed__content">
-    <img class="pay-and-feed__image" src="{{card().image}}" alt="pay and feed image {{card().number}}">
-        <div class="pay-and-feed__description">
-            <img class="pay-and-feed__icon" src="{{card().icon}}" alt="pay and feed icon {{card().number}}">
-        <p class="subheader">{{card().heading}}</p>
-            <p>{{card().description}}</p>
-        </div>
-    </div>
+  </div>
 </div>

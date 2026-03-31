@@ -15,11 +15,11 @@ export class Api {
     return this.http.get<T>(`${this.INITIAL_PATH}${additionalPath}`).pipe(
       catchError((error: HttpErrorResponse) => {
         const customError = new Error(
-          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`
+          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`,
         );
 
         return throwError(() => customError);
-      })
+      }),
     );
   }
 
@@ -27,11 +27,11 @@ export class Api {
     return this.http.post<T>(`${this.INITIAL_PATH}${additionalPath}`, body).pipe(
       catchError((error: HttpErrorResponse) => {
         const customError = new Error(
-          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`
+          `HTTP error: ${error.status}, ${error.error?.error || error.message || ''}`,
         );
 
         return throwError(() => customError);
-      })
+      }),
     );
   }
 }

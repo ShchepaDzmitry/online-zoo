@@ -39,7 +39,7 @@ export class FeedbackCarousel implements OnInit {
           this.error.set(message);
           return of([]);
         }),
-        finalize(() => this.loading.set(false))
+        finalize(() => this.loading.set(false)),
       )
       .subscribe((data) => this.cardsData.set(data));
   }

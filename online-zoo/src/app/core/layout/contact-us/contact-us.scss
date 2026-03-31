@@ -1,24 +1,24 @@
 .get-in-touch {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .get-in-touch img {
-    max-height: 815px;
+  max-height: 815px;
 }
 
 .bottom-container {
-    display: flex;
-    gap: 100px;
-    margin-bottom: 100px;
+  display: flex;
+  gap: 100px;
+  margin-bottom: 100px;
 }
 
 .form-container {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .bottom-container__text {
-    flex-grow: 1;
-    max-width: 545px;
+  flex-grow: 1;
+  max-width: 545px;
 }

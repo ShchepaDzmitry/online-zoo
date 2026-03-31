@@ -1,180 +1,182 @@
 .introduction {
-    height: 800px;
-    background-image: url('/assets/panda_background.png');
-    background-size: 90% 100%;
-    padding-top: 110px;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 800px;
+  background-image: url('/assets/panda_background.png');
+  background-size: 90% 100%;
+  padding-top: 110px;
+  background-repeat: no-repeat;
+  background-position: center;
 
-    p {
-        width: 430px;
-        margin-bottom: 40px;
-    }
+  p {
+    width: 430px;
+    margin-bottom: 40px;
+  }
 }
 
 .welcome {
-    margin-top: 150px;
-    display: flex;
-    flex-direction: column;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
 
-    h2 {
-        margin: 50px 0;
-    }
+  h2 {
+    margin: 50px 0;
+  }
 
-    p {
-        margin-right: 35px;
-    }
+  p {
+    margin-right: 35px;
+  }
 }
 
 .panel {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 150px;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 150px;
 }
 
 .donations {
-    background-color: var(--navy);
-    padding-top: 50px;
-    padding-bottom: 50px;
-    display: flex;
-    justify-content: space-between;
-    gap: 100px;
-    color: var(--white);
+  background-color: var(--navy);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  color: var(--white);
 
-    p {
-        max-width: 610px;
-    }
+  p {
+    max-width: 610px;
+  }
 }
 
 .dark {
-    color: var(--white);
-    background-color: var(--navy);
+  color: var(--white);
+  background-color: var(--navy);
 }
 
 .large {
-    flex-grow: 3;
+  flex-grow: 3;
 }
 
 .small {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .friends {
-    margin: 150px 0;
-    text-align: center;
-    padding-left: 250px;
-    overflow: hidden;
+  margin: 150px 0;
+  text-align: center;
+  padding-left: 250px;
+  overflow: hidden;
 
-    .subheader {
-        max-width: 920px;
-        align-self: center;
-    }
+  .subheader {
+    max-width: 920px;
+    align-self: center;
+  }
 
-    .panel {
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 100px;
-    }
+  .panel {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
 
-    .outline-dark {
-        margin: 0 auto;
-    }
+  .outline-dark {
+    margin: 0 auto;
+  }
 }
 
 .carousel-container {
-    width: calc(3.5 * (440px + 40px) + 250px);
-    margin-bottom: 70px;
-    transition: transform 0.4s ease;
+  width: calc(3.5 * (440px + 40px) + 250px);
+  margin-bottom: 70px;
+  transition: transform 0.4s ease;
 }
 
 .carousel {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  position: relative;
 }
 
 .carousel-item {
-    width: 440px;
-    height: 750px;
-    cursor: pointer;
-    border-radius: 5px;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
+  width: 440px;
+  height: 750px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .carousel-item__wrapper {
-    height: 100%;
+  height: 100%;
 }
 
 .feedback {
-    padding: 150px 0 150px 250px;
-    background: linear-gradient(to bottom, var(--navy), transparent),
+  padding: 150px 0 150px 250px;
+  background:
+    linear-gradient(to bottom, var(--navy), transparent),
     url('/assets/feedback_section_bg.png') center / cover no-repeat;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .feedback__top-container {
-    height: 670px;
-    overflow: hidden;
-    display: flex;
-    gap: 50px;
-    margin-bottom: 50px;
-    width: calc(250px + 560px + 50px + 2 * 515px + 30px); /*padding left + max-width + gap + 2 cards + gap*/
+  height: 670px;
+  overflow: hidden;
+  display: flex;
+  gap: 50px;
+  margin-bottom: 50px;
+  width: calc(
+    250px + 560px + 50px + 2 * 515px + 30px
+  ); /*padding left + max-width + gap + 2 cards + gap*/
 }
 
 .feedback__left-panel {
-    flex-basis: 560px;
-    flex-shrink: 0;
+  flex-basis: 560px;
+  flex-shrink: 0;
 }
 
 .feedback__right-panel {
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 750px;
 }
 
 .care-for {
-    padding-top: 150px;
-    padding-bottom: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    position: relative;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
 
-    app-button {
-        margin-bottom: 150px;
-    }
+  app-button {
+    margin-bottom: 150px;
+  }
 }
 
 .care-for .top-panel {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .care-for .subheader {
-    max-width: 540px;
+  max-width: 540px;
 }
 
-.care-for .bottom-panel{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 70px;
-    margin-bottom: 80px;
+.care-for .bottom-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 70px;
+  margin-bottom: 80px;
 }
 
 .bottom-panel__koala {
-    height: 660px;
-    width: 910px;
+  height: 660px;
+  width: 910px;
 }
 
 .care-for .outline-dark {
-    flex-basis: auto;
-    margin-bottom: 150px;
+  flex-basis: auto;
+  margin-bottom: 150px;
 }
-

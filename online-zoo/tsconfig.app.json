@@ -6,10 +6,6 @@
     "outDir": "./out-tsc/app",
     "types": []
   },
-  "include": [
-    "src/**/*.ts"
-, "src/app/core/layout/landing/cards.data.ts"  ],
-  "exclude": [
-    "src/**/*.spec.ts"
-  ]
+  "include": ["src/**/*.ts", "src/app/core/layout/landing/cards.data.ts"],
+  "exclude": ["src/**/*.spec.ts"]
 }

@@ -44,7 +44,7 @@ export class Carousel implements OnInit {
           this.error.set(message);
           return of([]);
         }),
-        finalize(() => this.loading.set(false))
+        finalize(() => this.loading.set(false)),
       )
       .subscribe((data) => this.animalsData.set(data));
   }

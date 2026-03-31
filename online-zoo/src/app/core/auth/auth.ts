@@ -28,7 +28,7 @@ export class Auth {
         localStorage.setItem('email', email);
         localStorage.setItem('name', name);
         localStorage.setItem('token', access_token);
-      })
+      }),
     );
   }
 
@@ -45,7 +45,7 @@ export class Auth {
         localStorage.setItem('email', email);
         localStorage.setItem('name', name);
         localStorage.setItem('token', access_token);
-      })
+      }),
     );
   }
 }

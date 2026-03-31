@@ -8,10 +8,11 @@ import { ILoginForm } from '../../auth.model';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
+import { Validation } from '../../directives/validation';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, FontAwesomeModule, Button],
+  imports: [ReactiveFormsModule, FontAwesomeModule, Button, Validation],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -52,7 +53,7 @@ export class Login {
       .login(this.loginForm.getRawValue() as ILoginForm)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        finalize(() => this.loading.set(false))
+        finalize(() => this.loading.set(false)),
       )
       .subscribe({
         next: () => {

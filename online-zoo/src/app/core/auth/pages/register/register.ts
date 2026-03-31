@@ -58,7 +58,7 @@ export class Register {
       name: ['', this.loginNameValidationRuLes],
       email: ['', [Validators.required, Validators.email]],
     },
-    { validators: confirmPasswordValidator }
+    { validators: confirmPasswordValidator },
   );
 
   get login() {
@@ -88,7 +88,7 @@ export class Register {
       .register(this.registerForm.getRawValue() as IRegistrationForm)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        finalize(() => this.loading.set(false))
+        finalize(() => this.loading.set(false)),
       )
       .subscribe({
         next: () => {
