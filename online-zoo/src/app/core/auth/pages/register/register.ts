@@ -14,6 +14,7 @@ import { Auth } from '../../auth';
 import { IRegistrationForm } from '../../auth.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { finalize } from 'rxjs';
+import { Validation } from '../../directives/validation';
 
 const confirmPasswordValidator = (groupControl: AbstractControl): ValidationErrors | null => {
   return groupControl.get('password')?.value === groupControl.get('confirmPassword')?.value
@@ -23,7 +24,7 @@ const confirmPasswordValidator = (groupControl: AbstractControl): ValidationErro
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, FontAwesomeModule, Button],
+  imports: [ReactiveFormsModule, FontAwesomeModule, Button, Validation],
   templateUrl: './register.html',
   styleUrl: '../login/login.scss',
 })

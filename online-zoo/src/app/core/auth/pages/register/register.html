@@ -7,7 +7,13 @@
 
   <div class="form-group">
     <label for="login"><span class="required">*</span>Your Login</label>
-    <input id="login" type="text" placeholder="Enter your login" formControlName="login" />
+    <input
+      id="login"
+      type="text"
+      placeholder="Enter your login"
+      formControlName="login"
+      [appValidation]="login!.invalid && login!.touched"
+    />
     @if (login?.invalid && login?.touched) {
       @if (login?.hasError('required')) {
         <div class="error-container">
@@ -36,6 +42,7 @@
       type="password"
       placeholder="Enter your password"
       formControlName="password"
+      [appValidation]="password!.invalid && password!.touched"
     />
     @if (password?.invalid && password?.touched) {
       @if (password?.hasError('required')) {
@@ -65,6 +72,7 @@
       type="password"
       placeholder="Confirm your password"
       formControlName="confirmPassword"
+      [appValidation]="confirmPassword!.invalid && confirmPassword!.touched"
     />
     @if (confirmPassword?.touched) {
       @if (confirmPassword?.hasError('required')) {
@@ -83,7 +91,13 @@
   </div>
   <div class="form-group">
     <label for="name"><span class="required">*</span>Your Name</label>
-    <input id="name" type="text" placeholder="Enter your name" formControlName="name" />
+    <input
+      id="name"
+      type="text"
+      placeholder="Enter your name"
+      formControlName="name"
+      [appValidation]="name!.invalid && name!.touched"
+    />
     @if (name?.invalid && name?.touched) {
       @if (name?.hasError('required')) {
         <div class="error-container">
@@ -107,7 +121,13 @@
   </div>
   <div class="form-group">
     <label for="email"><span class="required">*</span>Your Email</label>
-    <input id="email" type="text" placeholder="Enter your email" formControlName="email" />
+    <input
+      id="email"
+      type="text"
+      placeholder="Enter your email"
+      formControlName="email"
+      [appValidation]="email!.invalid && email!.touched"
+    />
     @if (email?.invalid && email?.touched) {
       @if (email?.hasError('required')) {
         <div class="error-container">
