@@ -82,7 +82,8 @@ h4.white {
   color: var(--white);
 }
 
-p {
+p,
+.text {
   font-weight: 400;
   line-height: 150%;
   letter-spacing: 0%;

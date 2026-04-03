@@ -1,1 +1,65 @@
-<p>zoos works!</p>
+@if (loading()) {
+} @else if (error()) {
+  <p class="subheader error-container">{{ error() }}</p>
+} @else {
+  <section class="did-you-know container">
+    <div class="did-you-know-wrapper">
+      <h4 class="turquoise">did you know?</h4>
+      <p class="subheader">{{ animalData()?.description }}</p>
+    </div>
+    <div class="animal-description-wrapper">
+      <div class="top-panel">
+        <div class="top-panel__left">
+          <div class="panel-item">
+            <span class="subheader"
+              >Common name: <span class="text">{{ animalData()?.commonName }}</span></span
+            >
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Scientific name: <span class="text">{{ animalData()?.scientificName }}</span></span
+            >
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Type: <span class="text">{{ animalData()?.type }}</span></span
+            >
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Size: <span class="text">{{ animalData()?.size }}</span></span
+            >
+            <span id="size"></span>
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Diet: <span class="text">{{ animalData()?.diet }}</span></span
+            >
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Habitat: <span class="text">{{ animalData()?.habitat }}</span></span
+            >
+          </div>
+          <div class="panel-item">
+            <span class="subheader"
+              >Range: <span class="text">{{ animalData()?.range }}</span></span
+            >
+            <app-button
+              [additionalClass]="'blank'"
+              [isArrowIncluded]="true"
+              [buttonText]="'view map'"
+            ></app-button>
+          </div>
+        </div>
+        <img id="didYouKnowImgPath" class="did-you-know-img" />
+      </div>
+      <p class="did-you-know-description">{{ animalData()?.detailedDescription }}</p>
+      <div class="map-modal-container" id="mapContainer">
+        <div class="map-container" id="map">
+          <i class="fa-solid fa-close close-button" id="mapModalCloseBtn"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+}

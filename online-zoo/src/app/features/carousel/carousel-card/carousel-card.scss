@@ -33,11 +33,16 @@
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   height: 42%;
   flex-basis: 300px;
 }
 
 .bottom-part span {
   align-self: center;
+}
+
+.bottom-part app-button {
+  display: flex;
+  justify-content: center;
 }

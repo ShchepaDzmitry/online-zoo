@@ -1,10 +1,12 @@
 import { Routes } from '@angular/router';
+import { Landing } from './core/layout/landing/landing';
+import { NotFound } from './core/layout/not-found/not-found';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
-    loadComponent: () => import('./core/layout/landing/landing').then((m) => m.Landing),
+    component: Landing,
   },
   {
     path: 'map',
@@ -15,7 +17,7 @@ export const routes: Routes = [
     loadComponent: () => import('./core/layout/contact-us/contact-us').then((m) => m.ContactUs),
   },
   {
-    path: 'zoos',
+    path: 'zoos/:id',
     loadComponent: () => import('./core/layout/zoos/zoos').then((m) => m.Zoos),
   },
   {
@@ -26,5 +28,5 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./core/auth/pages/register/register.js').then((m) => m.Register),
   },
-  // { path: '**', redirectTo: 'home' },
+  { path: '**', component: NotFound },
 ];

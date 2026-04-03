@@ -12,8 +12,8 @@ import { AnimalService } from '../animal/services/animal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IAnimal } from '../animal/animal.model';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, defer, finalize, map, of, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { catchError, finalize, map, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',

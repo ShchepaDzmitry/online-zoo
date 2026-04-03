@@ -7,10 +7,12 @@
     <div class="bottom-part">
       <p class="subheader">{{ animal().commonName || '' }}</p>
       <p>{{ animal().description || '' }}</p>
-      <span class="button blank">
-        <span>view live cam</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      </span>
+      <app-button
+        [buttonText]="'view live cam'"
+        [additionalClass]="'blank'"
+        [isArrowIncluded]="true"
+        [routerLink]="['..', 'zoos', animal().id]"
+      ></app-button>
     </div>
   </div>
 </div>
