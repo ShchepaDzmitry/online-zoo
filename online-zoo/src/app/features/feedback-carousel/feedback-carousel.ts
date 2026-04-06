@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { FeedbackCard } from './feedback-card/feedback-card';
 import { Feedback } from './services/feedback';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { catchError, defer, finalize, map, of, tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { catchError, finalize, map, of } from 'rxjs';
 import { IFeedback } from './feedback-card/feedback-card.model';
 
 @Component({
@@ -28,14 +28,13 @@ export class FeedbackCarousel implements OnInit {
   readonly cardsData = signal<IFeedback[]>([]);
 
   ngOnInit(): void {
+    this.loading.set(true);
     this.feedbackService
       .getCards()
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        tap(() => this.loading.set(true)),
         map(({ data }) => data),
         catchError(({ message }) => {
-          this.loading.set(false);
           this.error.set(message);
           return of([]);
         }),

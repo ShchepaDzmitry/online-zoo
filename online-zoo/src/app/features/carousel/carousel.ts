@@ -13,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { IAnimal } from '../animal/animal.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { catchError, finalize, map, of, tap } from 'rxjs';
+import { catchError, finalize, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
@@ -33,14 +33,14 @@ export class Carousel implements OnInit {
   private readonly animalsData = signal<IAnimal[]>([]);
 
   ngOnInit(): void {
+    this.loading.set(true);
+
     this.animalService
       .getAnimals()
       .pipe(
         takeUntilDestroyed(this.destroyRef),
-        tap(() => this.loading.set(true)),
         map(({ data }) => data),
         catchError(({ message }) => {
-          this.loading.set(false);
           this.error.set(message);
           return of([]);
         }),
