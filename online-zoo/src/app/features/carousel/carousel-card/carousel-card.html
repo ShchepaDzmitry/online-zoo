@@ -1,0 +1,18 @@
+<div class="carousel-item">
+  <div class="carousel-item__wrapper">
+    <div class="top-part">
+      <p class="subheader animal-name">{{ animal().name || '' }}</p>
+      <img src="{{ animal().img }}" alt="{{ animal().name || '' }}" />
+    </div>
+    <div class="bottom-part">
+      <p class="subheader">{{ animal().commonName || '' }}</p>
+      <p>{{ animal().description || '' }}</p>
+      <app-button
+        [buttonText]="'view live cam'"
+        [additionalClass]="'blank'"
+        [isArrowIncluded]="true"
+        [routerLink]="['..', 'zoos', animal().id]"
+      ></app-button>
+    </div>
+  </div>
+</div>

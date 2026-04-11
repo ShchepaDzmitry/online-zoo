@@ -1,0 +1,299 @@
+.heading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    position: relative;
+}
+
+.heading-wrapper h3 {
+    text-align: center;
+    margin-bottom: 0;
+    width: 60%;
+}
+
+.heading-wrapper button {
+    position: absolute;
+    right: 0;
+}
+
+.live-cams {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 250px;
+    gap: 30px;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+.animal-nav {
+    background-color: var(--navy);
+    color: var(--white);
+    position: sticky;
+    height: fit-content;
+    top: 0;
+    width: 220px;
+}
+
+.live-chip {
+    text-transform: uppercase;
+    background-color: var(--orange);
+    border-bottom-right-radius: 5px;
+    width: 120px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    height: 40px;
+    gap: 5px;
+    justify-content: center;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.panel-button, .expand-button {
+    background: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+}
+
+.panel-button i, .expand-button i {
+    align-self: center;
+    font-size: 18px;
+    color: var(--white);
+    align-self: center;
+}
+
+.panel-list li{
+    height: 150px;
+    border-bottom: 1px solid var(--white);
+    padding: 40px 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.panel-list a {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.panel-list li span {
+    line-height: 130%;
+    font-size: 18px;
+}
+
+.panel-list li:first-child, .panel-list li:last-child{
+    height: 76px;
+    display: block;
+    padding: 0;
+}
+
+.panel-list li:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.youtube-preview {
+    margin-bottom: 100px;
+}
+
+.youtube-preview iframe {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    height: 700px;
+}
+
+.live-cams-img {
+    height: 60px;
+}
+
+.live-cams-img path {
+    fill: var(--navy);
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.panel-button .fa-angles-left {
+    display: none;
+}
+
+.panel-opened {
+    width: 300px;
+}
+
+.panel-image-opened {
+    height: 50px;
+}
+
+.nav-description {
+    display: none;
+}
+
+.img-wrapper {
+    background-color: var(--orange);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-wrapper-opened {
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+}
+
+.more-live-views {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.yt-carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.yt-carousel {
+    display: flex;
+    gap: 30px;
+}
+
+.yt-carousel-container i, .yt-carousel .youtube-preview-thumbnail-container {
+    cursor: pointer;
+}
+
+.youtube-preview-thumbnail-container {
+    position: relative;
+}
+
+.cam-container {
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--white);
+    border: 1px solid var(--white);
+    border-bottom-right-radius: 5px;
+    padding: 4px 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cam-container .subheader {
+    margin-bottom: 0;
+}
+
+.selected-yt-preview {
+    border: 3px solid var(--orange);
+}
+
+.did-you-know-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1080px;
+    margin: 150px auto;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 30px rgba(10, 10, 10, 0.28);
+}
+
+.did-you-know-wrapper .subheader {
+    text-align: center;
+    max-width: 920px;
+}
+
+.panel-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.panel-item .subheader {
+    margin-bottom: 0;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 200px;
+    margin-bottom: 50px;
+}
+
+.top-panel__left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.did-you-know-description {
+    padding-right: 200px;
+    margin-bottom: 150px;
+}
+
+.error-container {
+    color: var(--error-text);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.animal-description-wrapper {
+    position: relative;
+}
+
+.map-modal-container {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    display: none;
+    z-index: 5;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background-color: var(--orange);
+    border-radius: 5px;
+}
+
+.map-container {
+    width: 400px;
+    height: 250px;
+    position: relative;
+}
+
+.map-container .close-button {
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--orange);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1000;
+}

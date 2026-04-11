@@ -1,0 +1,13 @@
+@if (loading()) {
+  <p class="subheader">We are prepairing animals for you</p>
+} @else if (error()) {
+  <p class="subheader error-container">The error has been appeared {{ error() }}</p>
+} @else {
+  <swiper-container [slidesPerView]="2" [spaceBetween]="20" [navigation]="true" [loop]="true">
+    @for (card of cardsData(); track card.id) {
+      <swiper-slide>
+        <app-feedback-card [card]="card"></app-feedback-card>
+      </swiper-slide>
+    }
+  </swiper-container>
+}

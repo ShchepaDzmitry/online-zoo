@@ -1,0 +1,24 @@
+.get-in-touch {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.get-in-touch img {
+  max-height: 815px;
+}
+
+.bottom-container {
+  display: flex;
+  gap: 100px;
+  margin-bottom: 100px;
+}
+
+.form-container {
+  flex-grow: 1;
+}
+
+.bottom-container__text {
+  flex-grow: 1;
+  max-width: 545px;
+}

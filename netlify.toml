@@ -1,0 +1,9 @@
+[build]
+  base    = "online-zoo"
+  command = "npm install && ng build --configuration production"
+  publish = "dist/online-zoo/browser"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
