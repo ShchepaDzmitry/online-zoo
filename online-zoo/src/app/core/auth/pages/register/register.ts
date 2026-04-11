@@ -35,8 +35,8 @@ export class Register {
   private readonly destroyRef = inject(DestroyRef);
 
   faCircleExclamation = faCircleExclamation;
-  readonly error = signal<string | null>(null);
-  readonly loading = signal(false);
+  readonly error = this.authService.error;
+  readonly loading = this.authService.loading;
 
   loginNameValidationRuLes = [
     Validators.required,
@@ -83,22 +83,16 @@ export class Register {
   }
 
   onSubmit() {
-    this.loading.set(true);
-
-    this.authService
-      .register(this.registerForm.getRawValue() as IRegistrationForm)
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        finalize(() => this.loading.set(false)),
-      )
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/home']);
-        },
-        error: (error) => {
-          this.error.set(error);
-          this.loading.set(false);
-        },
-      });
+    if (this.registerForm.valid) {
+      this.authService
+        .register(this.registerForm.getRawValue() as IRegistrationForm)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: () => {
+            this.router.navigate(['/home']);
+          },
+          error: () => {},
+        });
+    }
   }
 }

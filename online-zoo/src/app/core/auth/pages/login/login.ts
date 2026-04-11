@@ -7,7 +7,6 @@ import { Auth } from '../../auth';
 import { ILoginForm } from '../../auth.model';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { finalize } from 'rxjs';
 import { Validation } from '../../directives/validation';
 
 @Component({
@@ -23,11 +22,11 @@ export class Login {
   private readonly destroyRef = inject(DestroyRef);
 
   faCircleExclamation = faCircleExclamation;
-  readonly error = signal<string | null>(null);
-  readonly loading = signal(false);
+  readonly error = this.authService.error;
+  readonly loading = this.authService.loading;
 
   loginForm = this.formBuilder.group({
-    login: ['', [Validators.required, Validators.pattern(/^[A-Za-z+$]/), Validators.minLength(3)]],
+    login: ['', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(3)]],
     password: [
       '',
       [
@@ -47,21 +46,16 @@ export class Login {
   }
 
   onSubmit() {
-    this.loading.set(true);
-
-    this.authService
-      .login(this.loginForm.getRawValue() as ILoginForm)
-      .pipe(
-        takeUntilDestroyed(this.destroyRef),
-        finalize(() => this.loading.set(false)),
-      )
-      .subscribe({
-        next: () => {
-          this.router.navigate(['/home']);
-        },
-        error: (error) => {
-          this.error.set(error);
-        },
-      });
+    if (this.loginForm.valid) {
+      this.authService
+        .login(this.loginForm.getRawValue() as ILoginForm)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: () => {
+            this.router.navigate(['/home']);
+          },
+          error: () => {},
+        });
+    }
   }
 }

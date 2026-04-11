@@ -1,5 +1,10 @@
 .login-user {
   position: relative;
+  cursor: pointer;
+}
+
+.login-user fa-icon:hover {
+  color: var(--turquoise);
 }
 
 .login-user__info {
